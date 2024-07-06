@@ -1,11 +1,18 @@
 <template>
-    <div class="">
-        <h1 class="my-5 text-5xl lg:text-6xl xl:text-7xl font-bold">
-            FTC Open Alliance
-        </h1>
-        <h2>
-            This is the landing page for FTCOA. (Currently in testing)
-        </h2>
+    <div class="block items-center justify-center bg-[linear-gradient(to_right,#ff660044_2px,transparent_1px),linear-gradient(to_bottom,#ff660022_2px,#000_1px)] bg-[size:40px_40px] bg-clip-border sm:p-36 md:p-24 p-36">
+        <div class="sm:flex md:flex block items-center backdrop-blur-sm shadow-xl shadow-orange-800">
+            <div class="mx-5 p-5">
+                <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
+            </div>
+            <div class="mx-10">
+                <h1 class="my-5 sm:text-6xl text-4xl lg:text-7xl xl:text-8xl font-bold">
+                    FTC Open Alliance
+                </h1>
+                <h2 class="text-lg">
+                    The place for open and collaborative robotics in FIRST Tech Challenge.
+                </h2>
+            </div>
+        </div>
     </div>
 </template>
 <script>
