@@ -1,12 +1,13 @@
 <template lang="">
     <div>
-        <h1>Teams List</h1>
+        <PageTitle>
+            <h1 class="text-6xl md:text-8xl text-orange font-bold">
+                {{ new Date().getFullYear() }} Teams
+            </h1>
+        </PageTitle>
     </div>
 </template>
 <script>
-export default {
-    
-}
 </script>
 <style lang="">
     

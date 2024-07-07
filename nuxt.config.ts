@@ -12,5 +12,8 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui"],
   ui: {
     safelistColors: ['black']
-  }
+  },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
 })
