@@ -1,5 +1,5 @@
 <template>
-    <div id="header-bar" class="flex justify-between backdrop-blur-sm fixed top-0 left-0 right-0 p-5 m-4 shadow-lg shadow-orange-800 border border-orange">
+    <div id="header-bar" class="flex justify-between backdrop-blur-sm fixed top-0 z-50 left-0 right-0 p-5 m-4 shadow-lg shadow-orange-800 border border-orange">
         <div class="inline-flex justify-start max-w-36">
             <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/SHORT-HORIZONTAL.svg">
         </div>
