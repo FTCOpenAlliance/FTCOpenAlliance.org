@@ -1,5 +1,5 @@
 <template>
-    <PageTitle>
+    <PageTitle class="*:block *:md:flex">
             <div class="mx-10">
                 <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
             </div>

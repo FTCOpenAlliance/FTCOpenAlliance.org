@@ -1,6 +1,6 @@
 <template>
-    <div class="block items-center justify-center bg-[linear-gradient(to_right,#ff660055_1px,transparent_1px),linear-gradient(to_bottom,#ff660055_1px,#000_1px)] bg-[size:40px_40px] bg-clip-border md:px-24 px-12 py-36">
-            <div class="block sm:flex justify-center items-center backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all ease-in-out shadow-orange-600 hover:shadow-orange p-5 md:p-16">
+    <div class="block items-center justify-center bg-[linear-gradient(to_right,#ff660055_1px,transparent_1px),linear-gradient(to_bottom,#ff660055_1px,#000_1px)] bg-[size:40px_40px] md:px-24 px-12 pt-36 pb-20">
+            <div class="flex justify-center items-center backdrop-blur-sm shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all ease-in-out shadow-orange-600 hover:shadow-orange p-5 md:p-16">
                 <slot />
             </div>
     </div>
