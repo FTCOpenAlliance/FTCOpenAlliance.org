@@ -18,6 +18,9 @@ module.exports = {
           950: '#030100'
         },
       }
+    },
+    fontFamily: {
+      'sans' : ['"Chakra Petch"']
     }
   }
 }
