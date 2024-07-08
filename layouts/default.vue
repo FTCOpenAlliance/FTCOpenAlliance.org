@@ -9,7 +9,7 @@
         </div>
         <div><slot/></div>
         <div>
-            <!--Footer?-->
+            <PageFooter />
         </div>
     </div>
 </template>

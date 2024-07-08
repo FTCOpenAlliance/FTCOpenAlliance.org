@@ -1,21 +1,28 @@
 <template>
-    <div class="p-5 border-4 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
-        <div class="flex justify-start mb-5">
-            <div>
-                <h1 class="text-lg">{{ teamname }}</h1>
-                <NuxtLink class="text-4xl text-orange font-bold" v-bind:to="'/teams/' + teamnumber">{{ teamnumber }}</NuxtLink>
+    <NuxtLink v-bind:to="'/teams/' + teamnumber">
+        <div class="p-5 h-56 sm:h-44 lg:h-60 border-4 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+            <div class="flex mb-5">
+                <div>
+                    <p class="text-lg">{{ teamname }}</p>
+                    <p class="text-4xl lg:text-6xl text-orange font-bold">{{ teamnumber }}</p>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <div class="grid grid-rows-2 sm:block lg:grid lg:grid-rows-2">
+                    <UButtonGroup class="*:rounded-none *:text-lg justify-end">
+                        <UButton label="Build Thread" v-bind:to="buildthread" :class="{hidden: buildthread == undefined}"/>
+                        <UButton label="CAD" v-bind:to="cadlink" v-bind:class="{hidden: cadlink == undefined}"/>
+                        <UButton label="Code" v-bind:to="codelink" v-bind:class="{hidden: codelink == undefined}"/>
+                    </UButtonGroup>
+                    <UButtonGroup class="*:rounded-none *:text-lg *:ring-white mt-1 justify-end">
+                        <UButton label="Photos" v-bind:to="photolink" :class="{hidden: photolink == undefined}"/>
+                        <UButton label="Videos" v-bind:to="videolink" v-bind:class="{hidden: videolink == undefined}"/>
+                        <UButton label="Website" v-bind:to="weblink" v-bind:class="{hidden: weblink == undefined}"/>
+                    </UButtonGroup>
+                </div>
             </div>
         </div>
-        <div class="flex justify-end">
-            <div>
-                <UButtonGroup class="*:rounded-none *:text-lg">
-                    <UButton label="Build Thread" v-bind:to="buildthread" :class="{hidden: buildthread == undefined}"/>
-                    <UButton label="CAD" v-bind:to="cadlink" v-bind:class="{hidden: cadlink == undefined}"/>
-                    <UButton label="Code" v-bind:to="codelink" v-bind:class="{hidden: codelink == undefined}"/>
-                </UButtonGroup>
-            </div>
-        </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <script setup>
@@ -25,7 +32,10 @@ defineProps({
     teamnumber: String,
     buildthread: String,
     cadlink: String,
-    codelink: String
+    codelink: String,
+    photolink: String,
+    videolink: String,
+    weblink: String
 })
 
 </script>
