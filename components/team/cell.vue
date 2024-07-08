@@ -1,11 +1,12 @@
 <template>
-    <NuxtLink v-bind:to="'/teams/' + teamnumber">
         <div class="p-5 h-56 sm:h-44 lg:h-60 border-4 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
             <div class="flex mb-5">
-                <div>
-                    <p class="text-lg">{{ teamname }}</p>
-                    <p class="text-4xl lg:text-6xl text-orange font-bold">{{ teamnumber }}</p>
-                </div>
+                <NuxtLink v-bind:to="`/teams/${teamnumber}`">
+                    <div>
+                        <p class="text-lg">{{ teamname }}</p>
+                        <p class="text-4xl lg:text-6xl text-orange hover:text-orange-300 font-bold">{{ teamnumber }}</p>
+                    </div>
+                </NuxtLink>
             </div>
             <div class="flex justify-end">
                 <div class="grid grid-rows-2 sm:block lg:grid lg:grid-rows-2">
@@ -22,7 +23,6 @@
                 </div>
             </div>
         </div>
-    </NuxtLink>
 </template>
 
 <script setup>
