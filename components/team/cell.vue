@@ -9,13 +9,13 @@
                 </NuxtLink>
             </div>
             <div class="flex justify-end">
-                <div class="grid grid-rows-2 sm:block lg:grid lg:grid-rows-2">
+                <div class="grid gap-2 grid-rows-2 sm:grid-cols-2 sm:grid-rows-1  lg:grid-rows-2 lg:grid-cols-1">
                     <UButtonGroup class="*:rounded-none *:text-lg justify-end">
                         <UButton label="Build Thread" v-bind:to="buildthread" :class="{hidden: buildthread == undefined}"/>
                         <UButton label="CAD" v-bind:to="cadlink" v-bind:class="{hidden: cadlink == undefined}"/>
                         <UButton label="Code" v-bind:to="codelink" v-bind:class="{hidden: codelink == undefined}"/>
                     </UButtonGroup>
-                    <UButtonGroup class="*:rounded-none *:text-lg *:ring-white mt-1 justify-end">
+                    <UButtonGroup class="*:rounded-none *:text-lg justify-end">
                         <UButton label="Photos" v-bind:to="photolink" :class="{hidden: photolink == undefined}"/>
                         <UButton label="Videos" v-bind:to="videolink" v-bind:class="{hidden: videolink == undefined}"/>
                         <UButton label="Website" v-bind:to="weblink" v-bind:class="{hidden: weblink == undefined}"/>
