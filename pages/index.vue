@@ -10,7 +10,7 @@
                             <span class="text-white">FTC</span> Open Alliance
                         </h1>
                         <p class="text-xl pb-5">
-                            The home of open and collaborative robotics in FIRST Tech Challenge.
+                            The home of open and collaborative robotics for FIRST Tech Challenge.
                         </p>
                     </div>
             </PageTitle>
@@ -23,7 +23,7 @@
                 <p class="text-4xl md:text-6xl font-bold text-orange">What is FTC Open Alliance?</p>
                 <p class="p-6 md:p-12 text-lg md:text-xl">
                     FTC Open Alliance, inspired by <a class="text-orange" href="https://www.theopenalliance.com/">The Open Alliance</a>
-                    for FRC, is a resource for teams in the FIRST Tech Challenge to share their knowledge, design, and 
+                    for FRC, is a resource for teams in the FIRST Tech Challenge to share their knowledge, designs, and 
                     data to help other teams, even those not in the Alliance. Members of the Alliance use its infrastructure
                     to publicize their designs and progress.
                 </p>
@@ -53,8 +53,8 @@
 useSeoMeta({
   title: 'FTC Open Alliance',
   ogTitle: 'FTC Open Alliance',
-  description: 'The home of open and collaborative robotics in FIRST Tech Challenge',
-  ogDescription: 'The home of open and collaborative robotics in FIRST Tech Challenge',
+  description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+  ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
   ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
 })
 </script>

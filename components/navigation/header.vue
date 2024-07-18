@@ -9,7 +9,7 @@
             <div id="header-nav" class="flex justify-center pt-6 sm:pt-0 *:rounded-none *:ml-2" >
                 <UButton label="Teams" to="/teams"/>
                 <UButton label="Statistics" to="/stats"/>
-                <UButton label="Register" to="/register" class="ring-white *:text-white"/>
+                <UButton label="Register" icon="i-heroicons-arrow-top-right-on-square-16-solid" to="https://forms.gle/1MthSEqFH2DRnqie9" class="ring-white *:text-white"/>
             </div>
         </div>
     </div>
