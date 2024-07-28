@@ -63,82 +63,21 @@
                 <TeamStat name="3rd-Party Tools" v-bind:val="teamData[22]"/>
                 <TeamStat name="Vision" v-bind:val="teamData[23]"/>
             </div>
-            <div class="pb-10">
-                <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
-                </div>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        What is something that you think is unique about your robot this season?
-                        What about your robot do you think would make it stand out at competition?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[26] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        What types of Outreach do you plan to do for this season?
-                        Which of those Outreach initiatives are you most proud of?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[27] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        Describe an element of your code which you think will be most
-                        advantageous to your performance over the season.
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[28] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        What competitions will you be attending?
-                        Which of the ones that you listed are you looking forward to the most?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[29] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        How will you be organizing your team at competitions?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[30] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        Describe a unique or noteworthy strategic device or element that
-                        you think would be useful for this game.
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[31] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        How would you describe your design process? How many options/strategies do you compare?
-                        How do you visualize your designs before building?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[32] }}
-                    </p>
-                </PageTextBlock>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
-                        How do you divide your team's time between things like design, building, programming etc.
-                        Do you enforce this timing? If so, why?
-                    </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        {{ teamData[33] }}
-                    </p>
-                </PageTextBlock>
+        </div>
+        <div class="[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
+            <div class="flex justify-center mb-5 px-10 md:px-20 lg:px-48">
+                <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
             </div>
+            <UCarousel class="px-[10vw] py-10" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows>
+                <PageTextBlock>
+                    <p class="text-xl xl:text-4xl font-bold text-orange">
+                        {{ item.q }}
+                    </p>
+                    <p class="p-6 md:p-12 text-lg md:text-xl">
+                        {{ item.a }}
+                    </p>
+                </PageTextBlock>
+            </UCarousel>
         </div>
     </div>
 </template>
@@ -158,18 +97,53 @@ if (teamData[0] == undefined) {
     throw createError({ statusCode: 404, statusMessage: `The team you specified [ ${teamid} ] does not exist or is not registered on FTC Open Alliance.` })
 }
 
+let items = [
+{
+    q: "What is something that you think is unique about your robot this season? What about your robot do you think would make it stand out at competition?",
+    a: teamData[26]
+},
+{
+    q: "What types of Outreach do you plan to do for this season? Which of those Outreach initiatives are you most proud of?",
+    a: teamData[27]
+},
+{
+    q: "Describe an element of your code which you think will be most advantageous to your performance over the season.",
+    a: teamData[28]
+},
+{
+    q: "What competitions will you be attending? Which of the ones that you listed are you looking forward to the most?",
+    a: teamData[29]
+},
+{
+    q: "How will you be organizing your team at competitions?",
+    a: teamData[30]
+},
+{
+    q: "Describe a unique or noteworthy strategic device or element that you think would be useful for this game.",
+    a: teamData[31]
+},
+{
+    q: "How would you describe your design process? How many options/strategies do you compare? How do you visualize your designs before building?",
+    a: teamData[32]
+},
+{
+    q: "How do you divide your team's time between things like design, building, programming etc. Do you enforce this timing? If so, why?",
+    a: teamData[33]
+}
+]
+
 useSeoMeta({
-  title: `${teamid} | FTC Open Alliance`,
-  ogTitle: teamid,
-  description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-  ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-  ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+    title: `${teamid} | FTC Open Alliance`,
+    ogTitle: teamid,
+    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
 })
 
 useHead
 ({
-  title
-: `${teamid} | FTC Open Alliance`
+    title
+    : `${teamid} | FTC Open Alliance`
 })
 
 </script>
