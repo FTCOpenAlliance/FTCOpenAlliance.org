@@ -5,6 +5,7 @@
 <template>
     <div>
         <div>
+            <NuxtLoadingIndicator height="2" color="#ff6600"/>
             <NavigationHeader />
         </div>
         <div><slot/></div>
