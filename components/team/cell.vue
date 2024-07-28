@@ -29,7 +29,7 @@
 
 defineProps({
     teamname: String,
-    teamnumber: String,
+    teamnumber: Number,
     buildthread: String,
     cadlink: String,
     codelink: String,

@@ -27,12 +27,27 @@
 </template>
 <script setup>
 
-    let url = 'https://script.google.com/macros/s/AKfycbycFM4msB2ZJTt_vEGPi3gOL0EBeekRxUbH248JZExRoSHZmfbJZZTVtv1pBZyClfT1/exec'
+let url = 'https://script.google.com/macros/s/AKfycbycFM4msB2ZJTt_vEGPi3gOL0EBeekRxUbH248JZExRoSHZmfbJZZTVtv1pBZyClfT1/exec'
 
 
-    const {data: teamLinks} = await useFetch(url, {
-        query: {request: 'getTeamLinks' }
-    })
-    const linkData = teamLinks._rawValue.data
-    //const linkData = [] //to test no teams msg
+const {data: teamLinks} = await useFetch(url, {
+    query: {request: 'getTeamLinks' }
+})
+const linkData = teamLinks._rawValue.data
+//const linkData = [] //to test no teams msg
+
+useSeoMeta({
+    title: 'Teams | FTC Open Alliance',
+    ogTitle: 'Teams',
+    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+})
+
+useHead
+({
+  title
+: 'Teams | FTC Open Alliance'
+})
+
 </script>

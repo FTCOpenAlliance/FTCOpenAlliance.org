@@ -49,13 +49,19 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 useSeoMeta({
   title: 'FTC Open Alliance',
   ogTitle: 'FTC Open Alliance',
   description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
   ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
   ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+})
+
+useHead
+({
+  title
+: 'Home | FTC Open Alliance'
 })
 </script>
 <style>

@@ -157,6 +157,21 @@ const teamData = data._rawValue.data
 if (teamData[0] == undefined) {
     throw createError({ statusCode: 404, statusMessage: `The team you specified [ ${teamid} ] does not exist or is not registered on FTC Open Alliance.` })
 }
+
+useSeoMeta({
+  title: `${teamid} | FTC Open Alliance`,
+  ogTitle: teamid,
+  description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+  ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+  ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+})
+
+useHead
+({
+  title
+: `${teamid} | FTC Open Alliance`
+})
+
 </script>
 <style lang="">
 
