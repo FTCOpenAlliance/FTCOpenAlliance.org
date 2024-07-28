@@ -1,5 +1,5 @@
 <template>
-        <div class="p-5 h-56 sm:h-44 lg:h-60 border-4 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+        <div class="p-5 h-56 sm:h-44 lg:h-60 border-2 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
             <div class="flex mb-5">
                 <NuxtLink v-bind:to="`/teams/${teamnumber}`">
                     <div>
@@ -11,14 +11,14 @@
             <div class="flex justify-end">
                 <div class="grid gap-2 grid-rows-2 sm:grid-cols-2 sm:grid-rows-1  lg:grid-rows-2 lg:grid-cols-1">
                     <UButtonGroup class="*:rounded-none *:text-lg justify-end">
-                        <UButton label="Build Thread" v-bind:to="buildthread" :class="{hidden: buildthread == undefined}"/>
-                        <UButton label="CAD" v-bind:to="cadlink" v-bind:class="{hidden: cadlink == undefined}"/>
-                        <UButton label="Code" v-bind:to="codelink" v-bind:class="{hidden: codelink == undefined}"/>
+                        <UButton label="Build Thread" v-bind:to="buildthread" v-if="buildthread != '//'"/>
+                        <UButton label="CAD" v-bind:to="cadlink" v-if="cadlink != '//'"/>
+                        <UButton label="Code" v-bind:to="codelink" v-if="codelink != '//'"/>
                     </UButtonGroup>
                     <UButtonGroup class="*:rounded-none *:text-lg justify-end">
-                        <UButton label="Photos" v-bind:to="photolink" :class="{hidden: photolink == undefined}"/>
-                        <UButton label="Videos" v-bind:to="videolink" v-bind:class="{hidden: videolink == undefined}"/>
-                        <UButton label="Website" v-bind:to="weblink" v-bind:class="{hidden: weblink == undefined}"/>
+                        <UButton label="Photos" v-bind:to="photolink" v-if="photolink != '//'"/>
+                        <UButton label="Videos" v-bind:to="videolink" v-if="videolink != '//'"/>
+                        <UButton label="Website" v-bind:to="weblink" v-if="weblink != '//'"/>
                     </UButtonGroup>
                 </div>
             </div>

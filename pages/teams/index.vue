@@ -2,10 +2,10 @@
     <div>
         <PageTitle>
             <h1 class="text-6xl lg:text-8xl text-orange font-bold">
-                {{ new Date().getFullYear() }} Teams
+                Teams
             </h1>
         </PageTitle>
-        <div class="md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div v-if="linkData[0] != undefined" class="md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
             <TeamCell
             v-for="data in linkData"
             v-bind:teamnumber="data[0]"
@@ -16,6 +16,12 @@
             v-bind:codelink="'//' + data[5]"
             v-bind:photolink="'//' + data[6]"
             v-bind:videolink="'//' + data[7]"/>
+        </div>
+        <div v-if="linkData[0] == undefined" class="flex justify-center items-center md:flex-row flex-col md:p-24 p-12">
+            <Icon name="i-ic-outline-error-outline" class=" text-8xl text-orange md:mr-5"/>
+            <p class="text-3xl md:text-5xl">
+                No Teams!
+            </p>
         </div>
     </div>
 </template>
@@ -28,4 +34,5 @@
         query: {request: 'getTeamLinks' }
     })
     const linkData = teamLinks._rawValue.data
+    //const linkData = [] //to test no teams msg
 </script>

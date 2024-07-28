@@ -10,7 +10,7 @@
                             <span class="text-white">FTC</span> Open Alliance
                         </h1>
                         <p class="text-xl pb-5">
-                            The home of open and collaborative robotics for FIRST Tech Challenge.
+                            The home of open and collaborative robotics for <span class="font-bold">FIRST Tech Challenge</span>.
                         </p>
                     </div>
             </PageTitle>

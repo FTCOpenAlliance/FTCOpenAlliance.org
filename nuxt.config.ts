@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2024-07-03",
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", "@nuxt/icon"],
   ui: {
     safelistColors: ['black']
   },
