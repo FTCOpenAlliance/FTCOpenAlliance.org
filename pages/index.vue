@@ -2,48 +2,71 @@
     <div>
         <div>
             <PageTitle class="*:block *:lg:flex min-h-screen">
-                    <div class="flex justify-center items-center lg:mr-10">
-                        <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
-                    </div>
-                    <div>
-                        <h1 class="my-5 text-6xl md:text-7xl xl:text-8xl font-bold text-orange">
-                            <span class="text-white">FTC</span> Open Alliance
-                        </h1>
-                        <p class="text-xl pb-5">
-                            The home of open and collaborative robotics for <span class="font-bold">FIRST Tech Challenge</span>.
-                        </p>
-                    </div>
+                <div class="flex justify-center items-center lg:mr-10">
+                    <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
+                </div>
+                <div>
+                    <h1 class="my-5 text-6xl md:text-7xl xl:text-8xl font-bold text-orange">
+                        <span class="text-white">FTC</span> Open Alliance
+                    </h1>
+                    <p class="text-xl pb-5">
+                        The home of open and collaborative robotics for <span class="font-bold">FIRST Tech Challenge</span>.
+                    </p>
+                </div>
             </PageTitle>
             <div class="flex justify-center items-center animate-bounce">
                 <UIcon class="scale-[3] translate-y-[-3.5em]" name="i-heroicons-chevron-double-down"/>
             </div>
         </div>
-        <div class="p-6 md:p-12 lg:px-36 z-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
+        <div class="p-6 md:p-12 lg:px-36 xl:px-60 z-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
             <PageTextBlock>
                 <p class="text-4xl md:text-6xl font-bold text-orange">What is FTC Open Alliance?</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl">
-                    FTC Open Alliance, inspired by <a class="text-orange" href="https://www.theopenalliance.com/">The Open Alliance</a>
-                    for FRC, is a resource for teams in the FIRST Tech Challenge to share their knowledge, designs, and 
-                    data to help other teams, even those not in the Alliance. Members of the Alliance use its infrastructure
-                    to publicize their designs and progress.
+                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                    Based on FRC's <a class="text-orange" href="https://www.theopenalliance.com/">The Open Alliance</a>, FTC Open Alliance
+                    is an organization created to help teams easily share their information and statistics to a wider audience.
+                    The Alliance is a great resource for newer teams that are looking to get started or veteran teams that are looking to
+                    expand their capabilities.
+                    Being a member of the FTC Open Alliance is not required to access the information of Alliance teams.<br><br>
+
+                    FTC Open Alliance was started with the permission of The Open Alliance. It is modelled after them and follows the same 6
+                    guiding principles.
+                </p>
+            </PageTextBlock>
+            <PageTextBlock>
+                <p class="text-4xl md:text-6xl font-bold text-orange">What can the Alliance do for my team?</p>
+                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                    The way your team uses FTC Open Alliance data is up to you.
+                    The Alliance presents information to teams in a way that allows them to study the decisions and statistics of
+                    specific teams while also observing Alliance-wide trends throughout a season.
+                    This information can be used to compare your team's structure, process, and design to other Alliance teams.
+                    The data that the Alliance collects can be useful in many parts of the season, as it can be used by teams as
+                    they build their robots as well as at competitions to reinforce scouting data.
+                </p>
+            </PageTextBlock>
+            <PageTextBlock>
+                <p class="text-4xl md:text-6xl font-bold text-orange">FTC Open Alliance Principles</p>
+                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                    FTC Open Alliance follows the same basic principles that FRC Open Alliance follows. <br><br>
+                    <div class="pl-4">
+                        - Open Alliance teams do not keep secrets. <br>
+                        - Open Alliance teams do their best to provide frequent updates throughout the year. <br>
+                        - Open Alliance teams use Chief Delphi to post updates and answer questions. They are also encouraged to explore other mediums. <br>
+                        - Open Alliance teams provide open code and/or CAD. <br>
+                        - Open Alliance teams include the bad and the good. <br>
+                        - Open Alliance teams join to help all teams, not just other Open Alliance teams. <br>
+                    </div>
+                    
                 </p>
             </PageTextBlock>
             <PageTextBlock>
                 <p class="text-4xl md:text-6xl font-bold text-orange">How do I join the Alliance?</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl">
-                    Currently, FTC Open Alliance is its beta testing stage. During our first pilot year, we've only invited
-                    a select few teams to join the Alliance in order to ensure that all of our systems are functional, refined,
-                    and tested. After this initial testing period, we'll allow any team who wants to join to do so by filling out
-                    a form at the beginning of the season.
+                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                    FTC Open Alliance is currently still in beta testing.
+                    We have invited several teams to join early and test functionality, but will be opening up to all teams very soon.
+                    You can sign your team up using the “Register” button at the top of the page.
+                    When you sign up, you will be asked to provide some information about both your team structure and robot.
+                    You can update this information at any time when plans change, and it's in the best interest of everyone that this be done regularly.
                 </p>
-            </PageTextBlock>
-            <PageTextBlock>
-                <p class="text-4xl md:text-6xl font-bold text-orange">What data goes to the Alliance?</p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
-                        At the beginning of each season, FTC Open Alliance teams provide links to a build thread (hosted on Chief Delphi), a CAD
-                        project, a code repository, photos, videos and their website for us to host on this website. Additionally, teams also
-                        provide scouting-type data about their hardware and software, which we can use for Open Scouting and statistics visualizations.
-                    </p>
             </PageTextBlock>
         </div>
     </div>
@@ -51,19 +74,19 @@
 
 <script setup>
 useSeoMeta({
-  title: 'FTC Open Alliance',
-  ogTitle: 'FTC Open Alliance',
-  description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-  ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-  ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+    title: 'FTC Open Alliance',
+    ogTitle: 'FTC Open Alliance',
+    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
 })
 
 useHead
 ({
-  title
-: 'Home | FTC Open Alliance'
+    title
+    : 'Home | FTC Open Alliance'
 })
 </script>
 <style>
-    
+
 </style>
