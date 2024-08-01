@@ -27,7 +27,7 @@
                     The Alliance is a great resource for newer teams that are looking to get started or veteran teams that are looking to
                     expand their capabilities.
                     Being a member of the FTC Open Alliance is not required to access the information of Alliance teams.<br><br>
-
+                    
                     FTC Open Alliance was started with the permission of The Open Alliance. It is modelled after them and follows the same 6
                     guiding principles.
                 </p>
@@ -47,15 +47,12 @@
                 <p class="text-4xl md:text-6xl font-bold text-orange">FTC Open Alliance Principles</p>
                 <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
                     FTC Open Alliance follows the same basic principles that FRC Open Alliance follows. <br><br>
-                    <div class="pl-4">
-                        - Open Alliance teams do not keep secrets. <br>
-                        - Open Alliance teams do their best to provide frequent updates throughout the year. <br>
-                        - Open Alliance teams use Chief Delphi to post updates and answer questions. They are also encouraged to explore other mediums. <br>
-                        - Open Alliance teams provide open code and/or CAD. <br>
-                        - Open Alliance teams include the bad and the good. <br>
-                        - Open Alliance teams join to help all teams, not just other Open Alliance teams. <br>
-                    </div>
-                    
+                    - Open Alliance teams do not keep secrets. <br>
+                    - Open Alliance teams do their best to provide frequent updates throughout the year. <br>
+                    - Open Alliance teams use Chief Delphi to post updates and answer questions. They are also encouraged to explore other mediums. <br>
+                    - Open Alliance teams provide open code and/or CAD. <br>
+                    - Open Alliance teams include the bad and the good. <br>
+                    - Open Alliance teams join to help all teams, not just other Open Alliance teams. <br>                    
                 </p>
             </PageTextBlock>
             <PageTextBlock>
