@@ -11,14 +11,14 @@
             <div class="flex justify-end">
                 <div class="grid gap-2 grid-rows-2 sm:grid-cols-2 sm:grid-rows-1  lg:grid-rows-2 lg:grid-cols-1">
                     <UButtonGroup class="*:rounded-none *:text-lg justify-end">
-                        <UButton label="Build Thread" v-bind:to="buildthread" v-if="buildthread != '//'"/>
-                        <UButton label="CAD" v-bind:to="cadlink" v-if="cadlink != '//'"/>
-                        <UButton label="Code" v-bind:to="codelink" v-if="codelink != '//'"/>
+                        <UButton label="Build Thread" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
+                        <UButton label="CAD" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
+                        <UButton label="Code" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>
                     </UButtonGroup>
                     <UButtonGroup class="*:rounded-none *:text-lg justify-end">
-                        <UButton label="Photos" v-bind:to="photolink" v-if="photolink != '//'"/>
-                        <UButton label="Videos" v-bind:to="videolink" v-if="videolink != '//'"/>
-                        <UButton label="Website" v-bind:to="weblink" v-if="weblink != '//'"/>
+                        <UButton label="Photos" v-bind:to="normalizeUrl(photolink)" v-if="checkNormalizable(photolink)"/>
+                        <UButton label="Videos" v-bind:to="normalizeUrl(videolink)" v-if="checkNormalizable(videolink)"/>
+                        <UButton label="Website" v-bind:to="normalizeUrl(weblink)" v-if="checkNormalizable(weblink)"/>
                     </UButtonGroup>
                 </div>
             </div>
@@ -26,6 +26,19 @@
 </template>
 
 <script setup>
+import normalizeUrl from 'normalize-url';
+
+function checkNormalizable(inputUrl) {
+
+    try{
+        normalizeUrl(inputUrl)
+    } catch (e) {
+        return false
+    }
+
+    return true
+
+}
 
 defineProps({
     teamname: String,

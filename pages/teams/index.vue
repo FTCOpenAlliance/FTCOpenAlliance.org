@@ -10,12 +10,12 @@
             v-for="data in linkData"
             v-bind:teamnumber="data[0]"
             v-bind:teamname="data[1]"
-            v-bind:weblink="'//' + data[2]"
-            v-bind:buildthread="'//' + data[3]"
-            v-bind:cadlink="'//' + data[4]"
-            v-bind:codelink="'//' + data[5]"
-            v-bind:photolink="'//' + data[6]"
-            v-bind:videolink="'//' + data[7]"/>
+            v-bind:weblink="data[2]"
+            v-bind:buildthread="data[3]"
+            v-bind:cadlink="data[4]"
+            v-bind:codelink="data[5]"
+            v-bind:photolink="data[6]"
+            v-bind:videolink="data[7]"/>
         </div>
         <div v-if="linkData[0] == undefined" class="flex justify-center items-center md:flex-row flex-col md:p-24 p-12">
             <Icon name="i-ic-outline-error-outline" class=" text-8xl text-orange md:mr-5"/>
@@ -26,7 +26,6 @@
     </div>
 </template>
 <script setup>
-
 let url = 'https://script.google.com/macros/s/AKfycbycFM4msB2ZJTt_vEGPi3gOL0EBeekRxUbH248JZExRoSHZmfbJZZTVtv1pBZyClfT1/exec'
 
 

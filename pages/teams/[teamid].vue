@@ -25,12 +25,12 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2">
-                        <UButton label="Website" v-bind:to="normalizeUrl(teamData[2], {normalizeProtocol: true})" v-if="teamData[2] != ''"/>
-                        <UButton label="Build Thread" v-bind:to="normalizeUrl(teamData[3], {normalizeProtocol: true})" v-if="teamData[3] != ''"/>
-                        <UButton label="CAD" v-bind:to="normalizeUrl(teamData[4], {normalizeProtocol: true})" v-if="teamData[4] != ''"/>
-                        <UButton label="Code" v-bind:to="normalizeUrl(teamData[5], {normalizeProtocol: true})" v-if="teamData[5] != ''"/>
-                        <UButton label="Photos" v-bind:to="normalizeUrl(teamData[6], {normalizeProtocol: true})" v-if="teamData[6] != ''"/>
-                        <UButton label="Videos" v-bind:to="normalizeUrl(teamData[7], {normalizeProtocol: true})" v-if="teamData[7] != ''"/>
+                        <UButton label="Website" v-bind:to="normalizeUrl(teamData[2])" v-if="checkNormalizable(teamData[2])"/>
+                        <UButton label="Build Thread" v-bind:to="normalizeUrl(teamData[3])" v-if="checkNormalizable(teamData[3])"/>
+                        <UButton label="CAD" v-bind:to="normalizeUrl(teamData[4])" v-if="checkNormalizable(teamData[4])"/>
+                        <UButton label="Code" v-bind:to="normalizeUrl(teamData[5])" v-if="checkNormalizable(teamData[5])"/>
+                        <UButton label="Photos" v-bind:to="normalizeUrl(teamData[6])" v-if="checkNormalizable(teamData[6])"/>
+                        <UButton label="Videos" v-bind:to="normalizeUrl(teamData[7])" v-if="checkNormalizable(teamData[7])"/>
                     </div>
                 </div>
             </div>
@@ -87,6 +87,17 @@ const { teamid } = useRoute().params
 
 let url = 'https://script.google.com/macros/s/AKfycbycFM4msB2ZJTt_vEGPi3gOL0EBeekRxUbH248JZExRoSHZmfbJZZTVtv1pBZyClfT1/exec'
 
+function checkNormalizable(inputUrl) {
+
+try{
+    normalizeUrl(inputUrl)
+} catch (e) {
+    return false
+}
+
+return true
+
+}
 
 const {data} = await useFetch(url, {
     query: {request: 'getTeamData', team: teamid}
