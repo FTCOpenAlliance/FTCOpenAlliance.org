@@ -58,8 +58,8 @@
             <PageTextBlock>
                 <p class="text-4xl md:text-6xl font-bold text-orange">How do I join the Alliance?</p>
                 <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
-                    FTC Open Alliance is currently still in beta testing.
-                    We have invited several teams to join early and test functionality, but will be opening up to all teams very soon.
+                    FTC Open Alliance is currently in an open beta for our first year of operation.
+                    We've made registration available to all teams, and have kept it open to teams for the rest of the season.
                     You can sign your team up using the “Register” button at the top of the page.
                     When you sign up, you will be asked to provide some information about both your team structure and robot.
                     You can update this information at any time when plans change, and it's in the best interest of everyone that this be done regularly.
