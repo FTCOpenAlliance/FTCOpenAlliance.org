@@ -69,8 +69,8 @@
                 <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
             </div>
             <UCarousel class="px-[10vw] py-10" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows>
-                <PageTextBlock>
-                    <p class="text-xl xl:text-4xl font-bold text-orange">
+                <PageTextBlock class="flex flex-col grow">
+                    <p class="text-xl xl:text-3xl font-bold text-orange">
                         {{ item.q }}
                     </p>
                     <p class="p-6 md:p-12 text-lg md:text-xl">

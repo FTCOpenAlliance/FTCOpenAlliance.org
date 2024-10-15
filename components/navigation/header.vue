@@ -1,7 +1,7 @@
 <template>
     <div class="p-5 fixed top-0 z-50 left-0 right-0 bg-gradient-to-b from-black to-transparent">
         <div id="header-bar" class="block sm:flex sm:justify-between p-5 backdrop-blur-sm shadow-lg shadow-orange-800 border border-orange">
-            <div class="mx-auto sm:mx-0 max-w-72 sm:max-w-36">
+            <div class="mx-auto sm:mx-0 max-w-60 sm:max-w-36">
                 <NuxtLink to="/">
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/SHORT-HORIZONTAL.svg">
                 </NuxtLink>

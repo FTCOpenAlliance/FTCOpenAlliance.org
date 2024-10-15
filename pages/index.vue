@@ -1,12 +1,12 @@
 <template>
     <div>
         <div>
-            <PageTitle class="*:block *:lg:flex min-h-screen">
+            <PageTitle class="*:block *:lg:flex min-h-screen px-4 md:px-auto">
                 <div class="flex justify-center items-center lg:mr-10">
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
                 </div>
                 <div>
-                    <h1 class="my-5 text-6xl md:text-7xl xl:text-8xl font-bold text-orange">
+                    <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold text-orange">
                         <span class="text-white">FTC</span> Open Alliance
                     </h1>
                     <p class="text-xl pb-5">
