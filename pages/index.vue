@@ -65,6 +65,22 @@
                     You can update this information at any time when plans change, and it's in the best interest of everyone that this be done regularly.
                 </p>
             </PageTextBlock>
+            <PageTextBlock>
+                <div class="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1">
+                    <div class="flex flex-col">
+                        <p class="text-4xl md:text-6xl font-bold text-orange">The FTCOA Show</p>
+                        <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                            Catch up on new episodes of the FTC Open Alliance Show, presented by FIRST Updates Now!<br><br>
+                            The FTCOA Show is where FTCOA teams show off their progress throughout the season in an engaging
+                            visual format. Instead of poring over build threads and statistics, get a quick look at what other
+                            teams are doing by watching their FTCOA Show episodes!                            
+                        </p>
+                    </div>
+                    <div class="flex justify-center items-center *:w-full *:h-full">
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+            </PageTextBlock>
         </div>
     </div>
 </template>
