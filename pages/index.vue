@@ -70,7 +70,7 @@
                     <div class="flex flex-col">
                         <p class="text-4xl md:text-6xl font-bold text-orange">The FTCOA Show</p>
                         <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
-                            Catch up on new episodes of the FTC Open Alliance Show, presented by FIRST Updates Now!<br><br>
+                            Catch up on new episodes of the FTC Open Alliance Show, presented by FUN Robotics Network!<br><br>
                             The FTCOA Show is where FTCOA teams show off their progress throughout the season in an engaging
                             visual format. Instead of poring over build threads and statistics, get a quick look at what other
                             teams are doing by watching their FTCOA Show episodes!                            
