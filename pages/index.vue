@@ -1,8 +1,8 @@
 <template>
     <div>
         <div>
-            <PageTitle class="*:block *:lg:flex min-h-screen px-4 md:px-auto">
-                <div class="flex justify-center items-center lg:mr-10">
+            <PageTitle class="*:flex *:flex-col lg:*:flex-row min-h-screen px-4 md:px-auto">
+                <div class="flex justify-center items-center lg:mr-10 w-3/5 lg:w-auto">
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
                 </div>
                 <div>
@@ -14,7 +14,7 @@
                     </p>
                 </div>
             </PageTitle>
-            <div class="flex justify-center items-center animate-bounce">
+            <div class="justify-center items-center animate-bounce flex">
                 <UIcon class="scale-[3] translate-y-[-3.5em]" name="i-heroicons-chevron-double-down"/>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 </p>
             </PageTextBlock>
             <PageTextBlock>
-                <div class="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1">
+                <div class="grid grid-rows-2 2xl:grid-cols-2 2xl:grid-rows-1">
                     <div class="flex flex-col">
                         <p class="text-4xl md:text-6xl font-bold text-orange">The FTCOA Show</p>
                         <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
@@ -76,7 +76,7 @@
                             teams are doing by watching their FTCOA Show episodes!                            
                         </p>
                     </div>
-                    <div class="flex justify-center items-center *:w-full *:h-full">
+                    <div class="flex justify-center items-center *:w-full *:[aspect-ratio:16/9]">
                         <iframe src="https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
