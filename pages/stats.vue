@@ -8,14 +8,11 @@
     </div>
 </template>
 
-<script>
-export default {
-    setup () {
-        
+<script setup>
 
-        return {}
-    }
-}
+import Chart from 'chart.js/auto';
+
+
 </script>
 
 <style lang="scss" scoped>
