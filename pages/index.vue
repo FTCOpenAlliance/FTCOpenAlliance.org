@@ -66,8 +66,8 @@
                 </p>
             </PageTextBlock>
             <PageTextBlock>
-                <div class="grid grid-rows-2 2xl:grid-cols-2 2xl:grid-rows-1">
-                    <div class="flex flex-col">
+                <div class="flex flex-col 2xl:flex-row justify-between">
+                    <div class="flex flex-col w-full 2xl:w-1/2">
                         <p class="text-4xl md:text-6xl font-bold text-orange">The FTCOA Show</p>
                         <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
                             Catch up on new episodes of the FTC Open Alliance Show, presented by FUN Robotics Network!<br><br>
@@ -76,11 +76,26 @@
                             teams are doing by watching their FTCOA Show episodes!                            
                         </p>
                     </div>
-                    <div class="flex justify-center items-center *:w-full *:[aspect-ratio:16/9]">
+                    <div class="flex justify-center items-center w-full 2xl:w-1/2 *:w-full *:[aspect-ratio:16/9]">
                         <iframe src="https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </div>
             </PageTextBlock>
+        </div>
+        <UDivider class="px-6 text-xl text-orange md:text-4xl my-10">Our Sponsors and Partners</UDivider>
+        <div class="p-6 md:p-12 lg:px-36 xl:px-60 bg-dots">
+            <p class="pb-12 text-lg md:text-xl lg:text-2xl text-center">
+                These sponsors and partners have generously funded and/or supported the 
+                FTC Open Alliance to ensure that FTC teams around the world can keep sharing
+                and collaborating without limits.
+            </p>
+            <UCarousel ref="carouselRef" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="backdrop-blur-[2px] shadow-lg shadow-orange">
+                <div class="flex grow justify-center items-center p-8 scale-95 hover:scale-100 transition-transform">
+                    <a :href="item[1]"  class="flex min-h-24 md:h-48" draggable="false">
+                        <img :src="item[0]" draggable="false">
+                    </a>
+                </div>
+            </UCarousel>
         </div>
     </div>
 </template>
@@ -99,6 +114,27 @@ useHead
     title
     : 'Home | FTC Open Alliance'
 })
+
+const items = [
+    ['/images/FUNNetwork.png',"https://funroboticsnetwork.com/"],
+    ['/images/ChiefDelphi.png', "https://chiefdelphi.com/"],
+    ['/images/Studica.png', "https://studica.com/"],
+]
+
+const carouselRef = ref()
+
+onMounted(() => {
+  setInterval(() => {
+    if (!carouselRef.value) return
+
+    if (carouselRef.value.page === carouselRef.value.pages) {
+      return carouselRef.value.select(0)
+    }
+
+    carouselRef.value.next()
+  }, 3000)
+})
+
 </script>
 <style>
 

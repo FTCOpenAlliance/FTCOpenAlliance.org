@@ -1,5 +1,5 @@
 <template>
-        <div class="p-5 h-56 sm:h-44 lg:h-60 border-2 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+        <div class="p-5 h-56 sm:h-44 lg:h-60 border-2 backdrop-blur-[2px] hover:backdrop-blur-md border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
             <div class="flex mb-5">
                 <NuxtLink v-bind:to="`/teams/${teamnumber}`">
                     <div>

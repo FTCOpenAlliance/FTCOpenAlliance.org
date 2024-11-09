@@ -17,3 +17,14 @@ body {
   opacity: 0;
   filter: blur(1rem);
 }
+
+.bg-grid {
+  background-image: linear-gradient(to right,#ff660055 1px,transparent 1px),linear-gradient(to bottom,#ff660055 1px,#000 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dots {
+  background-color: #000;
+  background-image: radial-gradient(#ff660022 2px, #000000 2px);
+  background-size: 20px 20px;
+}

@@ -5,7 +5,7 @@
                 Teams
             </h1>
         </PageTitle>
-        <div v-if="linkData[0] != undefined" class="md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div v-if="linkData[0] != undefined" class="md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 bg-dots">
             <TeamCell
             v-for="data in linkData"
             v-bind:teamnumber="data[0]"
