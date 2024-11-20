@@ -9,7 +9,7 @@
                 </NuxtLink>
             </div>
             <div class="flex justify-end">
-                <div class="flex flex-wrap justify-end *:shrink *:rounded-none *:text-lg">
+                <div class="flex flex-wrap justify-end *:shrink *:rounded-none *:text-lg hover:*:ring-orange-200 *:hover:*:text-orange-200">
                         <UButton label="Build Thread" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
                         <UButton label="CAD" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
                         <UButton label="Code" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>

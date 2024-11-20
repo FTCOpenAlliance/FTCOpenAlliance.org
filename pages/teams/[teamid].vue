@@ -24,7 +24,7 @@
                     <UDivider class="text-xl text-orange md:text-4xl">Team Links</UDivider>
                 </div>
                 <div class="flex justify-center">
-                    <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2">
+                    <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2 hover:*:ring-orange-200 *:hover:*:text-orange-200">
                         <UButton label="Website" v-bind:to="normalizeUrl(teamData[2])" v-if="checkNormalizable(teamData[2])"/>
                         <UButton label="Build Thread" v-bind:to="normalizeUrl(teamData[3])" v-if="checkNormalizable(teamData[3])"/>
                         <UButton label="CAD" v-bind:to="normalizeUrl(teamData[4])" v-if="checkNormalizable(teamData[4])"/>
@@ -68,8 +68,8 @@
             <div class="flex justify-center mb-5 px-10 md:px-20 lg:px-48">
                 <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
             </div>
-            <UCarousel class="px-[10vw] py-10" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows>
-                <PageTextBlock class="flex flex-col grow">
+            <UCarousel class="px-[10vw] py-10" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows :prev-button="{icon: 'i-heroicons-arrow-left-20-solid'}" :next-button="{icon: 'i-heroicons-arrow-right-20-solid'}">
+                <PageTextBlock class="flex flex-col grow mx-10 shadow-black">
                     <p class="text-xl xl:text-3xl font-bold text-orange">
                         {{ item.q }}
                     </p>
