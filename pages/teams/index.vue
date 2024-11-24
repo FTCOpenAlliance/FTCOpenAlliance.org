@@ -5,17 +5,20 @@
                 Teams
             </h1>
         </PageTitle>
-        <div v-if="linkData[0] != undefined" class="md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 bg-dots">
-            <TeamCell
-            v-for="data in linkData"
-            v-bind:teamnumber="data[0]"
-            v-bind:teamname="data[1]"
-            v-bind:weblink="data[2]"
-            v-bind:buildthread="data[3]"
-            v-bind:cadlink="data[4]"
-            v-bind:codelink="data[5]"
-            v-bind:photolink="data[6]"
-            v-bind:videolink="data[7]"/>
+        <div class=" bg-dots">
+            <div v-if="linkData[0] != undefined" class="backdrop-blur-[1px] md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                <TeamCell
+                v-for="data in linkData"
+                v-bind:teamnumber="data[0]"
+                v-bind:teamname="data[1]"
+                v-bind:weblink="data[2]"
+                v-bind:buildthread="data[3]"
+                v-bind:cadlink="data[4]"
+                v-bind:codelink="data[5]"
+                v-bind:photolink="data[6]"
+                v-bind:videolink="data[7]"
+                v-bind:teamlocation="data[8]"/>
+            </div>
         </div>
         <div v-if="linkData[0] == undefined" class="flex justify-center items-center md:flex-row flex-col md:p-24 p-12">
             <Icon name="i-ic-outline-error-outline" class=" text-8xl text-orange md:mr-5"/>

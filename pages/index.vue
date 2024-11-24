@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <PageTitle class="*:flex *:flex-col lg:*:flex-row min-h-screen px-4 md:px-auto">
+            <PageTitle class="*:*:flex-col lg:*:*:flex-row min-h-screen *:px-4 *:md:px-auto">
                 <div class="flex justify-center items-center lg:mr-10 w-3/5 lg:w-auto">
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
                 </div>

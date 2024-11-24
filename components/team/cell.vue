@@ -1,15 +1,17 @@
 <template>
-        <div class="p-5 h-56 sm:h-44 lg:h-60 border-2 backdrop-blur-[2px] hover:backdrop-blur-md border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+        <div class="p-5 pb-10 border-2 bg-black border-orange hover:border-orange-300 shadow-orange-800 hover:shadow-orange-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
             <div class="flex mb-5">
-                <NuxtLink v-bind:to="`/teams/${teamnumber}`">
+
                     <div>
                         <p class="text-lg">{{ teamname }}</p>
-                        <p class="text-4xl lg:text-6xl text-orange hover:text-orange-300 font-bold">{{ teamnumber }}</p>
+                        <NuxtLink v-bind:to="`/teams/${teamnumber}`">
+                            <p class="text-4xl lg:text-6xl text-orange hover:text-orange-300 font-bold">{{ teamnumber }}</p>
+                        </NuxtLink>
+                        <p class="text-xl text-orange-600">{{ teamlocation }}</p>
                     </div>
-                </NuxtLink>
             </div>
             <div class="flex justify-end">
-                <div class="flex flex-wrap justify-end *:shrink *:rounded-none *:text-lg hover:*:ring-orange-200 *:hover:*:text-orange-200">
+                <div class="flex flex-wrap max-w-72 justify-end *:m-[0.05em] *:rounded-none *:text-lg hover:*:ring-orange-200 *:hover:*:text-orange-200">
                         <UButton label="Build Thread" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
                         <UButton label="CAD" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
                         <UButton label="Code" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>
@@ -39,6 +41,7 @@ function checkNormalizable(inputUrl) {
 defineProps({
     teamname: String,
     teamnumber: Number,
+    teamlocation: String,
     buildthread: String,
     cadlink: String,
     codelink: String,

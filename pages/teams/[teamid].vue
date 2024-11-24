@@ -9,6 +9,9 @@
                     <p class="text-2xl md:text-4xl flex justify-center lg:justify-start">
                         {{ teamData[1] }}
                     </p>
+                    <p class="text-xl md:text-2xl text-orange-600 font-bold flex justify-center lg:justify-start">
+                        {{ teamData[34] }}
+                    </p>
                 </div>
                 <div class="flex flex-col *:text-xl justify-center w-60">
                     <TeamMiniStat name="Rookie Year" :val="teamData[8]"/>
@@ -21,7 +24,7 @@
         <div class="px-10 md:px-20 lg:px-48">
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl">Team Links</UDivider>
+                    <UDivider class="text-xl text-orange md:text-4xl mt-12">Team Links</UDivider>
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2 hover:*:ring-orange-200 *:hover:*:text-orange-200">
