@@ -118,7 +118,6 @@ useHead
 const items = [
     ['/images/FUNNetwork.png',"https://funroboticsnetwork.com/"],
     ['/images/ChiefDelphi.png', "https://chiefdelphi.com/"],
-    ['/images/Studica.png', "https://studica.com/"],
 ]
 
 const carouselRef = ref()
