@@ -6,7 +6,7 @@
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/SHORT-HORIZONTAL.svg">
                 </NuxtLink>
             </div>
-            <div id="header-nav" class="flex flex-wrap justify-center -mx-5 sm:mx-0 pt-6 sm:pt-0 *:rounded-none *:ml-2 *:mb-2 sm:*:mb-0 hover:*:scale-105 *:transition-all" >
+            <div id="header-nav" class="flex flex-wrap justify-center -mx-5 sm:mx-0 pt-6 sm:pt-0 *:rounded-none *:mx-1 *:mb-2 sm:*:mb-0 hover:*:scale-105 *:transition-all" >
                 <UButton label="Teams" to="/teams"/>
                 <!-- <UButton label="Statistics" to="/stats"/> -->
                 <UButton label="FTCOA on CD" icon="i-heroicons-arrow-top-right-on-square-16-solid" to="https://www.chiefdelphi.com/c/first/ftc-open-alliance/" class="ring-white *:text-white"/>

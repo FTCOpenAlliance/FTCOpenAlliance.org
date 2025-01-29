@@ -20,8 +20,8 @@
         </div>
         <div class="p-6 md:p-12 lg:px-36 xl:px-60 z-10 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
             <PageTextBlock>
-                <p class="text-4xl md:text-6xl font-bold text-orange">What is FTC Open Alliance?</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                <p class="text-3xl md:text-5xl font-bold text-orange">What is FTC Open Alliance?</p>
+                <p class="p-6 md:p-12 text-md md:text-xl lg:text-2xl">
                     Based on FRC's <a class="text-orange" href="https://www.theopenalliance.com/">The Open Alliance</a>, FTC Open Alliance
                     is an organization created to help teams easily share their information and statistics to a wider audience.
                     The Alliance is a great resource for newer teams that are looking to get started or veteran teams that are looking to
@@ -33,8 +33,8 @@
                 </p>
             </PageTextBlock>
             <PageTextBlock>
-                <p class="text-4xl md:text-6xl font-bold text-orange">What can the Alliance do for my team?</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                <p class="text-3xl md:text-5xl font-bold text-orange">What can the Alliance do for my team?</p>
+                <p class="p-6 md:p-12 text-md md:text-xl lg:text-2xl">
                     The way your team uses FTC Open Alliance data is up to you.
                     The Alliance presents information to teams in a way that allows them to study the decisions and statistics of
                     specific teams while also observing Alliance-wide trends throughout a season.
@@ -44,8 +44,8 @@
                 </p>
             </PageTextBlock>
             <PageTextBlock>
-                <p class="text-4xl md:text-6xl font-bold text-orange">FTC Open Alliance Principles</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                <p class="text-3xl md:text-5xl font-bold text-orange">FTC Open Alliance Principles</p>
+                <p class="p-6 md:p-12 text-md md:text-xl lg:text-2xl">
                     FTC Open Alliance follows the same basic principles that FRC Open Alliance follows. <br><br>
                     - Open Alliance teams do not keep secrets. <br>
                     - Open Alliance teams do their best to provide frequent updates throughout the year. <br>
@@ -56,8 +56,8 @@
                 </p>
             </PageTextBlock>
             <PageTextBlock>
-                <p class="text-4xl md:text-6xl font-bold text-orange">How do I join the Alliance?</p>
-                <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                <p class="text-3xl md:text-5xl font-bold text-orange">How do I join the Alliance?</p>
+                <p class="p-6 md:p-12 text-md md:text-xl lg:text-2xl">
                     FTC Open Alliance is currently in an open beta for our first year of operation.
                     We've made registration available to all teams, and have kept it open to teams for the rest of the season.
                     You can sign your team up using the “Register” button at the top of the page.
@@ -68,8 +68,8 @@
             <PageTextBlock>
                 <div class="flex flex-col 2xl:flex-row justify-between">
                     <div class="flex flex-col w-full 2xl:w-1/2">
-                        <p class="text-4xl md:text-6xl font-bold text-orange">The FTCOA Show</p>
-                        <p class="p-6 md:p-12 text-lg md:text-xl lg:text-2xl">
+                        <p class="text-3xl md:text-5xl font-bold text-orange">The FTCOA Show</p>
+                        <p class="p-6 md:p-12 text-md md:text-xl lg:text-2xl">
                             Catch up on new episodes of the FTC Open Alliance Show, presented by FUN Robotics Network!<br><br>
                             The FTCOA Show is where FTCOA teams show off their progress throughout the season in an engaging
                             visual format. Instead of poring over build threads and statistics, get a quick look at what other

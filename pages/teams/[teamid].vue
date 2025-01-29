@@ -71,12 +71,12 @@
             <div class="flex justify-center mb-5 px-10 md:px-20 lg:px-48">
                 <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
             </div>
-            <UCarousel class="px-[10vw] py-10" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows :prev-button="{icon: 'i-heroicons-arrow-left-20-solid'}" :next-button="{icon: 'i-heroicons-arrow-right-20-solid'}">
-                <PageTextBlock class="flex flex-col grow mx-10 shadow-black">
+            <UCarousel class="px-[10vw] py-10" v-if="items" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows :prev-button="{icon: 'i-heroicons-arrow-left-20-solid'}" :next-button="{icon: 'i-heroicons-arrow-right-20-solid'}">
+                <PageTextBlock class="flex flex-col mx-10 shadow-black">
                     <p class="text-xl xl:text-3xl font-bold text-orange">
                         {{ item.q }}
                     </p>
-                    <p class="p-6 md:p-12 text-lg md:text-xl">
+                    <p class="p-6 md:p-12 text-md md:text-xl">
                         {{ item.a }}
                     </p>
                 </PageTextBlock>
@@ -145,7 +145,7 @@ let items = [
     q: "How do you divide your team's time between things like design, building, programming etc. Do you enforce this timing? If so, why?",
     a: teamData[33]
 }
-]
+].filter(item => item.a !== "");
 
 useSeoMeta({
     title: `${teamid} | FTC Open Alliance`,
