@@ -32,7 +32,7 @@
 
 const {data: teamsFetch} = await useFetch('https://api.ftcopenalliance.org/internal/teamListData')
 
-const teamsData = teamsFetch._rawValue
+const teamsData = teamsFetch.value || []
 
 
 useSeoMeta({
