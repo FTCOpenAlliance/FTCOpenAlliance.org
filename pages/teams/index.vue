@@ -34,7 +34,6 @@ const {data: teamsFetch} = await useFetch('https://api.ftcopenalliance.org/inter
 
 const teamsData = teamsFetch.value || []
 
-
 useSeoMeta({
     title: 'Teams | FTC Open Alliance',
     ogTitle: 'Teams',
