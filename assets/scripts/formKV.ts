@@ -1,4 +1,5 @@
 export abstract class kvLists{
+
     public static teamType = {
         COMMUNITY: 'Community Team',
         SCHOOL: 'School Team',

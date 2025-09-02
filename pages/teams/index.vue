@@ -30,7 +30,7 @@
 </template>
 <script setup>
 
-const {data: teamsFetch} = await useFetch('https://api.ftcopenalliance.org/internal/teamListData')
+const {data: teamsFetch} = await useFetch('https://api.ftcopenalliance.org/teams')
 
 const teamsData = teamsFetch.value || []
 

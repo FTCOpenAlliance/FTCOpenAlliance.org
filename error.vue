@@ -1,5 +1,5 @@
 <template>
-    <div class="float p-10 md:p-24 h-screen w-screen bg-grid">
+    <div class="float p-10 md:p-24 h-full w-full bg-grid">
 
         <div class="sm:p-36 p-12 backdrop-blur-sm shadow-xl shadow-orange">
             <h1 class="text-8xl sm:text-9xl font-bold text-orange h-auto">{{ error?.statusCode }}</h1>
