@@ -30,7 +30,10 @@
 </template>
 <script setup>
 
-const {data: teamsFetch} = await useFetch('https://api.ftcopenalliance.org/teams')
+const config = useRuntimeConfig()
+console.log(config)
+
+const {data: teamsFetch} = await useFetch(`https://api.ftcopenalliance.org/teams`)
 
 const teamsData = teamsFetch.value || []
 

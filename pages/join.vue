@@ -54,29 +54,29 @@
                         <FormKit type="number" id="RookieYear" name="RookieYear" label="Rookie Year" number="integer" :min="2004"/>
                         <FormKit type="number" id="TeamMembers" name="TeamMembers" label="Number of Team Members" number="integer" :min="0"/>
                         <FormKit type="number" id="Mentors" name="Mentors" label="Number of Mentors" number="integer" :min="0"/>
-                        <FormKit type="select" id="TeamType" name="TeamType" label="Type of Team" :options="kvLists.teamType"/>
+                        <FormKit type="select" id="TeamType" name="TeamType" label="Type of Team" :options="kvLists.TeamType"/>
                         <FormKit type="number" id="MeetingHours" name="MeetingHours" label="Meeting Time (hours per week)" number="integer" :min="0" :max="168"/>
-                        <FormKit type="select" id="Budget" name="Budget" label="Approximate Budget" :options="kvLists.budget"/>
-                        <FormKit type="select" id="Workspace" name="Workspace" label="Team Workspace" :options="kvLists.workspace"/>
-                        <FormKit type="select" id="Sponsors" name="Sponsors" label="Number of Sponsors" :options="kvLists.sponsors"/>
+                        <FormKit type="select" id="Budget" name="Budget" label="Approximate Budget" :options="kvLists.Budget"/>
+                        <FormKit type="select" id="Workspace" name="Workspace" label="Team Workspace" :options="kvLists.Workspace"/>
+                        <FormKit type="select" id="Sponsors" name="Sponsors" label="Number of Sponsors" :options="kvLists.Sponsors"/>
                     </div>
                     <div :class="sectionStyle">
                         <UDivider class="text-xl text-orange font-bold mb-4">Robot Information</UDivider>
                         <p class="text-orange-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
-                        <FormKit type="select" id="Drivetrain" name="Drivetrain" label="Drivetrain Type" :options="kvLists.drivetrain"/>
-                        <FormKit type="checkbox" id="Materials" name="Materials" label="Materials Used" :config="multiCheckboxStyle" :options="kvLists.materials"/>
-                        <FormKit type="checkbox" id="Products" name="Products" label="Product Sources" :config="multiCheckboxStyle" :options="kvLists.products"/>
-                        <FormKit type="checkbox" id="Systems" name="Systems" label="Systems" :config="multiCheckboxStyle" :options="kvLists.systems"/>
-                        <FormKit type="checkbox" id="Odometry" name="Odometry" label="Odometry System" :config="multiCheckboxStyle" :options="kvLists.odometry"/>
-                        <FormKit type="checkbox" id="Sensors" name="Sensors" label="Sensors" :config="multiCheckboxStyle" :options="kvLists.sensors"/>
+                        <FormKit type="select" id="Drivetrain" name="Drivetrain" label="Drivetrain Type" :options="kvLists.Drivetrain"/>
+                        <FormKit type="checkbox" id="Materials" name="Materials" label="Materials Used" :config="multiCheckboxStyle" :options="kvLists.Materials"/>
+                        <FormKit type="checkbox" id="Products" name="Products" label="Product Sources" :config="multiCheckboxStyle" :options="kvLists.Products"/>
+                        <FormKit type="checkbox" id="Systems" name="Systems" label="Systems" :config="multiCheckboxStyle" :options="kvLists.Systems"/>
+                        <FormKit type="checkbox" id="Odometry" name="Odometry" label="Odometry System" :config="multiCheckboxStyle" :options="kvLists.Odometry"/>
+                        <FormKit type="checkbox" id="Sensors" name="Sensors" label="Sensors" :config="multiCheckboxStyle" :options="kvLists.Sensors"/>
                     </div>
                     <div :class="sectionStyle">
                         <UDivider class="text-xl text-orange font-bold mb-4">Programming Information</UDivider>
                         <p class="text-orange-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
-                        <FormKit type="select" id="CodeLang" name="CodeLang" label="Programming Language" :options="kvLists.codeLang"/>
-                        <FormKit type="select" id="CodeEnv" name="CodeEnv" label="Code Editor / IDE" :options="kvLists.codeEnv"/>
-                        <FormKit type="checkbox" id="CodeTools" name="CodeTools" label="Third-Party Programming Tools/Libraries" :config="multiCheckboxStyle" :options="kvLists.codeTools"/>
-                        <FormKit type="checkbox" id="Vision" name="Vision" label="Computer Vision" :config="multiCheckboxStyle" :options="kvLists.vision"/>
+                        <FormKit type="select" id="CodeLang" name="CodeLang" label="Programming Language" :options="kvLists.CodeLang"/>
+                        <FormKit type="select" id="CodeEnv" name="CodeEnv" label="Code Editor / IDE" :options="kvLists.CodeEnv"/>
+                        <FormKit type="checkbox" id="CodeTools" name="CodeTools" label="Third-Party Programming Tools/Libraries" :config="multiCheckboxStyle" :options="kvLists.CodeTools"/>
+                        <FormKit type="checkbox" id="Vision" name="Vision" label="Computer Vision" :config="multiCheckboxStyle" :options="kvLists.Vision"/>
                     </div>
                     <div :class="sectionStyle">
                         <UDivider class="text-xl text-orange font-bold mb-4">Free-Response Questions</UDivider>

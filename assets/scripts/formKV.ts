@@ -1,18 +1,18 @@
 export abstract class kvLists{
 
-    public static teamType = {
+    public static TeamType = {
         COMMUNITY: 'Community Team',
         SCHOOL: 'School Team',
     }
     
-    public static budget = {
+    public static Budget = {
         UNDER_1000: '< 1000 USD',
         BETWEEN_1000_AND_3000: '1000 - 3000 USD',
         BETWEEN_3000_AND_5000: '3000 - 5000 USD',
         OVER_5000: '5000+ USD',
     }
     
-    public static workspace = {
+    public static Workspace = {
         LAB: 'Dedicated Robotics Lab',
         CLASSROOM: 'School Classroom(s)',
         HOME: 'Home Workspace (garage, basement, etc.)',
@@ -20,13 +20,13 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static sponsors = {
+    public static Sponsors = {
         NONE: 'No Sponsors',
         ONE_TO_THREE: '1 - 3 Sponsors',
         ABOVE_FOUR: '4+ Sponsors',
     }
     
-    public static drivetrain = {
+    public static Drivetrain = {
         MECANUM: 'Mecanum',
         TANK: 'Tank',
         H: 'H-Drive',
@@ -38,7 +38,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static materials = {
+    public static Materials = {
         PREFAB_METAL: 'Prefabricated Metal Parts',
         CUSTOM_METAL: 'Custom Metal Parts',
         POLYCARB: 'Polycarbonate',
@@ -50,7 +50,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static products = {
+    public static Products = {
         GOBILDA: 'GoBILDA',
         REV: 'REV Robotics',
         ANDYMARK: 'AndyMark',
@@ -65,7 +65,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static systems = {
+    public static Systems = {
         ARM: 'Rotary Arm',
         SLIDES: 'Linear Slides',
         CLIMBER: 'Climber',
@@ -77,7 +77,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static odometry = {
+    public static Odometry = {
         NONE: 'No Odometry',
         CUSTOM_DW: 'Custom Dead-Wheel',
         GB_PINPOINT: 'GoBILDA Pinpoint',
@@ -85,7 +85,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
     
-    public static sensors = {
+    public static Sensors = {
         NONE: 'No Sensors',
         DISTANCE: 'Distance',
         TOUCH: 'Touch',
@@ -99,13 +99,13 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
 
-    public static codeLang = {
+    public static CodeLang = {
         BLOCKS: 'OnBot Blocks',
-        JAVA: 'Java (OnBot or External IDE',
+        JAVA: 'Java (OnBot or External IDE)',
         OTHER: 'Other',
     }
 
-    public static codeEnv = {
+    public static CodeEnv = {
         ONBOT: 'OnBot Java/Blocks',
         STUDIO: 'Android Studio',
         CODE: 'Visual Studio Code',
@@ -114,7 +114,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
 
-    public static codeTools = {
+    public static CodeTools = {
         DASHBOARD: 'FTC Dashboard',
         LIB: 'FTCLib',
         RR: 'RoadRunner',
@@ -122,7 +122,7 @@ export abstract class kvLists{
         OTHER: 'Other',
     }
 
-    public static vision = {
+    public static Vision = {
         OBJECT: "Object Detection",
         APRIL: "AprilTag Localization",
         CV: "OpenCV",
