@@ -17,7 +17,7 @@
                     <TeamMiniStat name="Rookie Year" :val="teamData.RookieYear"/>
                     <TeamMiniStat name="Members" :val="teamData.TeamMembers"/>
                     <TeamMiniStat name="Mentors" :val="teamData.Mentors"/>
-                    <TeamMiniStat name="Type" :val="kvLists.teamType[teamData.TeamType]"/>
+                    <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
                 </div>
             </div>
         </PageTitle>
@@ -42,29 +42,29 @@
                     <UDivider class="text-xl text-orange md:text-4xl">Team Statistics</UDivider>
                 </div>
                 <TeamStat name="Meeting Hours/Week" v-bind:val="teamData.MeetingHours"/>
-                <TeamStat name="Approx. Budget" v-bind:val="kvLists.budget[teamData.Budget]"/>
-                <TeamStat name="Workspace" v-bind:val="kvLists.workspace[teamData.Workspace]"/>
-                <TeamStat name="Sponsorship Status" v-bind:val="kvLists.sponsors[teamData.Sponsors]"/>
+                <TeamStat name="Approx. Budget" v-bind:val="kvLists.Budget[teamData.Budget]"/>
+                <TeamStat name="Workspace" v-bind:val="kvLists.Workspace[teamData.Workspace]"/>
+                <TeamStat name="Sponsorship Status" v-bind:val="kvLists.Sponsors[teamData.Sponsors]"/>
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
                     <UDivider class="text-xl text-orange md:text-4xl">Robot Statistics</UDivider>
                 </div>
-                <TeamStat name="Drivetrain" v-bind:val="kvLists.drivetrain[teamData.Drivetrain]"/>
-                <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, kvLists.materials)"/>
-                <TeamStat name="Product Sources" v-bind:val="parseKVArray(teamData.Products, kvLists.products)"/>
-                <TeamStat name="Odometry" v-bind:val="parseKVArray(teamData.Odometry, kvLists.odometry)"/>
-                <TeamStat name="Sensors" v-bind:val="parseKVArray(teamData.Sensors, kvLists.sensors)"/>
-                <TeamStat name="Systems" v-bind:val="parseKVArray(teamData.Systems, kvLists.systems)"/>
+                <TeamStat name="Drivetrain" v-bind:val="kvLists.Drivetrain[teamData.Drivetrain]"/>
+                <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
+                <TeamStat name="Product Sources" v-bind:val="parseKVArray(teamData.Products, kvLists.Products)"/>
+                <TeamStat name="Odometry" v-bind:val="parseKVArray(teamData.Odometry, kvLists.Odometry)"/>
+                <TeamStat name="Sensors" v-bind:val="parseKVArray(teamData.Sensors, kvLists.Sensors)"/>
+                <TeamStat name="Systems" v-bind:val="parseKVArray(teamData.Systems, kvLists.Systems)"/>
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
                     <UDivider class="text-xl text-orange md:text-4xl">Code Statistics</UDivider>
                 </div>
-                <TeamStat name="Programming Language" v-bind:val="kvLists.codeLang[teamData.CodeLang]"/>
-                <TeamStat name="Development Environment" v-bind:val="kvLists.codeEnv[teamData.CodeEnv]"/>
-                <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, kvLists.codeTools)"/>
-                <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, kvLists.vision)"/>
+                <TeamStat name="Programming Language" v-bind:val="kvLists.CodeLang[teamData.CodeLang]"/>
+                <TeamStat name="Development Environment" v-bind:val="kvLists.CodeEnv[teamData.CodeEnv]"/>
+                <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, kvLists.CodeTools)"/>
+                <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
             </div>
         </div>
         <div class="[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
@@ -111,7 +111,7 @@ function parseKVArray(inputArray, kvList) {
     return outputArray.join(", ")
 }
 
-const {data} = await useFetch(`https://api.ftcopenalliance.org/teams/${teamid}/all`)
+const {data} = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
 
 const teamData = data.value[0] || []
 
