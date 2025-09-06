@@ -143,14 +143,21 @@ async function formCallback(formData) {
             method: 'POST',
             body: formData
         })
+        document.getElementById
+        toast.add({
+            title: "Your team's data was updated successfully!.",
+            description: "You will be redirected to your team's page momentarily.",
+            icon: "i-heroicons-outline-check-circle"
+        })
         setTimeout(async () => {
             await navigateTo(`/teams/${formData.TeamNumber}`)
-        }, 500);
+        }, 1000);
         
     } catch (e) {
         toast.add({
-            id: "formError",
-            title: "An error occured while submitting the form.",
+            title: "Your team's data could not be saved.",
+            description: "An error occured while communicating with the database.",
+            icon: "i-heroicons-outline-exclamation-circle"
         })
     }
     
@@ -164,10 +171,10 @@ function autofillTeamData() {
 
     
     if (isNaN(parseInt(teamNumber))) {
-        console.log(toast.add({
+        toast.add({
             title: "Please enter a team number before autofilling.",
-            color: "error"
-        }))
+            icon: "i-heroicons-outline-exclamation-circle"
+        })
     } else {
         fetch(`${apiURL}/teams/${parseInt(teamNumber)}/all`)
         .then(response => {
@@ -186,10 +193,20 @@ function autofillTeamData() {
                         getNode(key).input(data[0][key] || '')
                     }
                 }
+            } else {
+                toast.add({
+                    title: "Your team's data could not be fetched.",
+                    description: "Your team likely has not submitted data before.",
+                    icon: "i-heroicons-outline-exclamation-circle"
+                })
             }
         })
         .catch(error => {
-            console.error("Error fetching team data:", error)
+            toast.add({
+                title: "Your team's data could not be fetched.",
+                description: "An error occured while communicating with the database.",
+                icon: "i-heroicons-outline-exclamation-circle"
+            })
         })
     }
 }

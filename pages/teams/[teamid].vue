@@ -28,12 +28,12 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2 hover:*:ring-orange-200 *:hover:*:text-orange-200">
-                        <UButton label="Website" v-bind:to="normalizeUrl(teamData.TeamWebsite)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
-                        <UButton label="Build Thread" v-bind:to="normalizeUrl(teamData.BuildThread)" v-if="checkNormalizable(teamData.BuildThread)"/>
-                        <UButton label="CAD" v-bind:to="normalizeUrl(teamData.CAD)" v-if="checkNormalizable(teamData.CAD)"/>
-                        <UButton label="Code" v-bind:to="normalizeUrl(teamData.Code)" v-if="checkNormalizable(teamData.Code)"/>
-                        <UButton label="Photos" v-bind:to="normalizeUrl(teamData.Photo)" v-if="checkNormalizable(teamData.Photo)"/>
-                        <UButton label="Videos" v-bind:to="normalizeUrl(teamData.Video)" v-if="checkNormalizable(teamData.Video)"/>
+                        <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(teamData.TeamWebsite)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
+                        <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(teamData.BuildThread)" v-if="checkNormalizable(teamData.BuildThread)"/>
+                        <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(teamData.CAD)" v-if="checkNormalizable(teamData.CAD)"/>
+                        <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(teamData.Code)" v-if="checkNormalizable(teamData.Code)"/>
+                        <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(teamData.Photo)" v-if="checkNormalizable(teamData.Photo)"/>
+                        <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(teamData.Video)" v-if="checkNormalizable(teamData.Video)"/>
                     </div>
                 </div>
             </div>

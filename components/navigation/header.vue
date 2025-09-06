@@ -9,8 +9,8 @@
             <div id="header-nav" class="flex flex-wrap justify-center -mx-5 sm:mx-0 pt-6 sm:pt-0 *:rounded-none *:mx-1 *:mb-2 sm:*:mb-0 hover:*:scale-105 *:transition-all" >
                 <UButton label="Teams" to="/teams"/>
                 <UButton label="Register/Update" to="/join"/>
-                <UButton label="Donate" icon="i-heroicons-outline-heart" to="https://hcb.hackclub.com/donations/start/ftcopenalliance" class="ring-white *:text-white"/>
-                <UButton label="FTCOA on CD" icon="i-heroicons-arrow-top-right-on-square-16-solid" to="https://www.chiefdelphi.com/c/first/ftc-open-alliance/" class="ring-white *:text-white"/>
+                <UButton label="Donate" icon="i-heroicons-outline-heart" target="_blank" to="https://hcb.hackclub.com/donations/start/ftcopenalliance" class="ring-white *:text-white"/>
+                <UButton label="FTCOA on CD" icon="i-heroicons-arrow-top-right-on-square-16-solid" target="_blank" to="https://www.chiefdelphi.com/c/first/ftc-open-alliance/" class="ring-white *:text-white"/>
             </div>
         </div>
     </div>

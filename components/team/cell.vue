@@ -11,12 +11,12 @@
         </div>
         <div class="flex justify-end">
             <div class="flex flex-wrap max-w-72 justify-end *:m-[0.05em] *:rounded-none *:text-lg hover:*:ring-orange-200 *:hover:*:text-orange-200">
-                <UButton label="Build Thread" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
-                <UButton label="CAD" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
-                <UButton label="Code" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>
-                <UButton label="Photos" v-bind:to="normalizeUrl(photolink)" v-if="checkNormalizable(photolink)"/>
-                <UButton label="Videos" v-bind:to="normalizeUrl(videolink)" v-if="checkNormalizable(videolink)"/>
-                <UButton label="Website" v-bind:to="normalizeUrl(weblink)" v-if="checkNormalizable(weblink)"/>
+                <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
+                <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
+                <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>
+                <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(photolink)" v-if="checkNormalizable(photolink)"/>
+                <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(videolink)" v-if="checkNormalizable(videolink)"/>
+                <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(weblink)" v-if="checkNormalizable(weblink)"/>
             </div>
         </div>
     </div>
