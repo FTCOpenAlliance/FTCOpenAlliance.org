@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 body {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .page-enter-active,
@@ -19,6 +19,7 @@ body {
 }
 
 .bg-grid {
+  animation: grid-move 120s linear infinite;
   background-image: linear-gradient(to right,#ff660055 1px,transparent 1px),linear-gradient(to bottom,#ff660055 1px,#000 1px);
   background-size: 40px 40px;
   background-attachment: fixed;
@@ -28,4 +29,20 @@ body {
   background-color: #000;
   background-image: radial-gradient(#ff660040 2px, #000000 2px);
   background-size: 20px 20px;
+  animation: parallax linear;
+  animation-timeline: scroll(); 
+}
+
+@keyframes grid-move {
+  from { background-position: 0% 0% }
+  to { background-position: 100% 100% }
+}
+
+@keyframes parallax {
+  from {
+    background-position: bottom 0px center;
+  }
+  to {
+    background-position: bottom -800px center;
+  }
 }

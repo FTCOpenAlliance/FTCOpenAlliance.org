@@ -91,7 +91,7 @@
             </p>
             <UCarousel ref="carouselRef" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="backdrop-blur-[2px] shadow-lg shadow-orange">
                 <div class="flex grow justify-center items-center p-8 scale-95 hover:scale-100 transition-transform">
-                    <a :href="item[1]"  class="flex min-h-24 md:h-48" draggable="false">
+                    <a :href="item[1]" target="_blank" class="flex min-h-24 md:h-48" draggable="false">
                         <img :src="item[0]" draggable="false">
                     </a>
                 </div>
@@ -118,6 +118,7 @@ useHead
 const items = [
     ['/images/FUNNetwork.png',"https://funroboticsnetwork.com/"],
     ['/images/ChiefDelphi.png', "https://chiefdelphi.com/"],
+    ['/images/Studica.png', "https://www.studica.com/"],
 ]
 
 const carouselRef = ref()

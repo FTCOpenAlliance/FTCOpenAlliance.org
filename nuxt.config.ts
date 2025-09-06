@@ -15,11 +15,16 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2024-07-03",
-  modules: ["@nuxt/ui", "@nuxt/icon"],
+  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt'],
   ui: {
     safelistColors: ['black']
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  runtimeConfig: {
+    public: {
+      API_URL: process.env.API_DEV_URL || 'https://api.ftcopenalliance.org',
+    }
+  }
 })
