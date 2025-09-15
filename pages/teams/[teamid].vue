@@ -67,19 +67,16 @@
                 <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
             </div>
         </div>
-        <div class="[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
+        <div v-if="items.length > 0" class="[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
             <div class="flex justify-center mb-5 px-10 md:px-20 lg:px-48">
                 <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
             </div>
             <UCarousel class="px-[10vw] py-10" v-if="items" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows :prev-button="{icon: 'i-heroicons-arrow-left-20-solid'}" :next-button="{icon: 'i-heroicons-arrow-right-20-solid'}">
-                <PageTextBlock class="flex flex-col mx-10 shadow-black">
-                    <p class="text-xl xl:text-3xl font-bold text-orange">
-                        {{ item.q }}
-                    </p>
-                    <p class="p-6 md:p-12 text-md md:text-xl">
+                <PageBlock :title="item.q" class="flex flex-col mx-10 shadow-black">
+                    <PageText>
                         {{ item.a }}
-                    </p>
-                </PageTextBlock>
+                    </PageText>
+                </PageBlock>
             </UCarousel>
         </div>
     </div>

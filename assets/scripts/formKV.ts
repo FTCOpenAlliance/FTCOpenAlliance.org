@@ -74,6 +74,8 @@ export abstract class kvLists{
         VIRTUAL_FOURBAR: 'Virtual Four-Bar Mechanism',
         CLAW: 'Claw/Gripper',
         WHEEL_INTAKE: 'Wheel Roller Intake',
+        SHOOTER: 'Shooting Mechanism',
+        TURNTABLE: 'Turntable',
         OTHER: 'Other',
     }
     
