@@ -30,7 +30,7 @@
         <div class="px-10 md:px-20 lg:px-48">
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-primary md:text-4xl mt-12">Team Links</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
@@ -45,7 +45,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-primary md:text-4xl">Team Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
                 </div>
                 <TeamStat name="Meeting Hours/Week" v-bind:val="teamData.MeetingHours"/>
                 <TeamStat name="Approx. Budget" v-bind:val="kvLists.Budget[teamData.Budget]"/>
@@ -54,7 +54,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-primary md:text-4xl">Robot Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
                 </div>
                 <TeamStat name="Drivetrain" v-bind:val="kvLists.Drivetrain[teamData.Drivetrain]"/>
                 <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
@@ -65,7 +65,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-primary md:text-4xl">Code Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
                 </div>
                 <TeamStat name="Programming Language" v-bind:val="kvLists.CodeLang[teamData.CodeLang]"/>
                 <TeamStat name="Development Environment" v-bind:val="kvLists.CodeEnv[teamData.CodeEnv]"/>

@@ -20,7 +20,7 @@
                 @submit="formCallback"
                 >
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Team Identification</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Team Identification</USeparator>
                     <p class="text-primary-300 mb-6">
                         Your team data may be used to fetch additional information through external APIs. <br>
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Hosted Links</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Hosted Links</USeparator>
                     <ul class="list-disc list-inside mb-6 text-primary-300">
                         <li>Any links provided must be accessible publicly, without need for an account.</li>
                         <li>You must create a Chief Delphi build thread for your team before submitting and update it regularly.</li>
@@ -68,7 +68,7 @@
                     <FormKit type="url" id="Video" name="Video" label="Videos Link" validation="url"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Team Information</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Team Information</USeparator>
                     <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="number" id="RookieYear" name="RookieYear" label="Rookie Year" number="integer" :min="2004"/>
                     <FormKit type="number" id="TeamMembers" name="TeamMembers" label="Number of Team Members" number="integer" :min="0"/>
@@ -80,7 +80,7 @@
                     <FormKit type="select" id="Sponsors" name="Sponsors" label="Number of Sponsors" :options="kvLists.Sponsors"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Robot Information</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Robot Information</USeparator>
                     <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="select" id="Drivetrain" name="Drivetrain" label="Drivetrain Type" :options="kvLists.Drivetrain"/>
                     <FormKit type="checkbox" id="Materials" name="Materials" label="Materials Used" :config="multiCheckboxStyle" :options="kvLists.Materials"/>
@@ -90,7 +90,7 @@
                     <FormKit type="checkbox" id="Sensors" name="Sensors" label="Sensors" :config="multiCheckboxStyle" :options="kvLists.Sensors"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Programming Information</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Programming Information</USeparator>
                     <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="select" id="CodeLang" name="CodeLang" label="Programming Language" :options="kvLists.CodeLang"/>
                     <FormKit type="select" id="CodeEnv" name="CodeEnv" label="Code Editor / IDE" :options="kvLists.CodeEnv"/>
@@ -98,7 +98,7 @@
                     <FormKit type="checkbox" id="Vision" name="Vision" label="Computer Vision" :config="multiCheckboxStyle" :options="kvLists.Vision"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-primary font-bold mb-4">Free-Response Questions</UDivider>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Free-Response Questions</USeparator>
                     <p class="text-primary-300 mb-6">
                         Responses will be publicly visible on your FTC Open Alliance profile.<br><br>
                         Feel free to make your responses long and detailed, ideally a few sentences to a paragraph each. (max 750 characters each)<br>
