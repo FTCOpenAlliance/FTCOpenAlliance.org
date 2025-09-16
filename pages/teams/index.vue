@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-orange font-bold">
+            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
                 Teams
             </h1>
         </PageTitle>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div v-if="teamsData.length == 0" class="flex justify-center items-center md:flex-row flex-col md:p-24 p-12">
-            <Icon name="i-ic-outline-error-outline" class=" text-8xl text-orange md:mr-5"/>
+            <Icon name="i-ic-outline-error-outline" class=" text-8xl text-primary md:mr-5"/>
             <p class="text-3xl md:text-5xl">
                 No Teams!
             </p>

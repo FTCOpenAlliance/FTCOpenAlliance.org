@@ -1,33 +1,39 @@
 <template lang="">
     <div>
         <PageTitle>
-            <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-[50rem]">
-                <div class="flex flex-col mb-5">
-                    <h1 class="text-6xl md:text-8xl text-orange font-bold flex justify-center lg:justify-start">
-                        {{ teamid }}
-                    </h1>
-                    <p class="text-2xl md:text-4xl flex justify-center lg:justify-start">
-                        {{ teamData.TeamName }}
-                    </p>
-                    <p class="text-xl md:text-2xl text-orange-600 font-bold flex justify-center lg:justify-start">
-                        {{ teamData.Location }}
-                    </p>
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-200">
+                    <div class="flex flex-col mb-5">
+                        <h1 class="text-6xl md:text-8xl text-primary font-bold flex justify-center lg:justify-start">
+                            {{ teamid }}
+                        </h1>
+                        <p class="text-2xl md:text-4xl flex justify-center lg:justify-start">
+                            {{ teamData.TeamName }}
+                        </p>
+                        <p class="text-xl md:text-2xl text-primary-600 font-bold flex justify-center lg:justify-start">
+                            {{ teamData.Location }}
+                        </p>
+                    </div>
+                    <div class="flex flex-col *:text-xl justify-center w-60">
+                        <TeamMiniStat name="Rookie Year" :val="teamData.RookieYear"/>
+                        <TeamMiniStat name="Members" :val="teamData.TeamMembers"/>
+                        <TeamMiniStat name="Mentors" :val="teamData.Mentors"/>
+                        <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
+                    </div>
                 </div>
-                <div class="flex flex-col *:text-xl justify-center w-60">
-                    <TeamMiniStat name="Rookie Year" :val="teamData.RookieYear"/>
-                    <TeamMiniStat name="Members" :val="teamData.TeamMembers"/>
-                    <TeamMiniStat name="Mentors" :val="teamData.Mentors"/>
-                    <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
+                <div class="flex flex-row gap-2 w-full *:w-full">
+                    <UButton :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
+                    <UButton :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
                 </div>
             </div>
         </PageTitle>
         <div class="px-10 md:px-20 lg:px-48">
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl mt-12">Team Links</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
                 </div>
                 <div class="flex justify-center">
-                    <div class="flex flex-col w-full justify-evenly md:flex-row *:rounded-none *:text-2xl *:px-[1vw] *:md:px-[2vw] *:justify-center *:mb-2 hover:*:ring-orange-200 *:hover:*:text-orange-200">
+                    <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
                         <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(teamData.TeamWebsite)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
                         <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(teamData.BuildThread)" v-if="checkNormalizable(teamData.BuildThread)"/>
                         <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(teamData.CAD)" v-if="checkNormalizable(teamData.CAD)"/>
@@ -39,7 +45,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl">Team Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
                 </div>
                 <TeamStat name="Meeting Hours/Week" v-bind:val="teamData.MeetingHours"/>
                 <TeamStat name="Approx. Budget" v-bind:val="kvLists.Budget[teamData.Budget]"/>
@@ -48,7 +54,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl">Robot Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
                 </div>
                 <TeamStat name="Drivetrain" v-bind:val="kvLists.Drivetrain[teamData.Drivetrain]"/>
                 <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
@@ -59,7 +65,7 @@
             </div>
             <div class="pb-10">
                 <div class="flex justify-center mb-5">
-                    <UDivider class="text-xl text-orange md:text-4xl">Code Statistics</UDivider>
+                    <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
                 </div>
                 <TeamStat name="Programming Language" v-bind:val="kvLists.CodeLang[teamData.CodeLang]"/>
                 <TeamStat name="Development Environment" v-bind:val="kvLists.CodeEnv[teamData.CodeEnv]"/>
@@ -67,17 +73,18 @@
                 <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
             </div>
         </div>
-        <div v-if="items.length > 0" class="[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
-            <div class="flex justify-center mb-5 px-10 md:px-20 lg:px-48">
-                <UDivider class="text-xl text-orange md:text-4xl">Free-Response</UDivider>
+        <div v-if="items.length > 0" class="bg-radial">
+            <div class="flex flex-col justify-center mb-5 md:px-20 lg:px-48">
+                <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
+                <UCarousel class="flex py-10" v-if="items" v-slot="{ item }" :items="items" arrows>
+                    <PageBlock class="flex flex-col mx-10 shadow-black">
+                        <h2 class="text-xl md:text-2xl font-bold text-primary">{{item.q}}</h2>
+                        <PageText>
+                            {{ item.a }}
+                        </PageText>
+                    </PageBlock>
+                </UCarousel>
             </div>
-            <UCarousel class="px-[10vw] py-10" v-if="items" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" arrows :prev-button="{icon: 'i-heroicons-arrow-left-20-solid'}" :next-button="{icon: 'i-heroicons-arrow-right-20-solid'}">
-                <PageBlock :title="item.q" class="flex flex-col mx-10 shadow-black">
-                    <PageText>
-                        {{ item.a }}
-                    </PageText>
-                </PageBlock>
-            </UCarousel>
         </div>
     </div>
 </template>
@@ -111,8 +118,6 @@ function parseKVArray(inputArray, kvList) {
 const {data} = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
 
 const teamData = data.value[0] || []
-
-console.log(teamData)
 
 if (teamData == []) {
     throw createError({ statusCode: 404, statusMessage: `The team you specified [ ${teamid} ] does not exist or is not registered on FTC Open Alliance.` })

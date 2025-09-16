@@ -1,7 +1,7 @@
 <template>
     <div>
         <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-orange font-bold">
+            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
                 Register
             </h1>
         </PageTitle>
@@ -12,7 +12,7 @@
                 <FormKit
                 type="form"
                 :config="{ classes: {
-                    input: 'border border-orange bg-black p-2 w-full accent-orange-500',
+                    input: 'border border-primary bg-black p-2 w-full accent-primary-500',
                     message: 'text-red-400 mb-2',
                 } }"
                 id="joinForm"
@@ -20,17 +20,17 @@
                 @submit="formCallback"
                 >
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Team Identification</UDivider>
-                    <p class="text-orange-300 mb-6">
+                    <USeparator class="text-xl text-primary font-bold mb-4">Team Identification</USeparator>
+                    <p class="text-primary-300 mb-6">
                         Your team data may be used to fetch additional information through external APIs. <br>
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
                     </p>
                     <FormKit @blur="numberChangeCallback" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
-                    <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="mb-4 -mt-6 rounded-none transition-all">Autofill Previous Data</UButton>
+                    <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="mb-4 -mt-6 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>
                     
                     <div id="PIIInput" class="relative">
-                        <p class="text-orange-300 mb-6">
+                        <p class="text-primary-300 mb-6">
                             The email address and shipping address provided will not be publicly visible.
                             You may be contacted through email about your registration, appearance on the FTCOA Show, and the FTCOA Awards.
                             We may ship your team some free merchandise, and any items won through the FTCOA Awards.
@@ -39,9 +39,9 @@
                         </p>
                         <FormKit type="email" name="ContactEmail" id="ContactEmail" label="Contact Email Address" validation="required|email"/>
                         <FormKit type="text" name="ShipAddress" id="ShipAddress" label="Shipping Address" validation="required"/>
-                        <div hidden id="PIINotice" class="absolute items-center top-0 left-0 w-full h-full backdrop-blur-sm bg-[#00000066] border-orange border-2">
+                        <div id="PIINotice" style="display: none;" class="absolute items-center top-0 left-0 w-full h-full bg-glass bg-[#00000066] border-primary border-2">
                             <div class="flex items-center w-full h-full text-center p-4 md:p-12 sm:text-lg md:text-xl">
-                                <p class="text-orange-300">
+                                <p class="text-primary-300">
                                     Your contact email address and shipping address have already been collected.<br>
                                     If you believe this is a mistake, or wish to update this information, please
                                     email <u><a href="mailto:contact@ftcopenalliance.org">contact@ftcopenalliance.org</a></u>.
@@ -51,8 +51,8 @@
                     </div>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Hosted Links</UDivider>
-                    <ul class="list-disc list-inside mb-6 text-orange-300">
+                    <USeparator class="text-xl text-primary font-bold mb-4">Hosted Links</USeparator>
+                    <ul class="list-disc list-inside mb-6 text-primary-300">
                         <li>Any links provided must be accessible publicly, without need for an account.</li>
                         <li>You must create a Chief Delphi build thread for your team before submitting and update it regularly.</li>
                         <li>Your CAD must be available through Onshape. Either use it to design your robot or upload versions from your other CAD software regularly.</li>
@@ -68,8 +68,8 @@
                     <FormKit type="url" id="Video" name="Video" label="Videos Link" validation="url"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Team Information</UDivider>
-                    <p class="text-orange-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Team Information</USeparator>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="number" id="RookieYear" name="RookieYear" label="Rookie Year" number="integer" :min="2004"/>
                     <FormKit type="number" id="TeamMembers" name="TeamMembers" label="Number of Team Members" number="integer" :min="0"/>
                     <FormKit type="number" id="Mentors" name="Mentors" label="Number of Mentors" number="integer" :min="0"/>
@@ -80,8 +80,8 @@
                     <FormKit type="select" id="Sponsors" name="Sponsors" label="Number of Sponsors" :options="kvLists.Sponsors"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Robot Information</UDivider>
-                    <p class="text-orange-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Robot Information</USeparator>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="select" id="Drivetrain" name="Drivetrain" label="Drivetrain Type" :options="kvLists.Drivetrain"/>
                     <FormKit type="checkbox" id="Materials" name="Materials" label="Materials Used" :config="multiCheckboxStyle" :options="kvLists.Materials"/>
                     <FormKit type="checkbox" id="Products" name="Products" label="Product Sources" :config="multiCheckboxStyle" :options="kvLists.Products"/>
@@ -90,16 +90,16 @@
                     <FormKit type="checkbox" id="Sensors" name="Sensors" label="Sensors" :config="multiCheckboxStyle" :options="kvLists.Sensors"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Programming Information</UDivider>
-                    <p class="text-orange-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
+                    <USeparator class="text-xl text-primary font-bold mb-4">Programming Information</USeparator>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
                     <FormKit type="select" id="CodeLang" name="CodeLang" label="Programming Language" :options="kvLists.CodeLang"/>
                     <FormKit type="select" id="CodeEnv" name="CodeEnv" label="Code Editor / IDE" :options="kvLists.CodeEnv"/>
                     <FormKit type="checkbox" id="CodeTools" name="CodeTools" label="Third-Party Programming Tools/Libraries" :config="multiCheckboxStyle" :options="kvLists.CodeTools"/>
                     <FormKit type="checkbox" id="Vision" name="Vision" label="Computer Vision" :config="multiCheckboxStyle" :options="kvLists.Vision"/>
                 </div>
                 <div :class="sectionStyle">
-                    <UDivider class="text-xl text-orange font-bold mb-4">Free-Response Questions</UDivider>
-                    <p class="text-orange-300 mb-6">
+                    <USeparator class="text-xl text-primary font-bold mb-4">Free-Response Questions</USeparator>
+                    <p class="text-primary-300 mb-6">
                         Responses will be publicly visible on your FTC Open Alliance profile.<br><br>
                         Feel free to make your responses long and detailed, ideally a few sentences to a paragraph each. (max 750 characters each)<br>
                         If you don't have an answer for a question at this time, you may leave it blank and update it later.
@@ -129,12 +129,13 @@ const apiURL = useRuntimeConfig().public.API_URL
 const multiCheckboxStyle = {
     classes: {
         options: 'flex flex-col md:flex-row md:flex-wrap gap-2',
-        option: 'p-1 md:p-2 border border-orange has-[:checked]:bg-orange-900 hover:scale-[1.02] has-[:checked]:scale-[1.02] has-[:checked]:border-orange-200 transition-all shadow-sm has-[:checked]:shadow-orange-400',
+        option: 'border border-primary has-checked:bg-primary-900 hover:scale-[1.02] has-checked:scale-[1.02] has-checked:border-primary-200 transition-all shadow-xs has-checked:shadow-primary-400',
+        label: 'inline-block w-full p-2',
         input: 'hidden',
     }   
 }
 
-const sectionStyle = "flex flex-col gap-6 backdrop-blur p-10 mb-6 shadow-xl shadow-orange-800 border border-orange"
+const sectionStyle = "flex flex-col gap-6 backdrop-blur-sm p-10 mb-6 shadow-xl shadow-primary-800 border border-primary"
 
 async function formCallback(formData) {
     
@@ -147,7 +148,8 @@ async function formCallback(formData) {
         toast.add({
             title: "Your team's data was updated successfully!.",
             description: "You will be redirected to your team's page momentarily.",
-            icon: "i-heroicons-outline-check-circle"
+            icon: "i-heroicons-outline-check-circle",
+            color: 'success'
         })
         setTimeout(async () => {
             await navigateTo(`/teams/${formData.TeamNumber}`)
@@ -157,7 +159,8 @@ async function formCallback(formData) {
         toast.add({
             title: "Your team's data could not be saved.",
             description: "An error occured while communicating with the database.",
-            icon: "i-heroicons-outline-exclamation-circle"
+            icon: "i-heroicons-outline-exclamation-circle",
+            color: 'error'
         })
     }
     
@@ -173,7 +176,8 @@ function autofillTeamData() {
     if (isNaN(parseInt(teamNumber))) {
         toast.add({
             title: "Please enter a team number before autofilling.",
-            icon: "i-heroicons-outline-exclamation-circle"
+            icon: "i-heroicons-outline-exclamation-circle",
+            color: 'warning'
         })
     } else {
         fetch(`${apiURL}/teams/${parseInt(teamNumber)}/all`)
@@ -197,7 +201,8 @@ function autofillTeamData() {
                 toast.add({
                     title: "Your team's data could not be fetched.",
                     description: "Your team likely has not submitted data before.",
-                    icon: "i-heroicons-outline-exclamation-circle"
+                    icon: "i-heroicons-outline-exclamation-circle",
+                    color: 'error'
                 })
             }
         })
@@ -205,7 +210,8 @@ function autofillTeamData() {
             toast.add({
                 title: "Your team's data could not be fetched.",
                 description: "An error occured while communicating with the database.",
-                icon: "i-heroicons-outline-exclamation-circle"
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
             })
         })
     }
