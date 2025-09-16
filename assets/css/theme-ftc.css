@@ -1,0 +1,31 @@
+@theme {
+  --font-*: initial;
+  --font-sans: 'Chakra Petch';
+  --color-primary: var(--color-orange);
+  --color-primary-50: var(--color-orange-50);
+  --color-primary-100: var(--color-orange-100);
+  --color-primary-200: var(--color-orange-200);
+  --color-primary-300: var(--color-orange-300);
+  --color-primary-400: var(--color-orange-400);
+  --color-primary-500: var(--color-orange-500);
+  --color-primary-600: var(--color-orange-600);
+  --color-primary-700: var(--color-orange-700);
+  --color-primary-800: var(--color-orange-800);
+  --color-primary-900: var(--color-orange-900);
+  --color-primary-950: var(--color-orange-950);
+
+  --color-orange-50: #ffd4b8;
+  --color-orange-100: #ffc8a3;
+  --color-orange-200: #ffaf7a;
+  --color-orange-300: #ff9752;
+  --color-orange-400: #ff7e29;
+  --color-orange-500: #ff6600;
+  --color-orange-600: #c75000;
+  --color-orange-700: #8f3900;
+  --color-orange-800: #572300;
+  --color-orange-900: #1f0c00;
+  --color-orange-950: #030100;
+  --color-orange: #ff6600;
+
+  --color-secondary: #ffffff;
+}

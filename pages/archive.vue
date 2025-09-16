@@ -1,7 +1,7 @@
 <template>
     <div>
         <PageTitle>
-                <h1 class="text-6xl lg:text-8xl text-orange font-bold">
+                <h1 class="text-6xl lg:text-8xl text-primary font-bold">
                     The Archives
                 </h1>
         </PageTitle>

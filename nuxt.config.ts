@@ -10,14 +10,21 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+      "@tailwindcss/postcss": {},
     },
   },
   compatibilityDate: "2024-07-03",
   modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt'],
   ui: {
-    safelistColors: ['black']
+    theme: {
+      colors: [
+        'primary',
+        'secondary',
+        'success',
+        'warning',
+        'error'
+      ]
+    }
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }

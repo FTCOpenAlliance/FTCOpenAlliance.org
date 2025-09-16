@@ -6,13 +6,13 @@
                     <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
                 </div>
                 <div>
-                    <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold text-orange">
+                    <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold text-primary">
                         <span class="text-white">FTC</span> Open Alliance
                     </h1>
                     <p class="text-xl pb-5">
                         The home of open and collaborative robotics for <strong>FIRST Tech Challenge</strong>.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:rounded-none *:mx-1 *:mb-2 sm:*:mb-0 hover:*:scale-105 *:transition-all">
+                    <div class="flex flex-col sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:mx-1 *:mb-2 sm:*:mb-0">
                         <UButton class="w-full sm:w-1/3" label="Explore Teams" to="/teams"/>
                         <UButton class="w-full sm:w-1/3" label="Join the Alliance" to="/join"/>
                     </div>
@@ -22,7 +22,7 @@
                 <UIcon class="scale-[3] translate-y-[-3.5em]" name="i-heroicons-chevron-double-down"/>
             </div>
         </div>
-        <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#f60_100%)]">
+        <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock title="What is the FTC Open Alliance?">
                 <PageText>
                     Based on FRC's The Open Alliance, FTC Open Alliance
@@ -45,7 +45,7 @@
                         they build their robots as well as at competitions to reinforce scouting data.
                     </p>
                     <div class="w-full 2xl:w-1/2 relative">
-                        <TeamCell teamnumber="99999" teamname="Your Team Name Here" teamlocation="Your City Here"
+                        <TeamCell teamnumber=99999 teamname="Your Team Name Here" teamlocation="Your City Here"
                         cadlink="https://www.example.com" codelink="https://example.com" buildthread="https://example.com"
                         weblink="https://example.com" photolink="https://example.com" videolink="https://example.com"/>
                         <div class="absolute top-0 left-0 w-full h-full"></div>
@@ -75,18 +75,18 @@
             </PageBlock>
         </div>
         <div class="flex flex-col py-16 px-6 md:px-12 lg:px-36 xl:px-60 gap-12 bg-dots">
-            <UDivider id="partners" class="text-xl text-orange md:text-4xl -my-8">Our Partners</UDivider>
+            <USeparator id="partners" class="text-xl text-primary md:text-4xl -my-8">Our Partners</USeparator>
             <p class="text-lg md:text-xl text-center px-4 md:px-12">
                 These organizations have generously funded or otherwise supported the
                 FTC Open Alliance to ensure that FTC teams around the world can keep sharing
                 and collaborating without limits.
             </p>
-                <UCarousel ref="carouselRef" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="backdrop-blur-[2px] shadow-lg shadow-orange">
+                <UCarousel loop :autoplay="{ delay: 3500 }" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary">
                     <div class="flex grow justify-center items-center p-8">
                         <a :href="item.link" target="_blank" class="flex flex-col justify-between gap-6" draggable="false">
-                            <p class="text-center text-4xl text-orange font-bold">{{ item.name }}</p>
+                            <p class="text-center text-4xl text-primary font-bold">{{ item.name }}</p>
                                 <img class="object-contain h-32 scale-95 hover:scale-100 transition-transform" :src="item.image" draggable="false">
-                            <p class="text-center text-xl text-orange font-bold">{{ item.status }}</p>
+                            <p class="text-center text-xl text-primary font-bold">{{ item.status }}</p>
                         </a>
                     </div>
                 </UCarousel>
@@ -100,7 +100,7 @@
                         </p>
                     </div>
                     <div class="flex flex-col gap-2 justify-center items-center w-full 2xl:w-1/2 *:w-full">
-                        <iframe class="[aspect-ratio:16/9]" src="https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        <iframe class="aspect-video" src="https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                         <PartnerLinks website="https://funroboticsnetwork.com/"/>
                     </div>
                 </PageDualBlock>
@@ -110,9 +110,9 @@
                         They specialize in creating an educational robotics platform for classrooms and FTC teams. Their motto, "Build Better Robots",
                         is exemplified through their durable and well-designed structural parts, actuators, motion parts, electronics, and more.
                         Check out what Studica has to offer on
-                            <a href="https://www.studica.com/" target="_blank" class="text-orange hover:text-orange-300 font-bold">their website</a>,
+                            <a href="https://www.studica.com/" target="_blank" class="text-primary hover:text-primary-300 font-bold">their website</a>,
                         and visit their
-                            <a href="https://www.instagram.com/studicacom" target="_blank" class="text-orange hover:text-orange-300 font-bold">Instagram</a>
+                            <a href="https://www.instagram.com/studicacom" target="_blank" class="text-primary hover:text-primary-300 font-bold">Instagram</a>
                         for updates!
                     </PageText>
                     <PartnerLinks class="w-full 2xl:w-1/4" website="https://studica.com/" instagram="https://instagram.com/studicacom" facebook="https://www.facebook.com/StudicaRobotics" youtube="https://www.youtube.com/StudicaRobotics"/>
@@ -125,7 +125,7 @@
                         Their catalog includes all sort of signal, power, and motor cables, including XT30, JST, and Anderson Powerpole. They also have free 3D printed case files
                         for Driver Hubs, Control/Expansion Hubs, and Servo Hubs.
                         Check out their
-                            <a href="https://ferracomponents.com/" target="_blank" class="text-orange hover:text-orange-300 font-bold">online store</a>
+                            <a href="https://ferracomponents.com/" target="_blank" class="text-primary hover:text-primary-300 font-bold">online store</a>
                         today, and take your robot wiring game to the next level.
                     </PageText>
                     <PartnerLinks class="w-full 2xl:w-1/4" website="https://ferracomponents.com/" facebook="https://www.facebook.com/profile.php?id=61577231486964" instagram="http://instagram.com/ferracomponents" />
@@ -182,20 +182,6 @@ const items = [
         status: "Awards Sponsor"
     }
 ]
-
-const carouselRef = ref()
-
-onMounted(() => {
-    setInterval(() => {
-        if (!carouselRef.value) return
-        
-        if (carouselRef.value.page === carouselRef.value.pages) {
-            return carouselRef.value.select(0)
-        }
-        
-        carouselRef.value.next()
-    }, 3000)
-})
 
 </script>
 <style>
