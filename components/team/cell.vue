@@ -1,13 +1,23 @@
 <template>
-    <div class="p-5 pb-10 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
-        <div class="flex mb-5">
-            <NuxtLink v-bind:to="`/teams/${teamnumber}`">
-                <div>
-                    <p class="text-lg">{{ teamname }}</p>
-                    <p class="text-4xl lg:text-6xl text-primary hover:text-primary-300 font-bold">{{ teamnumber }}</p>
-                    <p class="text-xl text-primary-600">{{ teamlocation }}</p>
+    <div class="flex flex-col gap-2 p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+        <div class="flex flex-row justify-between">
+            <div class="flex">
+                <NuxtLink :to="`/teams/${teamnumber}`">
+                    <div>
+                        <p class="text-lg">{{ teamname }}</p>
+                        <p class="text-4xl lg:text-6xl text-primary hover:text-primary-300 font-bold">{{ teamnumber }}</p>
+                        <p class="text-xl text-primary-600">{{ teamlocation }}</p>
+                    </div>
+                </NuxtLink>
+            </div>
+            <div v-if="award && awardyear" class="-mt-5 items-center min-h-40 w-30 *:text-center hover:*:translate-y-5 bg-no-repeat bg-contain bg-[url('../images/awardBanner.svg')]">
+                <div class="h-full w-full pt-3 px-4 bg-no-repeat bg-contain bg-[url('../images/awardBanner.svg')] transition-transform">
+                    <NuxtLink class="flex flex-col gap-2 w-full h-full" :to="`/teams/${teamnumber}#awards`">
+                        <p class="font-bold text-xl leading-3">{{ awardyear }}</p>
+                        <p class="text-lg leading-5">{{ award }}</p>
+                    </NuxtLink>
                 </div>
-            </NuxtLink>
+            </div>
         </div>
         <div class="flex justify-end">
             <div class="flex flex-wrap max-w-64 justify-end gap-1 *:text-lg *:hover:ring-primary-200 *:hover:*:text-primary-200">
@@ -46,7 +56,9 @@ defineProps({
     codelink: String,
     photolink: String,
     videolink: String,
-    weblink: String
+    weblink: String,
+    awardyear: Number,
+    award: String
 })
 
 </script>
