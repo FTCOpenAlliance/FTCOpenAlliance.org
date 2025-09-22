@@ -71,10 +71,11 @@ const option = ref({
         data: props.data,
         label: {show:false},
         labelLine: {show: false},
-        itemStyle: {
-            color: '#c23531',
-            shadowBlur: 200,
-            shadowColor: 'rgba(0, 0, 0, 0.5)'
+        emphasis: {
+            itemStyle: {
+                shadowBlur: 20,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            },
         },
         animationType: 'scale',
         animationEasing: 'elasticOut',
