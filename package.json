@@ -23,6 +23,7 @@
   "devDependencies": {
     "@formkit/nuxt": "^1.6.9",
     "autoprefixer": "^10.4.19",
+    "nuxt-echarts": "^1.0.0",
     "postcss": "^8.4.39"
   }
 }

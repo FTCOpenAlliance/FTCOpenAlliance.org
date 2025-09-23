@@ -120,10 +120,12 @@
 
 <script setup>
 
-import { kvLists } from '~/assets/scripts/formKV'
+import { ftcKV } from '~/assets/scripts/formKV'
 import { getNode } from '@formkit/core'
 
 let toast = useToast()
+let kvLists = ftcKV
+
 const apiURL = useRuntimeConfig().public.API_URL
 
 const multiCheckboxStyle = {

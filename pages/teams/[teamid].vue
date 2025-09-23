@@ -18,17 +18,17 @@
                         <TeamMiniStat name="Rookie Year" :val="teamData.RookieYear"/>
                         <TeamMiniStat name="Members" :val="teamData.TeamMembers"/>
                         <TeamMiniStat name="Mentors" :val="teamData.Mentors"/>
-                        <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
+                        <TeamMiniStat name="Type" :val="ftcKV.TeamType[teamData.TeamType]"/>
                     </div>
                 </div>
-                <div class="flex flex-row gap-2 w-full *:w-full">
+                <div class="flex flex-col md:flex-row gap-2 w-full *:w-full">
                     <UButton :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
                     <UButton :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
                 </div>
             </div>
         </PageTitle>
-        <div class="px-10 md:px-20 lg:px-48">
-            <div class="pb-10">
+        <div class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
+            <div>
                 <div class="flex justify-center mb-5">
                     <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
                 </div>
@@ -43,38 +43,43 @@
                     </div>
                 </div>
             </div>
-            <div class="pb-10">
+            <div>
                 <div class="flex justify-center mb-5">
                     <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
                 </div>
                 <TeamStat name="Meeting Hours/Week" v-bind:val="teamData.MeetingHours"/>
-                <TeamStat name="Approx. Budget" v-bind:val="kvLists.Budget[teamData.Budget]"/>
-                <TeamStat name="Workspace" v-bind:val="kvLists.Workspace[teamData.Workspace]"/>
-                <TeamStat name="Sponsorship Status" v-bind:val="kvLists.Sponsors[teamData.Sponsors]"/>
+                <TeamStat name="Approx. Budget" v-bind:val="ftcKV.Budget[teamData.Budget]"/>
+                <TeamStat name="Workspace" v-bind:val="ftcKV.Workspace[teamData.Workspace]"/>
+                <TeamStat name="Sponsorship Status" v-bind:val="ftcKV.Sponsors[teamData.Sponsors]"/>
             </div>
-            <div class="pb-10">
+            <div>
                 <div class="flex justify-center mb-5">
                     <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
                 </div>
-                <TeamStat name="Drivetrain" v-bind:val="kvLists.Drivetrain[teamData.Drivetrain]"/>
-                <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
-                <TeamStat name="Product Sources" v-bind:val="parseKVArray(teamData.Products, kvLists.Products)"/>
-                <TeamStat name="Odometry" v-bind:val="parseKVArray(teamData.Odometry, kvLists.Odometry)"/>
-                <TeamStat name="Sensors" v-bind:val="parseKVArray(teamData.Sensors, kvLists.Sensors)"/>
-                <TeamStat name="Systems" v-bind:val="parseKVArray(teamData.Systems, kvLists.Systems)"/>
+                <TeamStat name="Drivetrain" v-bind:val="ftcKV.Drivetrain[teamData.Drivetrain]"/>
+                <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, ftcKV.Materials)"/>
+                <TeamStat name="Product Sources" v-bind:val="parseKVArray(teamData.Products, ftcKV.Products)"/>
+                <TeamStat name="Odometry" v-bind:val="parseKVArray(teamData.Odometry, ftcKV.Odometry)"/>
+                <TeamStat name="Sensors" v-bind:val="parseKVArray(teamData.Sensors, ftcKV.Sensors)"/>
+                <TeamStat name="Systems" v-bind:val="parseKVArray(teamData.Systems, ftcKV.Systems)"/>
             </div>
-            <div class="pb-10">
+            <div>
                 <div class="flex justify-center mb-5">
                     <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
                 </div>
-                <TeamStat name="Programming Language" v-bind:val="kvLists.CodeLang[teamData.CodeLang]"/>
-                <TeamStat name="Development Environment" v-bind:val="kvLists.CodeEnv[teamData.CodeEnv]"/>
-                <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, kvLists.CodeTools)"/>
-                <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
+                <TeamStat name="Programming Language" v-bind:val="ftcKV.CodeLang[teamData.CodeLang]"/>
+                <TeamStat name="Development Environment" v-bind:val="ftcKV.CodeEnv[teamData.CodeEnv]"/>
+                <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, ftcKV.CodeTools)"/>
+                <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, ftcKV.Vision)"/>
             </div>
-        </div>
-        <div v-if="items.length > 0" class="bg-radial">
-            <div class="flex flex-col justify-center mb-5 md:px-20 lg:px-48">
+            <div id="awards" class="flex flex-col py-6 gap-5">
+                <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
+                <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in awardData">
+                    <p class="text-xl md:text-5xl font-bold text-primary">{{ award.Year }}</p>
+                    <p class="text-lg md:text-2xl lg:text-3xl">{{ award.Award }}</p>
+                </div>
+            </div>
+            <div v-if="items.length > 0">
                 <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
                 <UCarousel class="flex py-10" v-if="items" v-slot="{ item }" :items="items" arrows>
                     <PageBlock class="flex flex-col mx-10 shadow-black">
@@ -91,7 +96,7 @@
 <script setup>
 import normalizeUrl from 'normalize-url';
 const { teamid } = useRoute().params
-import { kvLists } from '~/assets/scripts/formKV'
+import { ftcKV } from '~/assets/scripts/formKV'
 
 function checkNormalizable(inputUrl) {
 
@@ -115,9 +120,13 @@ function parseKVArray(inputArray, kvList) {
     return outputArray.join(", ")
 }
 
-const {data} = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
+const teamFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
 
-const teamData = data.value[0] || []
+const awardsFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/allAwards`)
+
+const teamData = teamFetch.data.value[0] || []
+
+const awardData = awardsFetch.data.value || []
 
 if (teamData == []) {
     throw createError({ statusCode: 404, statusMessage: `The team you specified [ ${teamid} ] does not exist or is not registered on FTC Open Alliance.` })

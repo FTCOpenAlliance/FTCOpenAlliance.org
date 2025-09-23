@@ -17,7 +17,9 @@
                 v-bind:codelink="teamsData[i-1].Code"
                 v-bind:photolink="teamsData[i-1].Photo"
                 v-bind:videolink="teamsData[i-1].Video"
-                v-bind:teamlocation="teamsData[i-1].Location"/>
+                v-bind:teamlocation="teamsData[i-1].Location"
+                v-bind:awardyear="teamsData[i-1].NewestAwardYear"
+                v-bind:award="teamsData[i-1].NewestAward"/>
             </div>
         </div>
         <div v-if="teamsData.length == 0" class="flex justify-center items-center md:flex-row flex-col md:p-24 p-12">

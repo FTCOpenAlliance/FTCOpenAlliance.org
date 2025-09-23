@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2024-07-03",
-  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt'],
+  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts'],
   ui: {
     theme: {
       colors: [
@@ -25,6 +25,12 @@ export default defineNuxtConfig({
         'error'
       ]
     }
+  },
+  echarts: {
+    renderer: ['canvas'],
+    charts: ['BarChart', 'PieChart'],
+    components: ['TitleComponent', 'LegendComponent', 'VisualMapComponent', 'DatasetComponent', 'GridComponent', 'TooltipComponent'],
+    features: ['LabelLayout', 'UniversalTransition'],
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
