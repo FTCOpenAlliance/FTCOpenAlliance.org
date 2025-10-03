@@ -32,9 +32,6 @@ export default defineNuxtConfig({
     components: ['TitleComponent', 'LegendComponent', 'VisualMapComponent', 'DatasetComponent', 'GridComponent', 'TooltipComponent'],
     features: ['LabelLayout', 'UniversalTransition'],
   },
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  },
   runtimeConfig: {
     public: {
       API_URL: process.env.API_DEV_URL || 'https://api.ftcopenalliance.org',

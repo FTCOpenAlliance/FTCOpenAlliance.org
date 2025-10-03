@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <PageTitle>
+        <PageTitle v-if="!error">
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-200">
                     <div class="flex flex-col mb-5">
@@ -27,7 +27,12 @@
                 </div>
             </div>
         </PageTitle>
-        <div class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
+        <PageTitle v-if="error">
+            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
+                {{teamid}}
+            </h1>
+        </PageTitle>
+        <div v-if="!error" class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
             <div>
                 <div class="flex justify-center mb-5">
                     <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
@@ -72,9 +77,9 @@
                 <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, ftcKV.CodeTools)"/>
                 <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, ftcKV.Vision)"/>
             </div>
-            <div id="awards" class="flex flex-col py-6 gap-5">
+            <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col py-6 gap-5">
                 <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
-                <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in awardData">
+                <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
                     <p class="text-xl md:text-5xl font-bold text-primary">{{ award.Year }}</p>
                     <p class="text-lg md:text-2xl lg:text-3xl">{{ award.Award }}</p>
                 </div>
@@ -91,6 +96,7 @@
                 </UCarousel>
             </div>
         </div>
+        <PageError :error="error" :errortext="errorText" :errormessage="errorMessage"/>
     </div>
 </template>
 <script setup>
@@ -120,48 +126,60 @@ function parseKVArray(inputArray, kvList) {
     return outputArray.join(", ")
 }
 
+let error, errorText, errorMessage
+
 const teamFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
 
-const awardsFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/allAwards`)
+let teamData
 
-const teamData = teamFetch.data.value[0] || []
-
-const awardData = awardsFetch.data.value || []
-
-if (teamData == []) {
-    throw createError({ statusCode: 404, statusMessage: `The team you specified [ ${teamid} ] does not exist or is not registered on FTC Open Alliance.` })
+if (teamFetch.data.value) {
+    teamData = teamFetch.data.value[0]
 }
 
-let items = [
-{
-    q: "What is something that you think is unique about your robot this season? What about your robot do you think would make it stand out at competition?",
-    a: teamData.UniqueFeatures
-},
-{
-    q: "What types of Outreach do you plan to do for this season? Which of those Outreach initiatives are you most proud of?",
-    a: teamData.Outreach
-},
-{
-    q: "Describe an element of your code which you think will be most advantageous to your performance over the season.",
-    a: teamData.CodeAdvantage
-},
-{
-    q: "What competitions will you be attending? Which of the ones that you listed are you looking forward to the most?",
-    a: teamData.Competitions
-},
-{
-    q: "How will you be organizing your team at competitions?",
-    a: teamData.TeamStrategy
-},
-{
-    q: "Describe a unique or noteworthy strategic device or element that you think would be useful for this game.",
-    a: teamData.GameStrategy
-},
-{
-    q: "How would you describe your design process? How many options/strategies do you compare? How do you visualize your designs before building?",
-    a: teamData.DesignProcess
-},
-].filter(item => item.a !== null);
+if (teamData == undefined) {
+    error = true
+    errorText = `There was an issue while fetching the data for team ${teamid}.`
+    errorMessage = teamFetch.error.value.data
+} else if (teamData.length == 0) {
+    error = true
+    errorText = "The team specified is not on the FTC Open Alliance"
+    errorMessage = ""
+}
+
+let items 
+
+if (teamFetch.data.value) {
+    items = [
+        {
+            q: "What is something that you think is unique about your robot this season? What about your robot do you think would make it stand out at competition?",
+            a: teamData.UniqueFeatures
+        },
+        {
+            q: "What types of Outreach do you plan to do for this season? Which of those Outreach initiatives are you most proud of?",
+            a: teamData.Outreach
+        },
+        {
+            q: "Describe an element of your code which you think will be most advantageous to your performance over the season.",
+            a: teamData.CodeAdvantage
+        },
+        {
+            q: "What competitions will you be attending? Which of the ones that you listed are you looking forward to the most?",
+            a: teamData.Competitions
+        },
+        {
+            q: "How will you be organizing your team at competitions?",
+            a: teamData.TeamStrategy
+        },
+        {
+            q: "Describe a unique or noteworthy strategic device or element that you think would be useful for this game.",
+            a: teamData.GameStrategy
+        },
+        {
+            q: "How would you describe your design process? How many options/strategies do you compare? How do you visualize your designs before building?",
+            a: teamData.DesignProcess
+        },
+    ].filter(item => item.a !== null)
+}
 
 useSeoMeta({
     title: `${teamid} | FTC Open Alliance`,

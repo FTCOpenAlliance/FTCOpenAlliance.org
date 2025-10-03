@@ -140,40 +140,37 @@ const multiCheckboxStyle = {
 const sectionStyle = "flex flex-col gap-6 backdrop-blur-sm p-10 mb-6 shadow-xl shadow-primary-800 border border-primary"
 
 async function formCallback(formData) {
-    
-    try {
-        $fetch(`${apiURL}/internal/formSubmission`, {
+
+    let post = await useFetch(`${apiURL}/internal/formSubmission`, {
             method: 'POST',
             body: formData
         })
-        document.getElementById
-        toast.add({
-            title: "Your team's data was updated successfully!.",
-            description: "You will be redirected to your team's page momentarily.",
-            icon: "i-heroicons-outline-check-circle",
-            color: 'success'
-        })
-        setTimeout(async () => {
-            await navigateTo(`/teams/${formData.TeamNumber}`)
-        }, 1000);
-        
-    } catch (e) {
+
+    if (post.error.value) {
         toast.add({
             title: "Your team's data could not be saved.",
-            description: "An error occured while communicating with the database.",
+            description: post.error.value.data,
             icon: "i-heroicons-outline-exclamation-circle",
             color: 'error'
         })
+        return;
     }
+    
+    toast.add({
+        title: "Your team's data was updated successfully!.",
+        description: "You will be redirected to your team's page momentarily.",
+        icon: "i-heroicons-outline-check-circle",
+        color: 'success'
+    })
+    setTimeout(async () => {
+        await navigateTo(`/teams/${formData.TeamNumber}`)
+    }, 1000);
     
 }
 
-function autofillTeamData() {
+async function autofillTeamData() {
     
     const teamNumber = getNode('TeamNumber').value
-    
-    updatePIIInputs(teamNumber)
-
     
     if (isNaN(parseInt(teamNumber))) {
         toast.add({
@@ -181,40 +178,39 @@ function autofillTeamData() {
             icon: "i-heroicons-outline-exclamation-circle",
             color: 'warning'
         })
-    } else {
-        fetch(`${apiURL}/teams/${parseInt(teamNumber)}/all`)
-        .then(response => {
-            if (response.ok) {
-                return response.json()    
-            } else {return []}
-        })
-        .then(data => {
-            if (data.length !== 0) {
-                getNode('TeamNumber').props.disabled = true
-                document.getElementById("autofillBtn").hidden = true
-                document.getElementById("autofillBtn").disabled = true
-                
-                for (const key in data[0]) {
-                    if (getNode(key)) {
-                        getNode(key).input(data[0][key] || '')
-                    }
+        return;
+    }
+    
+    const dataFetch = await useFetch(`${apiURL}/teams/${parseInt(teamNumber)}/all`)
+    
+    if (dataFetch.data.value != undefined) {
+        let teamData = dataFetch.data.value
+        if (teamData.length !== 0) {
+            getNode('TeamNumber').props.disabled = true
+            document.getElementById("autofillBtn").hidden = true
+            document.getElementById("autofillBtn").disabled = true
+            
+            for (const key in teamData[0]) {
+                if (getNode(key)) {
+                    getNode(key).input(teamData[0][key] || '')
                 }
-            } else {
-                toast.add({
-                    title: "Your team's data could not be fetched.",
-                    description: "Your team likely has not submitted data before.",
-                    icon: "i-heroicons-outline-exclamation-circle",
-                    color: 'error'
-                })
             }
-        })
-        .catch(error => {
+            
+            updatePIIInputs(teamNumber)
+        } else {
             toast.add({
                 title: "Your team's data could not be fetched.",
-                description: "An error occured while communicating with the database.",
+                description: "Your team is not yet registered on the FTC Open Alliance.",
                 icon: "i-heroicons-outline-exclamation-circle",
                 color: 'error'
             })
+        }
+    } else {
+        toast.add({
+            title: "Your team's data could not be fetched.",
+            description: dataFetch.error.value.data,
+            icon: "i-heroicons-outline-exclamation-circle",
+            color: 'error'
         })
     }
 }
@@ -224,7 +220,7 @@ function numberChangeCallback(event) {
     updatePIIInputs(teamNumber)
 }
 
-function updatePIIInputs(teamNumber) {
+async function updatePIIInputs(teamNumber) {
     
     if (isNaN(parseInt(teamNumber))) {
         document.getElementById("PIINotice").style.display = "none"
@@ -233,22 +229,20 @@ function updatePIIInputs(teamNumber) {
         return
     }
     
-    fetch(`${apiURL}/internal/checkTeamPII/${parseInt(teamNumber)}`)
-    .then(response => {
-        if (response.ok || true) {
-            return response.json()    
-        }
-    })
-    .then(data => {
-        if (data.PIIExists !== undefined) {
-            document.getElementById("PIINotice").style.display = data.PIIExists ? "block" : "none"
-            getNode("ContactEmail").props.validation = data.PIIExists ? "" : "required|email"
-            getNode("ShipAddress").props.validation = data.PIIExists ? "" : "required"
-        }
-    })
-    .catch(error => {
-        console.error("Error checking team PII:", error)
-    })
+    const piiFetch = await useFetch(`${apiURL}/internal/checkTeamPII/${parseInt(teamNumber)}`)
+    let piiData = piiFetch.data.value || undefined
+    if (piiData != undefined && piiData.PIIExists != undefined) {         
+        document.getElementById("PIINotice").style.display = piiData.PIIExists ? "block" : "none"
+        getNode("ContactEmail").props.validation = piiData.PIIExists ? "" : "required|email"
+        getNode("ShipAddress").props.validation = piiData.PIIExists ? "" : "required"
+    } else {
+        toast.add({
+            title: "There was an issue while checking your team's registration status.",
+            description: piiFetch.error.value.data,
+            icon: "i-heroicons-outline-exclamation-circle",
+            color: 'error'
+        })
+    }
 }
 
 useHead
