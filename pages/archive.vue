@@ -5,23 +5,37 @@
                     The Archives
                 </h1>
         </PageTitle>
-        <div v-if="archiveList != []" class="flex flex-col gap-8 p-4 md:p-16">
+        <div v-if="!error" class="flex flex-col gap-8 p-4 md:p-16">
             <ArchiveBlock
-                v-for="i in archiveList.length"
-                :key="i"
-                v-bind:name="archiveList[i-1].Name"
-                v-bind:timestamp="archiveList[i-1].Timestamp"
-                v-bind:tag="archiveList[i-1].Tag"
-                v-bind:sizekb="archiveList[i-1].SizeKB"
+                v-for="archive of archiveList"
+                :key="archive"
+                v-bind:name="archive.Name"
+                v-bind:timestamp="archive.Timestamp"
+                v-bind:tag="archive.Tag"
+                v-bind:sizekb="archive.SizeKB"
             />
         </div>
+        <PageError :error="error" :errortext="errorText" :errormessage="errorMessage"/>
     </div>
 </template>
 
 <script setup>
 
-const {data: archiveFetch} = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`)
+const archiveFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`)
 
-const archiveList = archiveFetch || []
+const archiveList = archiveFetch.data.value || undefined
 
+let error, errorText, errorMessage
+
+if (archiveList == undefined) {
+    error = true
+    errorText = "Archive listing could not be retrieved."
+    errorMessage = archiveFetch.error.value.data
+}
+
+useHead
+({
+    title
+    : 'Archive | FTC Open Alliance'
+})
 </script>

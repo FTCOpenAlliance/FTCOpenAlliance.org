@@ -1,15 +1,11 @@
-<script setup lang="ts">
-//import { NavigationHeader } from '#build/components';
-</script>
-
 <template>
     <UApp>
         <div>
             <div>
-                <NuxtLoadingIndicator :height="2" color="#ff6600"/>
+                <NuxtLoadingIndicator :height="2" :color="(banner) ? '#000' : '#ff6600'" />
                 <NavigationHeader />
             </div>
-                <slot/>
+            <slot/>
             <div>
                 <PageFooter />
             </div>
@@ -17,6 +13,18 @@
     </UApp>
 </template>
 
-<style  scoped>
+<script setup>
 
-</style>
+    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`)
+
+    const flags = useState('flags')
+
+    flags.value = data.value || undefined
+
+    let banner
+
+    if (flags.value && flags.value.BannerHTML) {
+        true
+    }
+    
+</script>
