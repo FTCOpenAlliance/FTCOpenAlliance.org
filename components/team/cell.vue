@@ -21,12 +21,12 @@
         </div>
         <div class="flex justify-end">
             <div class="flex flex-wrap max-w-64 justify-end gap-1 *:text-lg *:hover:ring-primary-200 *:hover:*:text-primary-200">
-                <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(buildthread)" v-if="checkNormalizable(buildthread)"/>
-                <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(cadlink)" v-if="checkNormalizable(cadlink)"/>
-                <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(codelink)" v-if="checkNormalizable(codelink)"/>
-                <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(photolink)" v-if="checkNormalizable(photolink)"/>
-                <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(videolink)" v-if="checkNormalizable(videolink)"/>
-                <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(weblink)" v-if="checkNormalizable(weblink)"/>
+                <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(buildthread, normalizeOptions)" v-if="checkNormalizable(buildthread)"/>
+                <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(cadlink, normalizeOptions)" v-if="checkNormalizable(cadlink)"/>
+                <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(codelink, normalizeOptions)" v-if="checkNormalizable(codelink)"/>
+                <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(photolink, normalizeOptions)" v-if="checkNormalizable(photolink)"/>
+                <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(videolink, normalizeOptions)" v-if="checkNormalizable(videolink)"/>
+                <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(weblink, normalizeOptions)" v-if="checkNormalizable(weblink)"/>
             </div>
         </div>
     </div>
@@ -34,6 +34,9 @@
 
 <script setup>
 import normalizeUrl from 'normalize-url';
+const normalizeOptions = {
+    stripWWW: false
+}
 
 function checkNormalizable(inputUrl) {
     
