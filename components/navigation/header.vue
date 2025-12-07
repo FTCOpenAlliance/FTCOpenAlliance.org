@@ -7,7 +7,7 @@
             <div class="flex justify-between items-center gap-4 p-5 pointer-events-auto bg-glass shadow-lg shadow-primary-800 border border-primary">
                 <div class="max-w-48 md:max-w-36">
                     <NuxtLink to="/">
-                        <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/SHORT-HORIZONTAL.svg">
+                        <img src="/public/images/FTCOALogos/ShortHorizontal.svg">
                     </NuxtLink>
                 </div>
                 <UPopover class="lg:hidden" :popper="{placement: 'bottom-end'}">

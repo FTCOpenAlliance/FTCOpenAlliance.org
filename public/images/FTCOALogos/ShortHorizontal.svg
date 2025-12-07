@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="370mm"
+   height="100mm"
+   viewBox="0 0 370 100"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title7">FTC Open Alliance Official Logo Set</title>
+  <defs
+     id="defs1" />
+  <g
+     id="layer2"
+     style="display:inline"
+     transform="translate(1.3526197e-5,-200)">
+    <path
+       style="fill:#ff6600;stroke-width:25"
+       d="m 55.000001,235.00002 10,10 25,-25 4.999995,5 v -20 H 75.000001 l 5,5 z"
+       id="path2-1-5" />
+    <path
+       style="fill:#f9f9f9;stroke-width:25"
+       d="m 50.000002,265.00002 9.999999,10 h -5 v 20 h -10 v -20 h -5 z"
+       id="path3-94-9" />
+    <path
+       style="fill:#f9f9f9;stroke-width:25"
+       d="m 35.000002,250.00002 -10.000001,10 v -5 H 5.0000028 v -10 H 25.000001 v -5 z"
+       id="path3-5-7-4" />
+    <path
+       id="text10"
+       style="font-size:113.551px;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache';fill:#f9f9f9;stroke-width:174.933"
+       d="m 116.08871,210 -11.08873,11.08924 v 69.08416 h 16.79949 v -34.48679 h 19.84944 v -14.97014 h -19.84944 v -15.46882 h 21.5129 V 210 Z m 34.20928,0 v 15.24765 h 15.69103 v 64.92575 h 16.9106 v -64.92575 h 15.13654 V 210 Z m 66.53392,0 -11.97601,11.03343 v 69.13997 h 36.15025 l 11.08873,-11.08925 v -13.86117 h -16.8553 v 9.75858 H 221.7112 v -49.73391 h 13.52838 v 15.02544 h 16.8553 V 210 Z" />
+    <path
+       id="path15"
+       style="font-size:113.551px;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache';fill:#ff6600;stroke-width:174.933"
+       d="m 258.80351,210 v 80.1734 h 48.40377 V 210 Z m 68.69607,0 -12.91859,12.6969 v 67.4765 h 16.8553 v -26.33638 h 14.30507 v 26.33638 h 16.79949 V 210 Z m -51.84077,15.24765 h 14.74846 v 49.73391 h -14.74846 z m 55.77748,0 h 14.30507 v 23.34224 h -14.30507 z" />
+    <path
+       id="path1-6"
+       style="fill:#ff6600;stroke-width:25"
+       d="M 49.999907,240.0001 A 10,10 0 0 0 40,250.00001 a 10,10 0 0 0 9.999907,9.9999 10,10 0 0 0 9.999906,-9.9999 10,10 0 0 0 -9.999906,-9.99991 z m 0,2.92902 6.123657,3.53519 v 7.0714 l -6.123657,3.53518 -6.123657,-3.53518 v -7.0714 z" />
+  </g>
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>FTC Open Alliance Official Logo Set</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Hamid Hussain</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Electric Mayhem Robotics, FTC Open Alliance</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
