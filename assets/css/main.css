@@ -15,7 +15,7 @@ body {
 
 .bg-grid {
   animation: grid-move 120s linear infinite;
-  background-image: radial-gradient(transparent 40%, black 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,#000 1px);
+  background-image: radial-gradient(transparent 40%, black 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,var(--color-primary-900) 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
   background-attachment: scroll, fixed, fixed;
 }

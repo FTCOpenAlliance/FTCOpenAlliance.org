@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-between p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+    <div class="flex flex-col gap-4 justify-between p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
         <div class="flex flex-row justify-between">
             <div class="flex max-w-[60%]">
                 <NuxtLink :to="`/teams/${teamnumber}`">

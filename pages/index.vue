@@ -81,7 +81,7 @@
                 FTC Open Alliance to ensure that FTC teams around the world can keep sharing
                 and collaborating without limits.
             </p>
-                <UCarousel loop dots :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary">
+                <UCarousel loop :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary">
                     <div class="flex grow justify-center items-center p-8">
                         <a :href="item.link" target="_blank" class="flex flex-col justify-between gap-6" draggable="false">
                             <p class="text-center text-4xl text-primary font-bold">{{ item.name }}</p>

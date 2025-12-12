@@ -21,7 +21,7 @@
 
 <script setup>
 
-const archiveFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`)
+const archiveFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`, {server: false})
 
 const archiveList = archiveFetch.data.value || undefined
 
