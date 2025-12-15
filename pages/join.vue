@@ -37,9 +37,9 @@
                             After submission, they may not be changed. If you must update this information,
                             please send an email to <u><a href="mailto:contact@ftcopenalliance.org">contact@ftcopenalliance.org</a></u>.
                         </p>
-                        <FormKit type="email" name="ContactEmail" id="ContactEmail" label="Contact Email Address" validation="required|email"/>
-                        <FormKit type="text" name="ShipAddress" id="ShipAddress" label="Shipping Address" validation="required"/>
-                        <div id="PIINotice" style="display: none;" class="absolute items-center top-0 left-0 w-full h-full bg-glass bg-[#00000066] border-primary border-2">
+                        <FormKit type="email" name="ContactEmail" id="ContactEmail" label="Contact Email Address" :validation="piiExists ? '' : 'required|email'"/>
+                        <FormKit type="text" name="ShipAddress" id="ShipAddress" label="Shipping Address" :validation="piiExists ? '' : 'required'"/>
+                        <div id="PIINotice" :class="piiExists ? 'visible' : 'invisible'" class="absolute items-center top-0 left-0 w-full h-full bg-glass bg-[#000000b8] border-primary border-2 scale-105">
                             <div class="flex items-center w-full h-full text-center p-4 md:p-12 sm:text-lg md:text-xl">
                                 <p class="text-primary-300">
                                     Your contact email address and shipping address have already been collected.<br>
@@ -141,31 +141,37 @@ const sectionStyle = "flex flex-col gap-6 backdrop-blur-sm p-10 mb-6 shadow-xl s
 
 async function formCallback(formData) {
 
-    let post = await useFetch(`${apiURL}/internal/formSubmission`, {
-            method: 'POST',
-            body: formData
-        })
-
-    if (post.error.value) {
-        toast.add({
-            title: "Your team's data could not be saved.",
-            description: post.error.value.data,
-            icon: "i-heroicons-outline-exclamation-circle",
-            color: 'error'
-        })
-        return;
-    }
-    
-    toast.add({
-        title: "Your team's data was updated successfully!.",
-        description: "You will be redirected to your team's page momentarily.",
-        icon: "i-heroicons-outline-check-circle",
-        color: 'success'
+    await $fetch(`${apiURL}/internal/formSubmission`, {
+        method: 'POST',
+        body: formData,
+        onResponse() {
+            toast.add({
+                title: "Your team's data was updated successfully!.",
+                description: "You will be redirected to your team's page momentarily. Changes may take some time to appear.",
+                icon: "i-heroicons-outline-check-circle",
+                color: 'success'
+            })
+            setTimeout(async () => {
+                await navigateTo(`/teams/${formData.TeamNumber}`)
+            }, 1000);
+        },
+        onResponseError({response}) {
+            toast.add({
+                title: "Your team's data could not be saved.",
+                description: response._data,
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        },
+        onRequestError() {
+            toast.add({
+                title: "Your team's data could not be saved.",
+                description: "API Request Error",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        }
     })
-    setTimeout(async () => {
-        await navigateTo(`/teams/${formData.TeamNumber}`)
-    }, 1000);
-    
 }
 
 async function autofillTeamData() {
@@ -181,38 +187,37 @@ async function autofillTeamData() {
         return;
     }
     
-    const dataFetch = await useFetch(`${apiURL}/teams/${parseInt(teamNumber)}/all`)
-    
-    if (dataFetch.data.value != undefined) {
-        let teamData = dataFetch.data.value
-        if (teamData.length !== 0) {
+    await $fetch(`${apiURL}/internal/formAutofillData/${parseInt(teamNumber)}`, {
+        onResponse({response}) {
             getNode('TeamNumber').props.disabled = true
             document.getElementById("autofillBtn").hidden = true
             document.getElementById("autofillBtn").disabled = true
             
-            for (const key in teamData[0]) {
+            for (const key in response._data[0]) {
                 if (getNode(key)) {
-                    getNode(key).input(teamData[0][key] || '')
+                    getNode(key).input(response._data[0][key] || '')
                 }
             }
             
             updatePIIInputs(teamNumber)
-        } else {
+        },
+        onResponseError({response}) {
             toast.add({
                 title: "Your team's data could not be fetched.",
-                description: "Your team is not yet registered on the FTC Open Alliance.",
+                description: response._data ?? "API Error",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        },
+        onRequestError() {
+            toast.add({
+                title: "Your team's data could not be fetched.",
+                description: "API Request Failed",
                 icon: "i-heroicons-outline-exclamation-circle",
                 color: 'error'
             })
         }
-    } else {
-        toast.add({
-            title: "Your team's data could not be fetched.",
-            description: dataFetch.error.value.data,
-            icon: "i-heroicons-outline-exclamation-circle",
-            color: 'error'
-        })
-    }
+    })
 }
 
 function numberChangeCallback(event) {
@@ -220,30 +225,40 @@ function numberChangeCallback(event) {
     updatePIIInputs(teamNumber)
 }
 
+let piiExists = ref(false)
+
 async function updatePIIInputs(teamNumber) {
     
     if (isNaN(parseInt(teamNumber))) {
-        document.getElementById("PIINotice").style.display = "none"
-        getNode("ContactEmail").props.validation = "required|email"
-        getNode("ShipAddress").props.validation = "required"
+        piiExists.value = false
         return
     }
     
-    const piiFetch = await useFetch(`${apiURL}/internal/checkTeamPII/${parseInt(teamNumber)}`)
-    let piiData = piiFetch.data.value || undefined
-    if (piiData != undefined && piiData.PIIExists != undefined) {         
-        document.getElementById("PIINotice").style.display = piiData.PIIExists ? "block" : "none"
-        getNode("ContactEmail").props.validation = piiData.PIIExists ? "" : "required|email"
-        getNode("ShipAddress").props.validation = piiData.PIIExists ? "" : "required"
-    } else {
-        toast.add({
-            title: "There was an issue while checking your team's registration status.",
-            description: piiFetch.error.value.data,
-            icon: "i-heroicons-outline-exclamation-circle",
-            color: 'error'
-        })
-    }
+    await $fetch(`${apiURL}/internal/checkTeamPII/${parseInt(teamNumber)}`, {
+        onResponse({response}) {
+            if (response._data != undefined && response._data.PIIExists != undefined) {
+                piiExists.value = response._data.PIIExists
+            }
+        },
+        onResponseError({response}) {
+            toast.add({
+                title: "There was an issue while checking your team's registration status.",
+                description: response._data ?? "API Error",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        },
+        onRequestError() {
+            toast.add({
+                title: "There was an issue while checking your team's registration status.",
+                description: "API Request Failed",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        }
+    })
 }
+
 
 useHead
 ({

@@ -15,14 +15,13 @@ body {
 
 .bg-grid {
   animation: grid-move 120s linear infinite;
-  background-image: linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,#000 1px);
-  background-size: 40px 40px;
-  background-attachment: fixed;
+  background-image: radial-gradient(transparent 40%, black 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,var(--color-primary-900) 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: scroll, fixed, fixed;
 }
 
 .bg-dots {
-  background-color: #000;
-  background-image: radial-gradient(var(--color-primary-800) 2px, #000000 2px);
+  background-image: radial-gradient(var(--color-primary-900) 1px, black 3px);
   background-size: 20px 20px;
   animation: parallax linear;
   animation-timeline: scroll(); 
@@ -49,9 +48,9 @@ body {
 
 @keyframes parallax {
   from {
-    background-position: bottom 0px center;
+    background-position: bottom 0% center;
   }
   to {
-    background-position: bottom -800px center;
+    background-position: bottom -60% center;
   }
 }

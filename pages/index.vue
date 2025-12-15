@@ -3,7 +3,7 @@
         <div>
             <PageTitle class="*:*:flex-col lg:*:*:flex-row min-h-screen *:px-4 *:md:px-auto">
                 <div class="flex justify-center items-center lg:mr-10 w-3/5 lg:w-auto">
-                    <img src="https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/svg/ICON.svg">
+                    <img src="/images/FTCOALogos/Icon.svg">
                 </div>
                 <div>
                     <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold text-primary">
@@ -81,7 +81,7 @@
                 FTC Open Alliance to ensure that FTC teams around the world can keep sharing
                 and collaborating without limits.
             </p>
-                <UCarousel loop dots :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary">
+                <UCarousel loop :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="items" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary">
                     <div class="flex grow justify-center items-center p-8">
                         <a :href="item.link" target="_blank" class="flex flex-col justify-between gap-6" draggable="false">
                             <p class="text-center text-4xl text-primary font-bold">{{ item.name }}</p>
@@ -153,31 +153,31 @@ useHead
 const items = [
     {
         name: "HCB",
-        image: '/images/HCB.svg',
+        image: '/images/partnerLogos/HCB.svg',
         link: "https://hackclub.com/hcb",
         status: "Fiscal Sponsorship Provider"
     },
     {
         name: "FUN Robotics Network",
-        image: '/images/FUNNetwork.png',
+        image: '/images/partnerLogos/FUNNetwork.png',
         link: "https://funroboticsnetwork.com/",
         status: "Media Partner"
     },
     {
         name: "Chief Delphi",
-        image: '/images/ChiefDelphi.png', 
+        image: '/images/partnerLogos/ChiefDelphi.png', 
         link: "https://chiefdelphi.com/",
         status: "Content Partner"
     },
     {
         name: "Studica Robotics",
-        image: '/images/Studica.png', 
+        image: '/images/partnerLogos/Studica.png', 
         link: "https://www.studica.com/",
         status: "Sponsor"
     },
     {
         name: "Ferra Components",
-        image: '/images/Ferra.svg',
+        image: '/images/partnerLogos/Ferra.svg',
         link: "https://ferracomponents.com/",
         status: "Awards Sponsor"
     }

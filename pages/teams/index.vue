@@ -47,7 +47,7 @@ let error, errorText, errorMessage
 
 let rawFetch, teamsFetch, teamsData
 
-rawFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams`)
+rawFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams`, {server: false})
 
 teamsFetch = rawFetch.data
 

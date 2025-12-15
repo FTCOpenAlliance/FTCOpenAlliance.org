@@ -5,8 +5,7 @@
                 Statistics
             </h1>
         </PageTitle>
-
-        <div v-if="!error" class="flex flex-col gap-8 pt-8 sm:px-12 md:px-24">
+        <div v-if="!showError" class="flex flex-col gap-8 pt-8 sm:px-12 md:px-24">
             <USeparator class="text-xl text-primary md:text-4xl"> Team Info </USeparator>
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 *:w-full gap-4 w-full sm:p-6">
                 <StatsPieChart title="Team Type" :data="ref(applyKVNames(stats.TeamType, ftcKV.TeamType))"/>
@@ -30,20 +29,20 @@
                 <StatsBarChart class="w-full lg:col-span-2" title="External Tools" :data="ref(applyKVNames(stats.CodeTools, ftcKV.CodeTools))" :maxval="stats.NumTeams"/>
             </div>
         </div>
-        <PageError :error="error" :errortext="errorText" :errormessage="errorMessage"/>
+        <PageError :error="showError" :errortext="errorText" :errormessage="errorMessage"/>
     </div>
 </template>
 
 <script setup>
 import { ftcKV } from '~/assets/scripts/formKV'
-const fetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getTeamStats`)
+const fetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getTeamStats`, {server: false})
 
-let error, errorText, errorMessage
+let showError, errorText, errorMessage
 
-let stats = fetch.data.value || undefined
+let stats = fetch.data.value ?? undefined
 
 if (stats == undefined) {
-    error = true
+    showError = true
     errorText = "There was an issue while fetching team data."
     errorMessage = fetch.error.value.data
 }
@@ -68,5 +67,4 @@ useHead
     title
     : 'Statistics | FTC Open Alliance'
 })
-
 </script>

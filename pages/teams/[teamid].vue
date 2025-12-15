@@ -129,29 +129,28 @@ function parseKVArray(inputArray, kvList) {
     return outputArray.join(", ")
 }
 
+let teamData
 let error, errorText, errorMessage
 
-const teamFetch = await useFetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`)
-
-let teamData
-
-if (teamFetch.data.value) {
-    teamData = teamFetch.data.value[0]
-}
-
-if (teamData == undefined) {
-    error = true
-    errorText = `There was an issue while fetching the data for team ${teamid}.`
-    errorMessage = teamFetch.error.value.data
-} else if (teamData.length == 0) {
-    error = true
-    errorText = "The team specified is not on the FTC Open Alliance"
-    errorMessage = ""
-}
+await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`, {
+    onResponse({response}) {
+        teamData = response._data[0]
+    },
+    onResponseError({response}) {
+        error = true
+        errorText = `There was an issue while fetching the data for team ${teamid}.`
+        errorMessage = response._data
+    },
+    onRequestError() {
+        error = true
+        errorText = "There was an issue while fetching the data for team ${teamid}."
+        errorMessage = "API Request Error"
+    }
+})
 
 let items 
 
-if (teamFetch.data.value) {
+if (teamData) {
     items = [
         {
             q: "What is something that you think is unique about your robot this season? What about your robot do you think would make it stand out at competition?",
