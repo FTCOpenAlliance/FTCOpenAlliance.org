@@ -39,12 +39,12 @@
                 </div>
                 <div class="flex justify-center">
                     <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
-                        <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(teamData.TeamWebsite)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
-                        <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(teamData.BuildThread)" v-if="checkNormalizable(teamData.BuildThread)"/>
-                        <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(teamData.CAD)" v-if="checkNormalizable(teamData.CAD)"/>
-                        <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(teamData.Code)" v-if="checkNormalizable(teamData.Code)"/>
-                        <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(teamData.Photo)" v-if="checkNormalizable(teamData.Photo)"/>
-                        <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(teamData.Video)" v-if="checkNormalizable(teamData.Video)"/>
+                        <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(teamData.TeamWebsite, normalizeOptions)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
+                        <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(teamData.BuildThread, normalizeOptions)" v-if="checkNormalizable(teamData.BuildThread)"/>
+                        <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(teamData.CAD, normalizeOptions)" v-if="checkNormalizable(teamData.CAD)"/>
+                        <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(teamData.Code, normalizeOptions)" v-if="checkNormalizable(teamData.Code)"/>
+                        <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(teamData.Photo, normalizeOptions)" v-if="checkNormalizable(teamData.Photo)"/>
+                        <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(teamData.Video, normalizeOptions)" v-if="checkNormalizable(teamData.Video)"/>
                     </div>
                 </div>
             </div>
@@ -101,8 +101,11 @@
 </template>
 <script setup>
 import normalizeUrl from 'normalize-url';
-const { teamid } = useRoute().params
 import { ftcKV } from '~/assets/scripts/formKV'
+const { teamid } = useRoute().params
+const normalizeOptions = {
+    stripWWW: false
+}
 
 function checkNormalizable(inputUrl) {
 
