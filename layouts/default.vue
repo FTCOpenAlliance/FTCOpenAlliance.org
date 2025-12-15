@@ -15,7 +15,7 @@
 
 <script setup>
 
-    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`)
+    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`, {server: true})
 
     const flags = useState('flags')
 
@@ -24,7 +24,7 @@
     let banner
 
     if (flags.value && flags.value.BannerHTML) {
-        true
+        banner = true
     }
     
 </script>

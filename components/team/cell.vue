@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col gap-4 justify-between p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
         <div class="flex flex-row justify-between">
-            <div class="flex max-w-[60%]">
+            <div class="flex" :class="award ? ' max-w-[60%]' : ''">
                 <NuxtLink :to="`/teams/${teamnumber}`">
                     <div>
                         <p class="text-lg line-clamp-2">{{ teamname }}</p>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="flex justify-end">
-            <div class="flex flex-wrap max-w-64 justify-end gap-1 *:text-lg *:hover:ring-primary-200 *:hover:*:text-primary-200">
+            <div class="flex flex-wrap *:grow max-w-64 justify-end gap-1 *:text-lg *:hover:ring-primary-200 *:hover:*:text-primary-200">
                 <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(buildthread, normalizeOptions)" v-if="checkNormalizable(buildthread)"/>
                 <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(cadlink, normalizeOptions)" v-if="checkNormalizable(cadlink)"/>
                 <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(codelink, normalizeOptions)" v-if="checkNormalizable(codelink)"/>
