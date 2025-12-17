@@ -15,7 +15,7 @@
 
 <script setup>
 
-    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`, {server: true})
+    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`, {server: false})
 
     const flags = useState('flags')
 

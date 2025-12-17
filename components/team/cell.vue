@@ -60,7 +60,7 @@ defineProps({
     photolink: String,
     videolink: String,
     weblink: String,
-    awardyear: Number,
+    awardyear: Number | String,
     award: String
 })
 
