@@ -6,6 +6,21 @@
             </h1>
         </PageTitle>
         <div v-if="!showError" class="flex flex-col gap-8 pt-8 sm:px-12 md:px-24">
+            <USeparator class="text-xl text-primary md:text-4xl"> Alliance Stats </USeparator>
+            <div class="grid grid-cols-1 lg:grid-cols-3 *:w-full gap-8 w-full sm:p-6">
+                <div class="flex flex-col gap-4 bg-grid h-80 lg:h-auto">
+                    <div class="flex flex-col lg:gap-4 w-full h-full items-center justify-center bg-glass shadow-lg shadow-orange">
+                        <p class="text-2xl lg:text-4xl text-orange">Alliance Teams</p>
+                        <p class="text-5xl lg:text-8xl text-white font-bold">{{ stats.NumTeams }}</p>
+                    </div>
+                    <div class="flex flex-col lg:gap-4 w-full h-full items-center justify-center bg-glass shadow-lg shadow-orange">
+                        <p class="text-2xl lg:text-4xl text-orange">International Reach</p>
+                        <p class="text-5xl lg:text-8xl text-white font-bold">{{ stats.Location.filter(item => item.name != "").length }}</p>
+                        <p class="text-lg lg:text-2xl text-orange">Countries</p>
+                    </div>
+                </div>
+                <StatsMap class="lg:col-span-2" title="Team Map" :data="stats.Location"/>
+            </div>
             <USeparator class="text-xl text-primary md:text-4xl"> Team Info </USeparator>
             <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 *:w-full gap-4 w-full sm:p-6">
                 <StatsPieChart title="Team Type" :data="ref(applyKVNames(stats.TeamType, ftcKV.TeamType))"/>
@@ -36,7 +51,6 @@
 <script setup>
 import { ftcKV } from '~/assets/scripts/formKV'
 const fetch = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getTeamStats`, {server: false})
-
 let showError, errorText, errorMessage
 
 let stats = fetch.data.value ?? undefined

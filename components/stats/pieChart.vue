@@ -46,12 +46,6 @@ const option = ref({
             color: '#fff'
         }
     },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {}
-        }
-    },
     visualMap: {
         show: false,
         min: 0,
