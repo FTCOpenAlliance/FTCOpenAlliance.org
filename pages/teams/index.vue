@@ -7,7 +7,7 @@
         </PageTitle>
             <ClientOnly>
                 <div class="bg-dots">
-                    <div v-if="(!error) && teamsData" class="backdrop-blur-[1px] md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div v-if="!errorDisplay && teamsData" class="backdrop-blur-[1px] md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         <TeamCell
                         v-for="team of teamsData"
                         v-bind:teamnumber="team.TeamNumber"
@@ -23,9 +23,9 @@
                         v-bind:award="team.NewestAward"/>
                     </div>
                 </div>
-                <PageError v-if="error" :errortext="error.text" :errormessage="error.message"/>
+                <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
             </ClientOnly>
-            <PageLoading :show="showLoading" message="Loading Teams..."/>
+            <PageLoading :show="!errorDisplay && !teamsData" message="Loading Teams..."/>
     </div>
 </template>
 <script setup>
@@ -44,21 +44,19 @@ useHead
 : 'Teams | FTC Open Alliance'
 })
 
-let error = ref(null)
-
+let errorDisplay = ref(null)
 let teamsData = ref(null)
-
-let showLoading = computed(() => !error.value && !teamsData.value)
 
 await useAsyncData(async () => {
     await $fetch(`${useRuntimeConfig().public.API_URL}/teams`, {
         onResponse({response}) {
-            teamsData.value = response._data
-            if (teamsData.length == 0) {
-                error.value = {
+            if (response._data.length == 0) {
+                errorDisplay.value = {
                     text: "No Teams!",
                     message: ""
                 }
+            } else {
+                teamsData.value = response._data
             }
         },
         onResponseError({error}) {
@@ -68,7 +66,7 @@ await useAsyncData(async () => {
             }
         },
         onRequestError() {
-            error.value = {
+            errorDisplay.value = {
                 text: "There was an issue while fetching the list of teams.",
                 message: "API Communication Error."
             }

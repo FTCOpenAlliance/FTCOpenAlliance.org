@@ -1,6 +1,11 @@
 <template lang="">
     <div>
-        <PageTitle v-if="!error">
+        <PageTitle v-if="errorDisplay || !teamData">
+            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
+                {{teamid}}
+            </h1>
+        </PageTitle>
+        <PageTitle v-if="!errorDisplay && teamData">
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-200">
                     <div class="flex flex-col mb-5">
@@ -27,76 +32,74 @@
                 </div>
             </div>
         </PageTitle>
-        <PageTitle v-if="error">
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
-                {{teamid}}
-            </h1>
-        </PageTitle>
-        <div v-if="!error" class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
-            <div>
-                <div class="flex justify-center mb-5">
-                    <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
-                </div>
-                <div class="flex justify-center">
-                    <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
-                        <UButton label="Website" target="_blank" v-bind:to="normalizeUrl(teamData.TeamWebsite, normalizeOptions)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
-                        <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(teamData.BuildThread, normalizeOptions)" v-if="checkNormalizable(teamData.BuildThread)"/>
-                        <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(teamData.CAD, normalizeOptions)" v-if="checkNormalizable(teamData.CAD)"/>
-                        <UButton label="Code" target="_blank" v-bind:to="normalizeUrl(teamData.Code, normalizeOptions)" v-if="checkNormalizable(teamData.Code)"/>
-                        <UButton label="Photos" target="_blank" v-bind:to="normalizeUrl(teamData.Photo, normalizeOptions)" v-if="checkNormalizable(teamData.Photo)"/>
-                        <UButton label="Videos" target="_blank" v-bind:to="normalizeUrl(teamData.Video, normalizeOptions)" v-if="checkNormalizable(teamData.Video)"/>
+        <ClientOnly>
+            <div v-if="!errorDisplay && teamData" class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
+                <div>
+                    <div class="flex justify-center mb-5">
+                        <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
+                            <UButton label="Website" target="_blank" :to="normalizeUrl(teamData.TeamWebsite, normalizeOptions)" v-if="checkNormalizable(teamData.TeamWebsite)"/>
+                            <UButton label="Build Thread" target="_blank" :to="normalizeUrl(teamData.BuildThread, normalizeOptions)" v-if="checkNormalizable(teamData.BuildThread)"/>
+                            <UButton label="CAD" target="_blank" :to="normalizeUrl(teamData.CAD, normalizeOptions)" v-if="checkNormalizable(teamData.CAD)"/>
+                            <UButton label="Code" target="_blank" :to="normalizeUrl(teamData.Code, normalizeOptions)" v-if="checkNormalizable(teamData.Code)"/>
+                            <UButton label="Photos" target="_blank" :to="normalizeUrl(teamData.Photo, normalizeOptions)" v-if="checkNormalizable(teamData.Photo)"/>
+                            <UButton label="Videos" target="_blank" :to="normalizeUrl(teamData.Video, normalizeOptions)" v-if="checkNormalizable(teamData.Video)"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="flex justify-center mb-5">
-                    <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
+                <div>
+                    <div class="flex justify-center mb-5">
+                        <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
+                    </div>
+                    <TeamStat name="Meeting Hours/Week" :val="teamData.MeetingHours"/>
+                    <TeamStat name="Approx. Budget" :val="ftcKV.Budget[teamData.Budget]"/>
+                    <TeamStat name="Workspace" :val="ftcKV.Workspace[teamData.Workspace]"/>
+                    <TeamStat name="Sponsorship Status" :val="ftcKV.Sponsors[teamData.Sponsors]"/>
                 </div>
-                <TeamStat name="Meeting Hours/Week" v-bind:val="teamData.MeetingHours"/>
-                <TeamStat name="Approx. Budget" v-bind:val="ftcKV.Budget[teamData.Budget]"/>
-                <TeamStat name="Workspace" v-bind:val="ftcKV.Workspace[teamData.Workspace]"/>
-                <TeamStat name="Sponsorship Status" v-bind:val="ftcKV.Sponsors[teamData.Sponsors]"/>
-            </div>
-            <div>
-                <div class="flex justify-center mb-5">
-                    <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
+                <div>
+                    <div class="flex justify-center mb-5">
+                        <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
+                    </div>
+                    <TeamStat name="Drivetrain" :val="ftcKV.Drivetrain[teamData.Drivetrain]"/>
+                    <TeamStat name="Materials" :val="parseKVArray(teamData.Materials, ftcKV.Materials)"/>
+                    <TeamStat name="Product Sources" :val="parseKVArray(teamData.Products, ftcKV.Products)"/>
+                    <TeamStat name="Odometry" :val="parseKVArray(teamData.Odometry, ftcKV.Odometry)"/>
+                    <TeamStat name="Sensors" :val="parseKVArray(teamData.Sensors, ftcKV.Sensors)"/>
+                    <TeamStat name="Systems" :val="parseKVArray(teamData.Systems, ftcKV.Systems)"/>
                 </div>
-                <TeamStat name="Drivetrain" v-bind:val="ftcKV.Drivetrain[teamData.Drivetrain]"/>
-                <TeamStat name="Materials" v-bind:val="parseKVArray(teamData.Materials, ftcKV.Materials)"/>
-                <TeamStat name="Product Sources" v-bind:val="parseKVArray(teamData.Products, ftcKV.Products)"/>
-                <TeamStat name="Odometry" v-bind:val="parseKVArray(teamData.Odometry, ftcKV.Odometry)"/>
-                <TeamStat name="Sensors" v-bind:val="parseKVArray(teamData.Sensors, ftcKV.Sensors)"/>
-                <TeamStat name="Systems" v-bind:val="parseKVArray(teamData.Systems, ftcKV.Systems)"/>
-            </div>
-            <div>
-                <div class="flex justify-center mb-5">
-                    <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
+                <div>
+                    <div class="flex justify-center mb-5">
+                        <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
+                    </div>
+                    <TeamStat name="Programming Language" :val="ftcKV.CodeLang[teamData.CodeLang]"/>
+                    <TeamStat name="Development Environment" :val="ftcKV.CodeEnv[teamData.CodeEnv]"/>
+                    <TeamStat name="3rd-Party Tools" :val="parseKVArray(teamData.CodeTools, ftcKV.CodeTools)"/>
+                    <TeamStat name="Vision" :val="parseKVArray(teamData.Vision, ftcKV.Vision)"/>
                 </div>
-                <TeamStat name="Programming Language" v-bind:val="ftcKV.CodeLang[teamData.CodeLang]"/>
-                <TeamStat name="Development Environment" v-bind:val="ftcKV.CodeEnv[teamData.CodeEnv]"/>
-                <TeamStat name="3rd-Party Tools" v-bind:val="parseKVArray(teamData.CodeTools, ftcKV.CodeTools)"/>
-                <TeamStat name="Vision" v-bind:val="parseKVArray(teamData.Vision, ftcKV.Vision)"/>
-            </div>
-            <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col py-6 gap-5">
-                <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
-                <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
-                    <p class="text-xl md:text-5xl font-bold text-primary">{{ award.Year }}</p>
-                    <p class="text-lg md:text-2xl lg:text-3xl">{{ award.Award }}</p>
+                <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col py-6 gap-5">
+                    <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
+                    <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
+                        <p class="text-xl md:text-5xl font-bold text-primary">{{ award.Year }}</p>
+                        <p class="text-lg md:text-2xl lg:text-3xl">{{ award.Award }}</p>
+                    </div>
+                </div>
+                <div v-if="frqItems">
+                    <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
+                    <UCarousel class="flex py-10" v-if="frqItems" v-slot="{ item }" :items="frqItems" arrows>
+                        <PageBlock class="flex flex-col mx-10 shadow-black">
+                            <h2 class="text-xl md:text-2xl font-bold text-primary">{{item.q}}</h2>
+                            <PageText>
+                                {{ item.a }}
+                            </PageText>
+                        </PageBlock>
+                    </UCarousel>
                 </div>
             </div>
-            <div v-if="items.length > 0">
-                <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
-                <UCarousel class="flex py-10" v-if="items" v-slot="{ item }" :items="items" arrows>
-                    <PageBlock class="flex flex-col mx-10 shadow-black">
-                        <h2 class="text-xl md:text-2xl font-bold text-primary">{{item.q}}</h2>
-                        <PageText>
-                            {{ item.a }}
-                        </PageText>
-                    </PageBlock>
-                </UCarousel>
-            </div>
-        </div>
-        <PageError :error="error" :errortext="errorText" :errormessage="errorMessage"/>
+            <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
+        </ClientOnly>
+        <PageLoading :show="!errorDisplay && !teamData" :message="`Loading Team ${teamid}...`"/>
     </div>
 </template>
 <script setup>
@@ -129,56 +132,67 @@ function parseKVArray(inputArray, kvList) {
     return outputArray.join(", ")
 }
 
-let teamData
-let error, errorText, errorMessage
+let errorDisplay = ref(null)
+let teamData = ref(null)
+let frqItems = ref(null)
 
-await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`, {
-    onResponse({response}) {
-        teamData = response._data[0]
-    },
-    onResponseError({response}) {
-        error = true
-        errorText = `There was an issue while fetching the data for team ${teamid}.`
-        errorMessage = response._data
-    },
-    onRequestError() {
-        error = true
-        errorText = "There was an issue while fetching the data for team ${teamid}."
-        errorMessage = "API Request Error"
-    }
-})
+await useAsyncData(async () => {
+    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`, {
+        onResponse({response}) {
+            if (response._data.length == 0) {
+                errorDisplay.value = {
+                    text: "No Teams!",
+                    message: ""
+                }
+            } else {
+                teamData.value = response._data[0]
+                assembleFRQItems()
+            }
+        },
+        onResponseError({error}) {
+            errorDisplay.value = {
+                text: "There was an issue while fetching this team's data.",
+                message: error.message
+            }
+        },
+        onRequestError() {
+            errorDisplay.value = {
+                text: "There was an issue while fetching this team's data.",
+                message: "API Communication Error."
+            }
+        }
+    })
+}, {server: false})
 
-let items 
-
-if (teamData) {
-    items = [
+function assembleFRQItems() {
+    frqItems.value = [
         {
             q: "What is something that you think is unique about your robot this season? What about your robot do you think would make it stand out at competition?",
-            a: teamData.UniqueFeatures
+            a: teamData.value.UniqueFeatures
         },
         {
             q: "What types of Outreach do you plan to do for this season? Which of those Outreach initiatives are you most proud of?",
-            a: teamData.Outreach
+            a: teamData.value.Outreach
         },
         {
             q: "Describe an element of your code which you think will be most advantageous to your performance over the season.",
-            a: teamData.CodeAdvantage
+            a: teamData.value.CodeAdvantage
         },
         {
             q: "What competitions will you be attending? Which of the ones that you listed are you looking forward to the most?",
-            a: teamData.Competitions
+            a: teamData.value.Competitions
         },
         {
             q: "How will you be organizing your team at competitions?",
-            a: teamData.TeamStrategy
+            a: teamData.value.TeamStrategy
         },
         {
             q: "Describe a unique or noteworthy strategic device or element that you think would be useful for this game.",
-            a: teamData.GameStrategy
+            a: teamData.value.GameStrategy
         },
         {
             q: "How would you describe your design process? How many options/strategies do you compare? How do you visualize your designs before building?",
-            a: teamData.DesignProcess
+            a: teamData.value.DesignProcess
         },
     ].filter(item => item.a !== null)
 }
@@ -198,6 +212,3 @@ useHead
 })
 
 </script>
-<style lang="">
-
-</style>

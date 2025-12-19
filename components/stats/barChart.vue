@@ -2,7 +2,7 @@
     <div class="flex flex-col p-4 gap-2 items-center border-2 border-primary">
         <p class="text-2xl font-bold text-primary">{{ title }}</p>
         <div class="min-w-80 w-full max-w-[100em] min-h-72 h-full">
-            <VChart :autoresize="true" :option="option" :init-options="{ssr: false}"/>
+            <VChart :autoresize="true" :option="option"/>
         </div>
     </div>
 </template>
