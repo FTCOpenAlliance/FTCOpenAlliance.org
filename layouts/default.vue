@@ -2,7 +2,7 @@
     <UApp>
         <div>
             <div>
-                <NuxtLoadingIndicator :height="2" :color="(banner) ? '#000' : '#ff6600'" />
+                <NuxtLoadingIndicator :height="2" :color="(flags && flags.BannerHTML) ? '#000' : '#ff6600'" />
                 <NavigationHeader />
             </div>
             <slot/>
@@ -14,17 +14,18 @@
 </template>
 
 <script setup>
+    const config = useRuntimeConfig();
 
-    const { data } = await useFetch(`${useRuntimeConfig().public.API_URL}/internal/getWebFlags`, {server: false})
+    const flags = useState('flags', () => ({ BannerHTML: '' }));
 
-    const flags = useState('flags')
+    const { data } = await useAsyncData('web-flags', () => 
+        $fetch(`${config.public.API_URL}/internal/getWebFlags`), 
+        { server: false }
+    );
 
-    flags.value = data.value || undefined
-
-    let banner
-
-    if (flags.value && flags.value.BannerHTML) {
-        banner = true
-    }
-    
+    watch(data, (newData) => {
+        if (newData) {
+            flags.value = newData;
+        }
+    }, { immediate: true });
 </script>
