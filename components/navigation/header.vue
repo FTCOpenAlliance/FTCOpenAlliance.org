@@ -1,8 +1,10 @@
 <template>
     <div class="flex flex-col absolute pointer-events-none md:fixed top-0 bottom-0 z-50 left-0 right-0">
-        <div :hidden="!bannerHTML" class="flex flex-col pointer-events-auto gap-2 items-center z-60 p-2 bg-primary-600">
-            <p class="text-sm text-center" v-html="bannerHTML" />
-        </div>
+        <ClientOnly>
+            <div :class="flags.BannerHTML ? 'bg-primary-600 h-8' : 'bg-primary-300 h-0'" class="flex flex-col pointer-events-auto items-center justify-center z-60 transition-all duration-750">
+                <p :class="flags.BannerHTML ? 'text-sm' : 'text-[0px]'" class="text-center transition-all duration-500" v-html="flags.BannerHTML" />
+            </div>
+        </ClientOnly>
         <div class="p-5 bg-linear-to-b from-black to-transparent">
             <div class="flex justify-between items-center gap-4 p-5 pointer-events-auto bg-glass shadow-lg shadow-primary-800 border border-primary">
                 <div class="max-w-48 md:max-w-36">
@@ -26,7 +28,5 @@
 </template>
 
 <script setup>
-
-    let bannerHTML = useState('flags').value ? useState('flags').value.BannerHTML : ''
-
+const flags = useState('flags');
 </script>

@@ -87,7 +87,7 @@
                 </div>
                 <div v-if="frqItems">
                     <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
-                    <UCarousel class="flex py-10" v-if="frqItems" v-slot="{ item }" :items="frqItems" arrows>
+                    <UCarousel class="flex py-10 *:*:items-center" v-if="frqItems" v-slot="{ item }" :items="frqItems" arrows>
                         <PageBlock class="flex flex-col mx-10 shadow-black">
                             <h2 class="text-xl md:text-2xl font-bold text-primary">{{item.q}}</h2>
                             <PageText>
@@ -195,6 +195,9 @@ function assembleFRQItems() {
             a: teamData.value.DesignProcess
         },
     ].filter(item => item.a !== null)
+    if (frqItems.value.length < 1) {
+        frqItems.value = null
+    }
 }
 
 useSeoMeta({
