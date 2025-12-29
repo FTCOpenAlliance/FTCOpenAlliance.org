@@ -3,18 +3,19 @@
         <div>
             <PageTitle class="*:*:flex-col lg:*:*:flex-row min-h-screen *:px-4 *:md:px-auto">
                 <div class="flex justify-center items-center lg:mr-10 w-3/5 lg:w-auto">
-                    <img src="/images/FTCOALogos/Icon.svg">
+                    <img src="/images/OALogos/Icon.svg">
                 </div>
                 <div>
                     <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold text-primary">
-                        <span class="text-white">FTC</span> Open Alliance
+                        The Open Alliance
                     </h1>
                     <p class="text-xl pb-5">
-                        The home of open and collaborative robotics for <strong>FIRST Tech Challenge</strong>.
+                        The home of open and collaborative robotics for <strong>FIRST Robotics</strong>.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:mx-1 *:mb-2 sm:*:mb-0">
-                        <UButton class="w-full sm:w-1/3" label="Explore Teams" to="/teams"/>
-                        <UButton class="w-full sm:w-1/3" label="Join the Alliance" to="/join"/>
+                        <UButton class="w-full sm:w-1/4" label="Explore FTC Teams" to="/ftc/teams"/>
+                        <UButton class="w-full sm:w-1/4" label="Join the Alliance" to="/join"/>
+                        <UButton class="w-full sm:w-1/4" label="Explore FRC Teams" to="/frc/teams"/>
                     </div>
                 </div>
             </PageTitle>
@@ -135,19 +136,23 @@
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs';
+
+
+useState('program').value = Program.Generic
 
 useSeoMeta({
-    title: 'FTC Open Alliance',
-    ogTitle: 'FTC Open Alliance',
-    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    title: 'The Open Alliance',
+    ogTitle: 'The Open Alliance',
+    description: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
     ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
 })
 
 useHead
 ({
     title
-    : 'Home | FTC Open Alliance'
+    : 'Home | The Open Alliance'
 })
 
 const items = [

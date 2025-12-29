@@ -13,7 +13,7 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <title
-     id="title7">FTC Open Alliance Official Logo Set</title>
+     id="title7">FRC Open Alliance Official Logo Set</title>
   <defs
      id="defs1" />
   <g
@@ -21,7 +21,7 @@
      style="display:inline"
      transform="translate(1.3526197e-5,-200)">
     <path
-       style="fill:#ff6600;stroke-width:25"
+       style="fill:#0066ff;fill-opacity:1;stroke-width:25"
        d="m 55.000001,235.00002 10,10 25,-25 4.999995,5 v -20 H 75.000001 l 5,5 z"
        id="path2-1-5" />
     <path
@@ -33,24 +33,25 @@
        d="m 35.000002,250.00002 -10.000001,10 v -5 H 5.0000028 v -10 H 25.000001 v -5 z"
        id="path3-5-7-4" />
     <path
-       id="text10"
-       style="font-size:113.551px;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache';fill:#ffffff;stroke-width:174.933"
-       d="m 116.08871,210 -11.08873,11.08924 v 69.08416 h 16.79949 v -34.48679 h 19.84944 v -14.97014 h -19.84944 v -15.46882 h 21.5129 V 210 Z m 34.20928,0 v 15.24765 h 15.69103 v 64.92575 h 16.9106 v -64.92575 h 15.13654 V 210 Z m 66.53392,0 -11.97601,11.03343 v 69.13997 h 36.15025 l 11.08873,-11.08925 v -13.86117 h -16.8553 v 9.75858 H 221.7112 v -49.73391 h 13.52838 v 15.02544 h 16.8553 V 210 Z" />
-    <path
        id="path15"
-       style="font-size:113.551px;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache';fill:#ff6600;stroke-width:174.933"
+       style="font-size:113.551px;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache';fill:#0066ff;fill-opacity:1;stroke-width:174.933"
        d="m 258.80351,210 v 80.1734 h 48.40377 V 210 Z m 68.69607,0 -12.91859,12.6969 v 67.4765 h 16.8553 v -26.33638 h 14.30507 v 26.33638 h 16.79949 V 210 Z m -51.84077,15.24765 h 14.74846 v 49.73391 h -14.74846 z m 55.77748,0 h 14.30507 v 23.34224 h -14.30507 z" />
     <path
        id="path1-6"
-       style="fill:#ff6600;stroke-width:25"
+       style="fill:#0066ff;fill-opacity:1;stroke-width:25"
        d="M 49.999907,240.0001 A 10,10 0 0 0 40,250.00001 a 10,10 0 0 0 9.999907,9.9999 10,10 0 0 0 9.999906,-9.9999 10,10 0 0 0 -9.999906,-9.99991 z m 0,2.92902 6.123657,3.53519 v 7.0714 l -6.123657,3.53518 -6.123657,-3.53518 v -7.0714 z" />
+    <path
+       d="m 121.79976,255.68654 v 34.48668 H 104.99998 V 221.08897 L 116.08894,210 h 27.22341 v 15.24733 h -21.51259 v 15.4691 h 19.84925 v 14.97011 z m 59.71408,34.48668 -9.98007,-28.99765 h -4.43559 v 28.99765 H 150.2984 V 221.31074 L 162.49626,210 h 34.32035 v 50.95379 h -9.09295 l 10.64541,29.21943 z m -1.49701,-44.02319 v -20.9027 h -12.91865 v 20.9027 z m 54.94582,28.83131 v -9.75829 h 16.85522 v 13.8612 l -11.08896,11.08897 h -36.15003 v -69.1397 L 216.55496,210 h 35.26291 v 30.27287 h -16.85522 v -15.02554 h -13.52854 v 49.73401 z"
+       id="text13"
+       style="font-size:113.551px;line-height:1;font-family:'Aldo the Apache';-inkscape-font-specification:'Aldo the Apache, Normal';fill:#ffffff;stroke-width:174.933"
+       aria-label="FRC" />
   </g>
   <metadata
      id="metadata2">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
-        <dc:title>FTC Open Alliance Official Logo Set</dc:title>
+        <dc:title>FRC Open Alliance Official Logo Set</dc:title>
         <dc:creator>
           <cc:Agent>
             <dc:title>Hamid Hussain</dc:title>

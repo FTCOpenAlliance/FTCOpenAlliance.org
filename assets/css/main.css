@@ -3,9 +3,15 @@ layer(base);
 @import 'tailwindcss';
 @import "@nuxt/ui";
 @import '../css/theme-ftc.css';
+@import '../css/theme-frc.css';
+@import '../css/theme-generic.css';
 
 :root {
   --ui-radius: 0px;
+  --ui-primary: var(--color-primary);
+  --ui-secondary: var(--color-white);
+  font-family: 'Chakra Petch', sans-serif;
+  transition: background-color 2s, color 2s, border-color 2s;
 }
 
 body {

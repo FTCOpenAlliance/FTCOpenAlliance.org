@@ -7,9 +7,13 @@
         </ClientOnly>
         <div class="p-5 bg-linear-to-b from-black to-transparent">
             <div class="flex justify-between items-center gap-4 p-5 pointer-events-auto bg-glass shadow-lg shadow-primary-800 border border-primary">
-                <div class="max-w-48 md:max-w-36">
+                <div class="flex gap-2">
                     <NuxtLink to="/">
-                        <img src="/public/images/FTCOALogos/ShortHorizontal.svg">
+                        <img src="/public/images/OALogos/ShortHorizontal.svg" class="max-h-10" />
+                    </NuxtLink>
+                    <USeparator v-if="logoLink" orientation="vertical" class="h-10" />
+                    <NuxtLink :to="`/${program}`">
+                        <img :src="logoLink" class="max-h-10" />
                     </NuxtLink>
                 </div>
                 <UPopover class="lg:hidden" :popper="{placement: 'bottom-end'}">
@@ -17,16 +21,30 @@
             
                     <template #content>
                         <div class="p-4 bg-glass">
-                            <NavigationButtons class="flex-col *:*:text-lg"/>
+                            <NavigationButtons :program="program" class="flex-col *:*:text-lg"/>
                         </div>
                     </template>
                 </UPopover>
-                <NavigationButtons class="hidden lg:flex" />
+                <NavigationButtons :program="program" class="hidden lg:flex" />
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs';
+
 const flags = useState('flags');
+const program = useState('program', Program.Generic);
+let logoLink = computed(() => {
+    switch (program.value) {
+        case Program.FTC:
+            return '/images/FTCOALogos/ShortHorizontal.svg'
+        case Program.FRC:
+            return '/images/FRCOALogos/ShortHorizontal.svg'
+        default:
+            return null;
+    }
+});
+
 </script>

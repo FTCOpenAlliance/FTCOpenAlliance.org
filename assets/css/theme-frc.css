@@ -1,31 +1,14 @@
-@theme {
-  --font-*: initial;
-  --font-sans: 'Chakra Petch';
-  --color-primary: var(--color-blue);
-  --color-primary-50: var(--color-blue-50);
-  --color-primary-100: var(--color-blue-100);
-  --color-primary-200: var(--color-blue-200);
-  --color-primary-300: var(--color-blue-300);
-  --color-primary-400: var(--color-blue-400);
-  --color-primary-500: var(--color-blue-500);
-  --color-primary-600: var(--color-blue-600);
-  --color-primary-700: var(--color-blue-700);
-  --color-primary-800: var(--color-blue-800);
-  --color-primary-900: var(--color-blue-900);
-  --color-primary-950: var(--color-blue-950);
-
-  --color-blue-50: #edfcff;
-  --color-blue-100: #d6f7ff;
-  --color-blue-200: #b5f3ff;
-  --color-blue-300: #83eeff;
-  --color-blue-400: #48e1ff;
-  --color-blue-500: #1ec7ff;
-  --color-blue-600: #06acff;
-  --color-blue-700: #0099ff;
-  --color-blue-800: #0874c5;
-  --color-blue-900: #0d629b;
-  --color-blue-950: #0e3b5d;
-  --color-blue: #0099ff;
-
-  --color-secondary: #ffffff;
+:root {
+  --primary-frc-50: #e6f0ff;
+  --primary-frc-100: #cce0ff;
+  --primary-frc-200: #99c2ff;
+  --primary-frc-300: #66a3ff;
+  --primary-frc-400: #3385ff;
+  --primary-frc-500: #0066ff;
+  --primary-frc-600: #0052cc;
+  --primary-frc-700: #003d99;
+  --primary-frc-800: #002966;
+  --primary-frc-900: #001433;
+  --primary-frc-950: #000a19;
+  --primary-frc: #0066ff;
 }

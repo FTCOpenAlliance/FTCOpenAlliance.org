@@ -105,9 +105,18 @@
 <script setup>
 import normalizeUrl from 'normalize-url';
 import { ftcKV } from '~/assets/scripts/formKV'
-const { teamid } = useRoute().params
+import { Program } from '~/assets/scripts/programs';
+const { program, teamid } = useRoute().params
 const normalizeOptions = {
     stripWWW: false
+}
+
+if (program.toLowerCase() == "ftc") {
+    useState('program').value = Program.FTC;
+} else if (program.toLowerCase() == "frc") {
+    useState('program').value = Program.FRC;
+} else {
+    useState('program').value = Program.Generic;
 }
 
 function checkNormalizable(inputUrl) {
@@ -137,15 +146,15 @@ let teamData = ref(null)
 let frqItems = ref(null)
 
 await useAsyncData(async () => {
-    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${teamid}/all`, {
+    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program}/${teamid}/all`, {
         onResponse({response}) {
-            if (response._data.length == 0) {
+            if (!response.ok) {
                 errorDisplay.value = {
-                    text: "No Teams!",
-                    message: ""
+                    text: "There was an issue while fetching the list of teams.",
+                    message: response._data
                 }
             } else {
-                teamData.value = response._data[0]
+                teamData.value = response._data
                 assembleFRQItems()
             }
         },
