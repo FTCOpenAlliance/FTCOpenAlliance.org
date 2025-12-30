@@ -69,7 +69,7 @@ await useAsyncData(async () => {
             } else if (response._data.length == 0) {
                 errorDisplay.value = {
                     text: "No Teams!",
-                    message: ""
+                    message: "Please check again later."
                 }
             } else {
                 teamsData.value = response._data

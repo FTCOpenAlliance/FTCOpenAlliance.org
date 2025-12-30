@@ -11,10 +11,12 @@
                     <NuxtLink to="/">
                         <img src="/public/images/OALogos/ShortHorizontal.svg" class="max-h-10" />
                     </NuxtLink>
-                    <USeparator v-if="logoLink" orientation="vertical" class="h-10" />
-                    <NuxtLink :to="`/${program}`">
-                        <img :src="logoLink" class="max-h-10" />
-                    </NuxtLink>
+                    <ClientOnly>
+                        <USeparator v-if="logoLink" orientation="vertical" class="h-10" />
+                        <NuxtLink :to="`/${program}`">
+                            <img :src="logoLink" class="max-h-10" />
+                        </NuxtLink>
+                    </ClientOnly>
                 </div>
                 <UPopover class="lg:hidden" :popper="{placement: 'bottom-end'}">
                     <UButton class="*:size-8" variant="ghost" icon="i-heroicons-bars-3-16-solid" />

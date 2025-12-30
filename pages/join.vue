@@ -25,8 +25,16 @@
                         Your team data may be used to fetch additional information through external APIs. <br>
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
                     </p>
-                    <FormKit @blur="numberChangeCallback" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
-                    <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="mb-4 -mt-6 transition-all">Autofill Previous Data</UButton>
+                    <div class="flex gap-2 w-full items-end">
+                        <FormKit v-model="program" name="Program" id="Program" label="Program" type="radio" :options="['FTC', 'FRC']" :config="multiCheckboxStyle" validation="required"/>
+                        <FormKit @blur="numberChangeCallback" :config="{ classes: {
+                            outer: 'flex flex-col grow',
+                            wrapper: 'flex flex-col grow',
+                            input: 'border border-primary bg-black p-2 w-full accent-primary-500',
+                            message: 'text-red-400 mb-2',
+                        }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
+                    </div>
+                    <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>
                     
                     <div id="PIIInput" class="relative">
@@ -120,11 +128,22 @@
 
 <script setup>
 
-import { ftcKV } from '~/assets/scripts/formKV'
+import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { getNode } from '@formkit/core'
+import { Program } from '~/assets/scripts/programs'
 
 let toast = useToast()
-let kvLists = ftcKV
+const program = useState('program', () => Program.Generic)
+let kvLists = computed(() => {
+    switch (program.value) {
+        case Program.FTC:
+            return ftcKV
+        case Program.FRC:
+            return frcKV
+        default:
+            return ftcKV
+    }
+})
 
 const apiURL = useRuntimeConfig().public.API_URL
 
@@ -141,19 +160,43 @@ const sectionStyle = "flex flex-col gap-6 backdrop-blur-sm p-10 mb-6 shadow-xl s
 
 async function formCallback(formData) {
 
+    if (program.value != Program.FTC && program.value != Program.FRC) {
+        toast.add({
+                title: "Your team's data could not be saved.",
+                description: "A program (FTC or FRC) was not correctly selected.",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        return
+    }
+
+    if (isNaN(formData.TeamNumber)) {
+        toast.add({
+                title: "Your team's data could not be saved.",
+                description: "A valid team number was not provided.",
+                icon: "i-heroicons-outline-exclamation-circle",
+                color: 'error'
+            })
+        return
+    }
+
+    formData["TeamID"] = program.value.toUpperCase() + formData.TeamNumber
+
     await $fetch(`${apiURL}/internal/formSubmission`, {
         method: 'POST',
         body: formData,
-        onResponse() {
-            toast.add({
-                title: "Your team's data was updated successfully!.",
-                description: "You will be redirected to your team's page momentarily. Changes may take some time to appear.",
-                icon: "i-heroicons-outline-check-circle",
-                color: 'success'
-            })
-            setTimeout(async () => {
-                await navigateTo(`/teams/${formData.TeamNumber}`)
-            }, 1000);
+        onResponse({response}) {
+            if (response.ok){
+                toast.add({
+                    title: "Your team's data was updated successfully!.",
+                    description: "You will be redirected to your team's page momentarily. Changes may take some time to appear.",
+                    icon: "i-heroicons-outline-check-circle",
+                    color: 'success'
+                })
+                setTimeout(async () => {
+                    await navigateTo(`/${program.value}/teams/${formData.TeamNumber}`)
+                }, 1000);
+            }
         },
         onResponseError({response}) {
             toast.add({
@@ -187,19 +230,21 @@ async function autofillTeamData() {
         return;
     }
     
-    await $fetch(`${apiURL}/internal/formAutofillData/${parseInt(teamNumber)}`, {
+    await $fetch(`${apiURL}/internal/formAutofillData/${program.value}/${parseInt(teamNumber)}`, {
         onResponse({response}) {
-            getNode('TeamNumber').props.disabled = true
-            document.getElementById("autofillBtn").hidden = true
-            document.getElementById("autofillBtn").disabled = true
-            
-            for (const key in response._data[0]) {
-                if (getNode(key)) {
-                    getNode(key).input(response._data[0][key] || '')
+            if (response.ok) {
+                getNode('TeamNumber').props.disabled = true
+                document.getElementById("autofillBtn").hidden = true
+                document.getElementById("autofillBtn").disabled = true
+                
+                for (const key in response._data) {
+                    if (getNode(key)) {
+                        getNode(key).input(response._data[key] || '')
+                    }
                 }
+                
+                updatePIIInputs(teamNumber)
             }
-            
-            updatePIIInputs(teamNumber)
         },
         onResponseError({response}) {
             toast.add({
@@ -233,8 +278,8 @@ async function updatePIIInputs(teamNumber) {
         piiExists.value = false
         return
     }
-    
-    await $fetch(`${apiURL}/internal/checkTeamPII/${parseInt(teamNumber)}`, {
+
+    await $fetch(`${apiURL}/internal/checkTeamPII/${program.value}/${parseInt(teamNumber)}`, {
         onResponse({response}) {
             if (response._data != undefined && response._data.PIIExists != undefined) {
                 piiExists.value = response._data.PIIExists
