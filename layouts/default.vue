@@ -39,7 +39,7 @@ import { Program } from '~/assets/scripts/programs';
                 id: 'dynamic-primary',
                 textContent: computed(() => {
 
-                    let pL = program.value;
+                    let pL = program.value.toLowerCase();
 
                     return `:root {
                             --color-primary: var(--primary-${pL});

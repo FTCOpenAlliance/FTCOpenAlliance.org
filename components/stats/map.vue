@@ -16,8 +16,6 @@ const props = defineProps({
     data: Array,
 })
 
-console.log(props.data)
-
 echarts.registerMap("World", {geoJSON: jsonData})
 
 function getLargestValue(seriesData) {
