@@ -6,7 +6,7 @@
                 </h1>
         </PageTitle>
         <ClientOnly>
-            <div v-if="!error" class="flex flex-col gap-8 p-4 md:p-16">
+            <div v-if="!errorDisplay" class="flex flex-col gap-8 p-4 md:p-16">
                 <ArchiveBlock
                     v-for="archive of archiveData"
                     :key="archive"
@@ -23,14 +23,24 @@
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs'
+
 
 let errorDisplay = ref(null)
 let archiveData = ref(null)
+useState('program').value = Program.Generic
 
 await useAsyncData(async () => {
     await $fetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`, {
         onResponse({response}) {
-            archiveData.value = response._data
+            if (response.ok) {
+                archiveData.value = response._data
+            } else {
+                errorDisplay.value = {
+                    text: "There was an issue while fetching the archives.",
+                    message: response._data
+                }
+            }
         },
         onResponseError({error}) {
             errorDisplay.value = {

@@ -40,8 +40,8 @@
                     <div id="PIIInput" class="relative">
                         <p class="text-primary-300 mb-6">
                             The email address and shipping address provided will not be publicly visible.
-                            You may be contacted through email about your registration, appearance on the FTCOA Show, and the FTCOA Awards.
-                            We may ship your team some free merchandise, and any items won through the FTCOA Awards.
+                            You may be contacted through email about your registration, appearance on the Open Alliance Show, and the Open Alliance Awards.
+                            We may ship your team some free merchandise, and any items won through the Open Alliance Awards.
                             After submission, they may not be changed. If you must update this information,
                             please send an email to <u><a href="mailto:contact@ftcopenalliance.org">contact@ftcopenalliance.org</a></u>.
                         </p>
@@ -77,8 +77,8 @@
                 </div>
                 <div :class="sectionStyle">
                     <USeparator class="text-xl text-primary font-bold mb-4">Team Information</USeparator>
-                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
-                    <FormKit type="number" id="RookieYear" name="RookieYear" label="Rookie Year" number="integer" :min="2004"/>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your {{ program }} Open Alliance profile.</p>
+                    <FormKit type="number" id="RookieYear" name="RookieYear" label="Rookie Year" number="integer" :min="program == Program.FRC ? 1992 : 2004"/>
                     <FormKit type="number" id="TeamMembers" name="TeamMembers" label="Number of Team Members" number="integer" :min="0"/>
                     <FormKit type="number" id="Mentors" name="Mentors" label="Number of Mentors" number="integer" :min="0"/>
                     <FormKit type="select" id="TeamType" name="TeamType" label="Type of Team" :options="kvLists.TeamType"/>
@@ -89,7 +89,7 @@
                 </div>
                 <div :class="sectionStyle">
                     <USeparator class="text-xl text-primary font-bold mb-4">Robot Information</USeparator>
-                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your {{ program }} Open Alliance profile.</p>
                     <FormKit type="select" id="Drivetrain" name="Drivetrain" label="Drivetrain Type" :options="kvLists.Drivetrain"/>
                     <FormKit type="checkbox" id="Materials" name="Materials" label="Materials Used" :config="multiCheckboxStyle" :options="kvLists.Materials"/>
                     <FormKit type="checkbox" id="Products" name="Products" label="Product Sources" :config="multiCheckboxStyle" :options="kvLists.Products"/>
@@ -99,7 +99,7 @@
                 </div>
                 <div :class="sectionStyle">
                     <USeparator class="text-xl text-primary font-bold mb-4">Programming Information</USeparator>
-                    <p class="text-primary-300 mb-6">This data will be publicly visible on your FTC Open Alliance profile.</p>
+                    <p class="text-primary-300 mb-6">This data will be publicly visible on your {{ program }} Open Alliance profile.</p>
                     <FormKit type="select" id="CodeLang" name="CodeLang" label="Programming Language" :options="kvLists.CodeLang"/>
                     <FormKit type="select" id="CodeEnv" name="CodeEnv" label="Code Editor / IDE" :options="kvLists.CodeEnv"/>
                     <FormKit type="checkbox" id="CodeTools" name="CodeTools" label="Third-Party Programming Tools/Libraries" :config="multiCheckboxStyle" :options="kvLists.CodeTools"/>
@@ -108,7 +108,7 @@
                 <div :class="sectionStyle">
                     <USeparator class="text-xl text-primary font-bold mb-4">Free-Response Questions</USeparator>
                     <p class="text-primary-300 mb-6">
-                        Responses will be publicly visible on your FTC Open Alliance profile.<br><br>
+                        Responses will be publicly visible on your {{ program }} Open Alliance profile.<br><br>
                         Feel free to make your responses long and detailed, ideally a few sentences to a paragraph each. (max 750 characters each)<br>
                         If you don't have an answer for a question at this time, you may leave it blank and update it later.
                     </p>
