@@ -32,20 +32,6 @@
 <script setup>
 import { Program } from '~/assets/scripts/programs'
 
-useSeoMeta({
-    title: 'Teams | FTC Open Alliance',
-    ogTitle: 'Teams',
-    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
-})
-
-useHead
-({
-  title
-: 'Teams | FTC Open Alliance'
-})
-
 let errorDisplay = ref(null)
 let teamsData = ref(null)
 const { program } = useRoute().params
@@ -89,4 +75,17 @@ await useAsyncData(async () => {
         }
     })
 }, {server: false})
+
+useSeoMeta({
+    title: 'Teams | FTC Open Alliance',
+    ogTitle: 'Teams',
+    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
+    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+})
+
+useHead({
+  title: `Teams | ${useState('program').value} Open Alliance`
+})
+
 </script>

@@ -8,17 +8,25 @@
         <p class="text-sm text-[#666666]">
             <a href="https://hcb.hackclub.com/ftcopenalliance" target="_blank">
                 FIRST TECH CHALLENGE OPEN ALLIANCE is fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
+            </a><br>
+
+            <a href="https://www.firstinspires.org" target="_blank">
+                FIRST®, FIRST® Robotics Competition, and FIRST® Tech Challenge, are registered trademarks of FIRST® (www.firstinspires.org) which is not overseeing, involved with, or responsible for this activity, product, or service.
+            </a><br>
+
+            <a v-if="program == Program.FTC" href="https://ftcscout.org/about" target="_blank">
+                The FTC Open Alliance uses data graciously provided by FTCScout. Learn more at ftcscout.org/about.
             </a>
-            <br>
-            FIRST®, FIRST® Robotics Competition, and FIRST® Tech Challenge, are registered trademarks of FIRST® (www.firstinspires.org) which is not overseeing, involved with, or responsible for this activity, product, or service
+            <a v-if="program == Program.FRC" href="https://thebluealliance.com/about" target="_blank">
+                The FRC Open Alliance uses data graciously provided by The Blue Alliance. Learn more at thebluealliance.com/about.
+            </a>
         </p>
     </div>
 </template>
 
-<script>
+<script setup>
+import { Program } from '~/assets/scripts/programs';
+
+let program = useState('program', () => Program.Generic)
 
 </script>
-
-<style scoped>
-
-</style>

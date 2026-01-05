@@ -92,8 +92,13 @@ if (program.value == Program.FTC || program.value == Program.FRC) {
                         text: "No Teams!",
                         message: "Please check again later."
                     }
-                } else {
+                } else if (response.ok) {
                     stats.value = response._data
+                } else {
+                    errorDisplay.value = {
+                    text: "There was an issue while fetching the statistics data.",
+                    message: response._data
+                }
                 }
             },
             onResponseError({error}) {

@@ -27,8 +27,9 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-2 w-full *:w-full">
-                    <UButton :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
-                    <UButton :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
+                    <UButton v-if="useState('program').value == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
+                    <UButton v-if="useState('program').value == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
+                    <UButton v-if="useState('program').value == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
                 </div>
             </div>
         </PageTitle>
