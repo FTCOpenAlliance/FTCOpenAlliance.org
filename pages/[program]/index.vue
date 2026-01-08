@@ -89,4 +89,12 @@ if (useRoute().params.program.toLowerCase() == "ftc") {
     statusText: 'Page Not Found',
   })
 }
+
+useSeoMeta({
+    title: `Home | ${useState('program').value} Open Alliance`,
+    ogTitle: 'Home',
+    description: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogImage: '/images/OALogos/TwoLineStacked.svg',
+})
 </script>

@@ -134,4 +134,12 @@ function applyKVNames(data, kvList) {
 
 }
 
+useSeoMeta({
+    title: `Statistics | ${program.value} Open Alliance`,
+    ogTitle: 'Statistics',
+    description: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogImage: '/images/OALogos/TwoLineStacked.svg',
+})
+
 </script>
