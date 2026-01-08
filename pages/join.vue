@@ -132,6 +132,7 @@ import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { getNode } from '@formkit/core'
 import { Program } from '~/assets/scripts/programs'
 
+useState('title').value = 'Register'
 let toast = useToast()
 const program = useState('program', () => Program.Generic)
 let kvLists = computed(() => {
@@ -303,12 +304,5 @@ async function updatePIIInputs(teamNumber) {
         }
     })
 }
-
-
-useHead
-({
-    title
-    : 'Register | FTC Open Alliance'
-})
 
 </script>

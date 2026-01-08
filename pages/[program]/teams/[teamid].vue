@@ -224,11 +224,11 @@ function assembleFRQItems() {
 }
 
 useSeoMeta({
-    title: `${teamid} | FTC Open Alliance`,
+    title: `${teamid} | ${program.value} Open Alliance`,
     ogTitle: teamid,
-    description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-    ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
-    ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
+    description: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
+    ogImage: '/images/OALogos/TwoLineStacked.svg',
 })
 
 </script>
