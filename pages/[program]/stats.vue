@@ -55,6 +55,7 @@
 import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { Program } from '~/assets/scripts/programs';
 const program = useState('program', () => Program.Generic)
+useState('title').value = 'Statistics'
 
 if (useRoute().params.program.toLowerCase() == "ftc") {
     program.value = Program.FTC;
@@ -133,9 +134,4 @@ function applyKVNames(data, kvList) {
 
 }
 
-useHead
-({
-    title
-    : 'Statistics | FTC Open Alliance'
-})
 </script>

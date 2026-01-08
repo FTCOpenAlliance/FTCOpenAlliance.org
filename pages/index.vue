@@ -78,8 +78,8 @@
 <script setup>
 import { Program } from '~/assets/scripts/programs';
 
-
 useState('program').value = Program.Generic
+useState('title').value = 'Home'
 
 useSeoMeta({
     title: 'The Open Alliance',
@@ -87,10 +87,6 @@ useSeoMeta({
     description: 'The home of open and collaborative robotics for FIRST Robotics',
     ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
     ogImage: '/images/OALogos/TwoLineStacked.svg',
-})
-
-useHead({
-    title: 'Home | The Open Alliance'
 })
 
 </script>

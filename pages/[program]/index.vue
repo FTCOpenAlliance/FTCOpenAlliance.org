@@ -67,6 +67,7 @@
 import { Program } from '~/assets/scripts/programs';
     
 const program = useState('program', () => Program.Generic)
+useState('title').value = 'Home'
 
 let programDetails = {}
 
@@ -88,10 +89,4 @@ if (useRoute().params.program.toLowerCase() == "ftc") {
     statusText: 'Page Not Found',
   })
 }
-
-useHead(
-    {
-        title: `${program.value} Open Alliance`
-    }
-)
 </script>

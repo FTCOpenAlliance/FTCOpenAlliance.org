@@ -44,6 +44,8 @@ if (program.toLowerCase() == "ftc") {
     useState('program').value = Program.Generic;
 }
 
+useState('title').value = 'Teams'
+
 await useAsyncData(async () => {
     await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program}`, {
         onResponse({response}) {
@@ -82,10 +84,6 @@ useSeoMeta({
     description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
     ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
     ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
-})
-
-useHead({
-  title: `Teams | ${useState('program').value} Open Alliance`
 })
 
 </script>

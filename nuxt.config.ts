@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      API_URL: process.env.API_DEV_URL || 'https://api.ftcopenalliance.org',
+      API_URL: process.env.API_DEV_URL || 'https://api.theopenalliance.org',
     }
   }
 })
