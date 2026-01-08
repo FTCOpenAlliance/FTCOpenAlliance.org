@@ -160,7 +160,7 @@ let teamData = ref(null)
 let frqItems = ref(null)
 
 await useAsyncData(async () => {
-    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program}/${teamid}/all`, {
+    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program.value}/${teamid}/all`, {
         onResponse({response}) {
             if (!response.ok) {
                 errorDisplay.value = {
