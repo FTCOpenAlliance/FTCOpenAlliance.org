@@ -55,6 +55,7 @@ export abstract class ftcKV{
         REV: 'REV Robotics',
         ANDYMARK: 'AndyMark',
         VEX: 'VEX Robotics',
+        WCP: 'West Coast Products',
         TETRIX: 'Pitsco Tetrix',
         STUDICA: 'Studica Robotics',
         SPARKFUN: 'SparkFun Electronics',
@@ -68,6 +69,7 @@ export abstract class ftcKV{
     public static Systems = {
         ARM: 'Rotary Arm',
         SLIDES: 'Linear Slides',
+        ELEVATOR: 'Elevator',
         CLIMBER: 'Climber',
         WINCH: 'Winch System',
         PHYS_FOURBAR: 'Physical Four-Bar Mechanism',
@@ -76,6 +78,7 @@ export abstract class ftcKV{
         WHEEL_INTAKE: 'Wheel Roller Intake',
         SHOOTER: 'Shooting Mechanism',
         TURNTABLE: 'Turntable',
+        INDEXER: 'Indexer',
         OTHER: 'Other',
     }
     
@@ -148,6 +151,8 @@ export abstract class frcKV{
     
     public static Workspace = {
         LAB: 'Dedicated Robotics Lab',
+        CLASSROOM: 'School Classroom(s)',
+        HOME: 'Home Workspace (garage, basement, etc.)',
         SHARED: 'Shared Space (maker space, etc.)',
         OTHER: 'Other',
     }
@@ -186,6 +191,8 @@ export abstract class frcKV{
         ANDYMARK: 'AndyMark',
         VEX: 'VEX Robotics',
         CTRE: 'CTRE',
+        AXON: 'Axon',
+        REDUX: 'Redux Robotics',
         SPARKFUN: 'SparkFun Electronics',
         ADAFRUIT: 'Adafruit Industries',
         SWYFT: 'Swyft Robotics',
@@ -198,6 +205,7 @@ export abstract class frcKV{
     public static Systems = {
         ARM: 'Rotary Arm',
         SLIDES: 'Linear Slides',
+        ELEVATOR: 'Elevator',
         CLIMBER: 'Climber',
         WINCH: 'Winch System',
         PHYS_FOURBAR: 'Physical Four-Bar Mechanism',
@@ -205,6 +213,7 @@ export abstract class frcKV{
         CLAW: 'Claw/Gripper',
         WHEEL_INTAKE: 'Wheel Roller Intake',
         SHOOTER: 'Shooting Mechanism',
+        INDEXER: 'Indexer',
         TURNTABLE: 'Turntable',
         OTHER: 'Other',
     }

@@ -8,6 +8,9 @@
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs'
+
+let program = useState('program').value
 
 const props = defineProps({
     title: String,
@@ -42,7 +45,7 @@ function splitSeriesData(seriesData) {
 }
 
 const option = {
-    color: ["#ff6600"],
+    color: [program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff'],
     yAxis: {
         type: 'category',
         data: splitSeriesData(props.data._rawValue).nameArray,
@@ -60,7 +63,7 @@ const option = {
     tooltip: {
         trigger: 'item',
         backgroundColor: '#000000aa',
-        borderColor: '#ff6600',
+        borderColor: program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff',
         borderWidth: 2,
         extraCssText: 'border-radius: 0;',
         className: 'bg-glass',

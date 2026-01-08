@@ -8,6 +8,17 @@
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs'
+
+let primaryColor = computed(() => {
+    if (useState('program').value === Program.FTC) {
+        return "#ff6600"
+    } else if (useState('program').value === Program.FRC) {
+        return "#0066ff"
+    } else {
+        return "#fff"
+    }
+})
 
 function getLargestValue(seriesData) {
     
@@ -38,7 +49,7 @@ const option = ref({
     tooltip: {
         trigger: 'item',
         backgroundColor: '#000000aa',
-        borderColor: '#ff6600',
+        borderColor: primaryColor.value,
         borderWidth: 2,
         extraCssText: 'border-radius: 0;',
         className: 'bg-glass',
@@ -51,7 +62,7 @@ const option = ref({
         min: 0,
         max: getLargestValue(props.data._rawValue),
         inRange: {
-            color: '#ff6600',
+            color: primaryColor.value,
             colorLightness: [0.3, 0.6]
         }
     },
@@ -59,7 +70,7 @@ const option = ref({
     {
         name: props.title,
         type: 'pie',
-        color: '#ff6600',
+        color: primaryColor.value,
         radius: '60%',
         center: ['50%', '40%'],
         data: props.data,
