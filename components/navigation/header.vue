@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col absolute pointer-events-none md:fixed top-0 bottom-0 z-50 left-0 right-0">
         <ClientOnly>
-            <div :class="flags.BannerHTML ? 'bg-primary-600 h-8' : 'bg-primary-300 h-0'" class="flex flex-col pointer-events-auto items-center justify-center z-60 transition-all duration-750">
+            <div :class="flags.BannerHTML ? 'bg-primary-600 h-auto p-1' : 'bg-primary-300 h-0 p-0'" class="flex flex-col pointer-events-auto items-center justify-center z-60 transition-all duration-750">
                 <p :class="flags.BannerHTML ? 'text-sm' : 'text-[0px]'" class="text-center transition-all duration-500" v-html="flags.BannerHTML" />
             </div>
         </ClientOnly>

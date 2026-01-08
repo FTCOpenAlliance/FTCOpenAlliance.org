@@ -29,6 +29,7 @@ import { Program } from '~/assets/scripts/programs'
 let errorDisplay = ref(null)
 let archiveData = ref(null)
 useState('program').value = Program.Generic
+useState('title').value = 'Archive'
 
 await useAsyncData(async () => {
     await $fetch(`${useRuntimeConfig().public.API_URL}/internal/getArchiveList`, {
@@ -57,9 +58,4 @@ await useAsyncData(async () => {
     })
 }, {server: false})
 
-useHead
-({
-    title
-    : 'Archive | FTC Open Alliance'
-})
 </script>

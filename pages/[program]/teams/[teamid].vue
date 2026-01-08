@@ -23,13 +23,13 @@
                         <TeamMiniStat name="Rookie Year" :val="teamData.RookieYear"/>
                         <TeamMiniStat name="Members" :val="teamData.TeamMembers"/>
                         <TeamMiniStat name="Mentors" :val="teamData.Mentors"/>
-                        <TeamMiniStat name="Type" :val="ftcKV.TeamType[teamData.TeamType]"/>
+                        <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-2 w-full *:w-full">
-                    <UButton v-if="useState('program').value == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
-                    <UButton v-if="useState('program').value == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
-                    <UButton v-if="useState('program').value == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
+                    <UButton v-if="program.value == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
+                    <UButton v-if="program.value == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
+                    <UButton v-if="program.value == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
                 </div>
             </div>
         </PageTitle>
@@ -55,29 +55,29 @@
                         <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
                     </div>
                     <TeamStat name="Meeting Hours/Week" :val="teamData.MeetingHours"/>
-                    <TeamStat name="Approx. Budget" :val="ftcKV.Budget[teamData.Budget]"/>
-                    <TeamStat name="Workspace" :val="ftcKV.Workspace[teamData.Workspace]"/>
-                    <TeamStat name="Sponsorship Status" :val="ftcKV.Sponsors[teamData.Sponsors]"/>
+                    <TeamStat name="Approx. Budget" :val="kvLists.Budget[teamData.Budget]"/>
+                    <TeamStat name="Workspace" :val="kvLists.Workspace[teamData.Workspace]"/>
+                    <TeamStat name="Sponsorship Status" :val="kvLists.Sponsors[teamData.Sponsors]"/>
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
                         <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
                     </div>
-                    <TeamStat name="Drivetrain" :val="ftcKV.Drivetrain[teamData.Drivetrain]"/>
-                    <TeamStat name="Materials" :val="parseKVArray(teamData.Materials, ftcKV.Materials)"/>
-                    <TeamStat name="Product Sources" :val="parseKVArray(teamData.Products, ftcKV.Products)"/>
-                    <TeamStat name="Odometry" :val="parseKVArray(teamData.Odometry, ftcKV.Odometry)"/>
-                    <TeamStat name="Sensors" :val="parseKVArray(teamData.Sensors, ftcKV.Sensors)"/>
-                    <TeamStat name="Systems" :val="parseKVArray(teamData.Systems, ftcKV.Systems)"/>
+                    <TeamStat name="Drivetrain" :val="kvLists.Drivetrain[teamData.Drivetrain]"/>
+                    <TeamStat name="Materials" :val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
+                    <TeamStat name="Product Sources" :val="parseKVArray(teamData.Products, kvLists.Products)"/>
+                    <TeamStat name="Odometry" :val="parseKVArray(teamData.Odometry, kvLists.Odometry)"/>
+                    <TeamStat name="Sensors" :val="parseKVArray(teamData.Sensors, kvLists.Sensors)"/>
+                    <TeamStat name="Systems" :val="parseKVArray(teamData.Systems, kvLists.Systems)"/>
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
                         <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
                     </div>
-                    <TeamStat name="Programming Language" :val="ftcKV.CodeLang[teamData.CodeLang]"/>
-                    <TeamStat name="Development Environment" :val="ftcKV.CodeEnv[teamData.CodeEnv]"/>
-                    <TeamStat name="3rd-Party Tools" :val="parseKVArray(teamData.CodeTools, ftcKV.CodeTools)"/>
-                    <TeamStat name="Vision" :val="parseKVArray(teamData.Vision, ftcKV.Vision)"/>
+                    <TeamStat name="Programming Language" :val="kvLists.CodeLang[teamData.CodeLang]"/>
+                    <TeamStat name="Development Environment" :val="kvLists.CodeEnv[teamData.CodeEnv]"/>
+                    <TeamStat name="3rd-Party Tools" :val="parseKVArray(teamData.CodeTools, kvLists.CodeTools)"/>
+                    <TeamStat name="Vision" :val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
                 </div>
                 <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col py-6 gap-5">
                     <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
@@ -105,20 +105,33 @@
 </template>
 <script setup>
 import normalizeUrl from 'normalize-url';
-import { ftcKV } from '~/assets/scripts/formKV'
+import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { Program } from '~/assets/scripts/programs';
-const { program, teamid } = useRoute().params
+const { teamid } = useRoute().params
+let program = useState('program')
 const normalizeOptions = {
     stripWWW: false
 }
+useState('title').value = `${teamid}`
 
-if (program.toLowerCase() == "ftc") {
-    useState('program').value = Program.FTC;
-} else if (program.toLowerCase() == "frc") {
-    useState('program').value = Program.FRC;
+if (useRoute().params.program.toLowerCase() == "ftc") {
+    program.value = Program.FTC;
+} else if (useRoute().params.program.toLowerCase() == "frc") {
+    program.value = Program.FRC;
 } else {
-    useState('program').value = Program.Generic;
+    program.value = Program.Generic;
 }
+
+let kvLists = computed(() => {
+    switch (program.value) {
+        case Program.FTC:
+            return ftcKV
+        case Program.FRC:
+            return frcKV
+        default:
+            return ftcKV
+    }
+})
 
 function checkNormalizable(inputUrl) {
 
@@ -216,12 +229,6 @@ useSeoMeta({
     description: 'The home of open and collaborative robotics for FIRST Tech Challenge',
     ogDescription: 'The home of open and collaborative robotics for FIRST Tech Challenge',
     ogImage: 'https://raw.githubusercontent.com/FTCOpenAlliance/brandkit/main/png_4k/bg/2STACK-HORIZONTAL.png',
-})
-
-useHead
-({
-    title
-    : `${teamid} | FTC Open Alliance`
 })
 
 </script>

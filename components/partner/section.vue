@@ -69,6 +69,8 @@
 </template>
 
 <script setup>
+import { Program } from '~/assets/scripts/programs';
+
     
     const sponsorCarouselItems = [
     {
@@ -103,17 +105,23 @@
     }
     ]
 
-    const OAShowCarouselItems = [
-        {
-            name: "FTC Open Alliance Show",
-            color: "var(--primary-ftc)",
-            link: "https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1"
-        },
-        {
+    const OAShowCarouselItems = []
+
+    if (useState('program').value != Program.FTC) {
+        OAShowCarouselItems.push({
             name: "FRC Open Alliance Show",
             color: "var(--primary-frc)",
             link: "https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y8bSo4O4hUBKgyL9e5uscD3&rel=0&loop=1"
-        }
-    ]
-    
+        })
+    }
+
+    if (useState('program').value != Program.FRC) {
+        OAShowCarouselItems.push({
+            showOn: [Program.Generic, Program.FTC],
+            name: "FTC Open Alliance Show",
+            color: "var(--primary-ftc)",
+            link: "https://www.youtube.com/embed/videoseries?list=PLkZ6_Ld1x9Y-MhjlvNZuG9sTWT-RypmIU&rel=0&loop=1"
+        })
+    }
+
 </script>

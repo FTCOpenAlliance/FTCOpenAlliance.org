@@ -6,7 +6,7 @@
                 <p class="text-2xl font-bold">{{ name }}</p>
             </div>
             <div class="flex items-center w-full md:w-auto">
-                <UButton class="w-full md:w-auto items-center justify-center text-lg mx-1 mb-2 sm:mb-0" label="Download" icon="i-heroicons-arrow-down-tray-solid" :to="`https://archive.ftcopenalliance.org/${name}`"/>
+                <UButton class="w-full md:w-auto items-center justify-center text-lg mx-1 mb-2 sm:mb-0" label="Download" icon="i-heroicons-arrow-down-tray-solid" :to="`https://archive.theopenalliance.org/${name}`"/>
             </div>
         </div>
         <div class="flex flex-col lg:flex-row gap-1 lg:gap-4 *:text-neutral-600 *:text-sm">

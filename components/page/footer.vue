@@ -3,7 +3,7 @@
         <p>
             Made with <UIcon class="scale-150 translate-y-1.5 hover:animate-ping m-1 text-primary" name="i-heroicons-heart-solid" /> by the robotics community, for the robotics community.<br>
             Check out our code on <a class="text-primary font-bold" target="_blank" href="https://github.com/FTCOpenAlliance">GitHub</a><br>
-            Contact Us: <u><a class="text-primary font-bold" href="mailto:contact@ftcopenalliance.org">contact@ftcopenalliance.org</a></u>
+            Contact Us: <u><a class="text-primary font-bold" href="mailto:contact@theopenalliance.org">contact@theopenalliance.org</a></u>
         </p>
         <p class="text-sm text-[#666666]">
             <a href="https://hcb.hackclub.com/ftcopenalliance" target="_blank">

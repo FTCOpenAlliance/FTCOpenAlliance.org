@@ -32,8 +32,17 @@ import { Program } from '~/assets/scripts/programs';
     }, { immediate: true });
 
     let program = useState('program', () => Program.Generic);
+    let title = useState('title', () => '');
 
     useHead({
+        title: computed(() => `${title.value != '' ? `${title.value} | ` : ''} ${program.value == Program.Generic ? 'The' : program.value} Open Alliance`),
+        link: computed(() => [
+            {
+                rel: 'icon',
+                type: 'image/x-icon',
+                href: program.value == Program.FTC ? '/images/FTCOALogos/Icon.ico' : program.value == Program.FRC ? '/images/FRCOALogos/Icon.ico' : '/images/OALogos/Icon.ico'
+            },
+        ]),
         style: [
             {
                 id: 'dynamic-primary',
