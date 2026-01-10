@@ -11,12 +11,12 @@
             Open Alliance to ensure that FIRST® Robotics teams around the world can keep sharing
             and collaborating without limits.
         </p>
-        <UCarousel loop :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="sponsorCarouselItems" :ui="{ item: 'basis-full'}" class="bg-glass shadow-lg shadow-primary *:*:items-center">
+        <UCarousel loop :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="sponsorCarouselItems" :ui="{ item: 'basis-full' }" class="bg-glass border-2 border-primary-300 shadow-xl shadow-primary-400/50 *:*:items-center lg:-mx-10">
             <div class="flex grow justify-center items-center p-8">
                 <a :href="item.link" target="_blank" class="flex flex-col justify-between gap-6" draggable="false">
-                    <p class="text-center text-4xl text-primary font-bold">{{ item.name }}</p>
+                    <p class="text-center text-4xl text-primary-400 font-bold">{{ item.name }}</p>
                     <img class="object-contain h-32 scale-95 hover:scale-100 transition-transform" :src="item.image" draggable="false">
-                    <p class="text-center text-xl text-primary font-bold">{{ item.status }}</p>
+                    <p class="text-center text-xl text-primary-200 font-bold">{{ item.status }}</p>
                 </a>
             </div>
         </UCarousel>

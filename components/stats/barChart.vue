@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col p-4 gap-2 items-center border-2 border-primary">
+    <div class="flex flex-col p-4 gap-2 items-center bg-glass border-2 border-primary-400 shadow-xl shadow-primary-400/25">
         <p class="text-2xl font-bold text-primary">{{ title }}</p>
         <div class="min-w-80 w-full max-w-[100em] min-h-72 h-full">
             <VChart :autoresize="true" :option="option"/>
@@ -44,8 +44,14 @@ function splitSeriesData(seriesData) {
     return {nameArray: nameArray, valueArray: valueArray}
 }
 
+let color500 = program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff'
+let color200 = program == Program.FTC ? '#ffaf7a' : program == Program.FRC ? '#99c2ff' : '#fff'
+
 const option = {
-    color: [program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff'],
+    color: [color500],
+    textStyle: {
+        fontFamily: "Chakra Petch",
+    },
     yAxis: {
         type: 'category',
         data: splitSeriesData(props.data._rawValue).nameArray,
@@ -63,7 +69,7 @@ const option = {
     tooltip: {
         trigger: 'item',
         backgroundColor: '#000000aa',
-        borderColor: program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff',
+        borderColor: color500,
         borderWidth: 2,
         extraCssText: 'border-radius: 0;',
         className: 'bg-glass',
@@ -71,10 +77,20 @@ const option = {
             color: '#fff'
         }
     },
+    aria: {
+        enabled: true,
+        decal: {
+            show: true
+        }
+    },
     series: [
         {
             data: splitSeriesData(props.data._rawValue).valueArray,
-            type: 'bar'
+            type: 'bar',
+            itemStyle: {
+                borderWidth: 1,
+                borderColor: color200
+            }
         },
     ],
     grid: {

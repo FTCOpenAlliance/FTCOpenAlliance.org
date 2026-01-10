@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <PageTitle v-if="errorDisplay || !teamData">
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
+            <h1 class="text-6xl lg:text-8xl text-primary-300 font-bold">
                 {{teamid}}
             </h1>
         </PageTitle>
@@ -9,7 +9,7 @@
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-200">
                     <div class="flex flex-col mb-5">
-                        <h1 class="text-6xl md:text-8xl text-primary font-bold flex justify-center lg:justify-start">
+                        <h1 class="text-6xl md:text-8xl text-primary-300 font-bold flex justify-center lg:justify-start">
                             {{ teamid }}
                         </h1>
                         <p class="text-2xl md:text-4xl flex justify-center lg:justify-start">
@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-2 w-full *:w-full">
-                    <UButton v-if="program.value == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
-                    <UButton v-if="program.value == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
-                    <UButton v-if="program.value == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
+                    <UButton v-if="program == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
+                    <UButton v-if="program == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
+                    <UButton v-if="program == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
                 </div>
             </div>
         </PageTitle>

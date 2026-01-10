@@ -6,7 +6,7 @@
             </h1>
         </PageTitle>
         <ClientOnly>
-            <div v-if="!errorDisplay && stats" class="flex flex-col gap-8 pt-8 sm:px-12 md:px-24">
+            <div v-if="!errorDisplay && stats" class="flex flex-col bg-radial gap-8 pt-8 sm:px-12 md:px-24">
                 <USeparator class="text-xl text-primary md:text-4xl"> Alliance Stats </USeparator>
                 <div class="grid grid-cols-1 lg:grid-cols-3 *:w-full gap-8 w-full sm:p-6">
                     <div class="flex flex-col gap-4 bg-grid h-80 lg:h-auto">

@@ -7,10 +7,10 @@
             </div>
             <div>
                 <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold gradient-overlay">
-                    <span class="text-primary">{{ program }}</span> Open Alliance
+                    <span class="text-primary-400">{{ program }}</span> Open Alliance
                 </h1>
                 <p class="text-xl pb-5">
-                    The home of open and collaborative robotics for <strong>{{ programDetails.full }}</strong>.
+                    The home of open and collaborative robotics for <strong class="text-primary-300">{{ programDetails.full }}</strong>.
                 </p>
                 <div class="flex flex-col flex-wrap sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
                     <UButton label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>

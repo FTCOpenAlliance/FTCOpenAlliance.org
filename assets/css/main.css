@@ -15,26 +15,26 @@ layer(base);
 }
 
 body {
-  background-color: black;
+  background-color: #040404;
   color: white;
 }
 
 .bg-grid {
   animation: grid-move 120s linear infinite;
-  background-image: radial-gradient(transparent 40%, black 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,var(--color-primary-900) 1px);
+  background-image: radial-gradient(transparent 40%, #040404 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,var(--color-primary-900) 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
   background-attachment: scroll, fixed, fixed;
 }
 
 .bg-dots {
-  background-image: radial-gradient(var(--color-primary-900) 1px, black 3px);
+  background-image: radial-gradient(var(--color-primary-900) 1px, #040404 3px);
   background-size: 20px 20px;
   animation: parallax linear;
   animation-timeline: scroll(); 
 }
 
 .bg-radial {
-  background: radial-gradient(125% 125% at 50% 10%,#000 40%,var(--color-primary-600) 100%)
+  background: radial-gradient(125% 125% at 50% 10%,#040404 40%,var(--color-primary-700) 100%)
 }
 
 .bg-glass {

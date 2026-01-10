@@ -26,7 +26,7 @@
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
                     </p>
                     <div class="flex gap-2 w-full items-end">
-                        <FormKit v-model="program" name="Program" id="Program" label="Program" type="radio" :options="['FTC', 'FRC']" :config="multiCheckboxStyle" validation="required"/>
+                        <FormKit v-model="program" name="Program" id="Program" label="Program" type="radio" :options="['FTC', 'FRC']" :config="multiCheckboxStyle" validation="required|matches:FTC,FRC"/>
                         <FormKit @blur="numberChangeCallback" :config="{ classes: {
                             outer: 'flex flex-col grow',
                             wrapper: 'flex flex-col grow',
