@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center gap-8 text-center border-t-2 border-primary bg-black p-4 md:p-8">
+    <div class="flex flex-col justify-center gap-8 text-center border-t-2 border-primary p-4 md:p-8">
         <p>
             Made with <UIcon class="scale-150 translate-y-1.5 hover:animate-ping m-1 text-primary" name="i-heroicons-heart-solid" /> by the robotics community, for the robotics community.<br>
             Check out our code on <a class="text-primary font-bold" target="_blank" href="https://github.com/FTCOpenAlliance">GitHub</a><br>

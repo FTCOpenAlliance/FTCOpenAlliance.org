@@ -46,6 +46,9 @@ const option = {
             color: '#fff'
         }
     },
+    textStyle: {
+        fontFamily: "Chakra Petch",
+    },
     visualMap: {
         show: false,
         min: 0,

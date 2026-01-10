@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between w-full">
-        <p class="font-bold">{{ name }}</p>
+        <p class="font-bold text-primary-400">{{ name }}</p>
         <p>{{ val }}</p>
     </div>
 </template>

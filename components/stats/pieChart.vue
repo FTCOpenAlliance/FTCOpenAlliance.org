@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col p-4 gap-2 items-center border-2 border-primary">
+    <div class="flex flex-col p-4 gap-2 items-center bg-glass border-2 border-primary-400 shadow-xl shadow-primary-400/25">
         <p class="text-2xl font-bold text-primary">{{ title }}</p>
         <div class="min-w-60 w-full h-[20em]">
             <VChart :autoresize="true" :option="option"/>
@@ -10,15 +10,7 @@
 <script setup>
 import { Program } from '~/assets/scripts/programs'
 
-let primaryColor = computed(() => {
-    if (useState('program').value === Program.FTC) {
-        return "#ff6600"
-    } else if (useState('program').value === Program.FRC) {
-        return "#0066ff"
-    } else {
-        return "#fff"
-    }
-})
+let program = useState('program', () => Program.Generic).value
 
 function getLargestValue(seriesData) {
     
@@ -38,18 +30,23 @@ const props = defineProps({
     data: Array,
 })
 
+let color500 = program == Program.FTC ? '#ff6600' : program == Program.FRC ? '#0066ff' : '#fff'
+let color200 = program == Program.FTC ? '#ffaf7a' : program == Program.FRC ? '#99c2ff' : '#fff'
+
 const option = ref({
-    backgroundColor: '#000',
     legend: {
         textStyle: {
             color: "#fff"
         },
         type: 'scroll'
     },
+    textStyle: {
+        fontFamily: "Chakra Petch",
+    },
     tooltip: {
         trigger: 'item',
         backgroundColor: '#000000aa',
-        borderColor: primaryColor.value,
+        borderColor: color500,
         borderWidth: 2,
         extraCssText: 'border-radius: 0;',
         className: 'bg-glass',
@@ -62,7 +59,7 @@ const option = ref({
         min: 0,
         max: getLargestValue(props.data._rawValue),
         inRange: {
-            color: primaryColor.value,
+            color: color500,
             colorLightness: [0.3, 0.6]
         }
     },
@@ -70,12 +67,16 @@ const option = ref({
     {
         name: props.title,
         type: 'pie',
-        color: primaryColor.value,
-        radius: '60%',
+        color: color500,
+        radius: ['40%', '60%'],
         center: ['50%', '40%'],
         data: props.data,
         label: {show:false},
         labelLine: {show: false},
+        itemStyle: {
+            borderColor: color200,
+            borderWidth: 2,
+        },
         emphasis: {
             itemStyle: {
                 shadowBlur: 20,

@@ -5,7 +5,7 @@
                 <NuxtLink :to="`/${program}/teams/${teamnumber}`">
                     <div>
                         <p class="text-lg line-clamp-2">{{ teamname }}</p>
-                        <p class="text-4xl lg:text-6xl text-primary hover:text-primary-300 font-bold">{{ teamnumber }}</p>
+                        <p class="text-4xl lg:text-6xl text-primary-300 hover:text-primary-200 font-bold">{{ teamnumber }}</p>
                         <p class="text-xl text-primary-600">{{ teamlocation }}</p>
                     </div>
                 </NuxtLink>
