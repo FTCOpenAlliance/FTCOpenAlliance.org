@@ -37,7 +37,7 @@
                     </div>
                 </UCarousel>
                 <PartnerLinks website="https://funroboticsnetwork.com/"/>
-            </div>Dev
+            </div>
         </PageDualBlock>
         <PageDualBlock title="Studica Robotics">
             <PageText class="2xl:w-3/4">
