@@ -14,7 +14,7 @@
 
         <UButton label="Archives" to="/archive" color="secondary"/>
         
-        <UButton label="Donate" icon="i-heroicons-outline-heart" target="_blank" to="https://hcb.hackclub.com/donations/start/ftcopenalliance" color="secondary"/>
+        <UButton label="Donate" icon="i-heroicons-outline-heart" target="_blank" to="https://hcb.hackclub.com/donations/start/openalliance" color="secondary"/>
 
         <UButton v-if="program == Program.FTC" label="FTCOA on CD" icon="i-heroicons-arrow-top-right-on-square-16-solid" target="_blank" to="https://www.chiefdelphi.com/c/first/ftc-open-alliance/" color="secondary"/>
         <UButton v-if="program == Program.FRC" label="FRCOA on CD" icon="i-heroicons-arrow-top-right-on-square-16-solid" target="_blank" to="https://www.chiefdelphi.com/c/first/open-alliance/" color="secondary"/>
