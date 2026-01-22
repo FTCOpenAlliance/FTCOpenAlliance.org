@@ -6,8 +6,8 @@
             Contact Us: <u><a class="text-primary font-bold" href="mailto:contact@theopenalliance.org">contact@theopenalliance.org</a></u>
         </p>
         <p class="text-sm text-[#666666]">
-            <a href="https://hcb.hackclub.com/ftcopenalliance" target="_blank">
-                FIRST TECH CHALLENGE OPEN ALLIANCE is fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
+            <a href="https://hcb.hackclub.com/openalliance" target="_blank">
+                The Open Alliance is fiscally sponsored by The Hack Foundation (d.b.a. Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
             </a><br>
 
             <a href="https://www.firstinspires.org" target="_blank">

@@ -95,6 +95,6 @@ useSeoMeta({
     ogTitle: 'Home',
     description: 'The home of open and collaborative robotics for FIRST Robotics',
     ogDescription: 'The home of open and collaborative robotics for FIRST Robotics',
-    ogImage: '/images/OALogos/TwoLineStacked.svg',
+    ogImage: '/images/OALogos/ShortHorizontal.png',
 })
 </script>
