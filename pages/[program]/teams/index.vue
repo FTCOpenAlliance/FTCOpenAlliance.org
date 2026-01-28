@@ -7,7 +7,14 @@
         </PageTitle>
             <ClientOnly>
                 <div class="bg-dots">
-                    <div v-if="!errorDisplay && teamsData" class="backdrop-blur-[1px] md:p-24 p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
+                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass w-full">
+                            <template #trailing>
+                                <UKbd value="/" color="primary" variant="soft" size="lg"/>
+                            </template>
+                        </UInput>
+                    </div>
+                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] md:px-24 pb-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         <TeamCell
                         v-for="team of teamsData"
                         v-bind:program="program"
@@ -23,18 +30,26 @@
                         v-bind:awardyear="team.NewestAwardYear"
                         v-bind:award="team.NewestAward"/>
                     </div>
+                    <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
+                    <PageError v-if="!searchResults" :errortext="'No Results Found'" :errormessage="'Please try a different search.'"/>
                 </div>
-                <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
             </ClientOnly>
         <PageLoading :show="!errorDisplay && !teamsData" message="Loading Teams..."/>
     </div>
 </template>
 <script setup>
 import { Program } from '~/assets/scripts/programs'
+import { useStorage, watchDebounced } from '@vueuse/core'
 
 let errorDisplay = ref(null)
-let teamsData = ref(null)
+let allTeamData = ref([])
+let teamsData = ref([])
+const searchResults = computed(() => teamsData.value.length > 0)
+const starredTeams = useStorage('starredTeams', [])
+const searchText = ref('')
 const { program } = useRoute().params
+
+if (!Array.isArray(starredTeams.value)) { starredTeams.value = [] }
 
 if (program.toLowerCase() == "ftc") {
     useState('program').value = Program.FTC;
@@ -60,7 +75,11 @@ await useAsyncData(async () => {
                     message: "Please check again later."
                 }
             } else {
-                teamsData.value = response._data
+                allTeamData.value = [
+                    ...response._data.filter(team => starredTeams.value.includes(team.TeamID)),
+                    ...response._data.filter(team => !starredTeams.value.includes(team.TeamID))
+                ]
+                teamsData.value = allTeamData.value
             }
         },
         onResponseError({error}) {
@@ -77,6 +96,29 @@ await useAsyncData(async () => {
         }
     })
 }, {server: false})
+
+watchDebounced(
+  searchText,
+  () => {
+    if (searchText.value == "") {
+      teamsData.value = allTeamData.value
+    } else {
+      teamsData.value = allTeamData.value.filter(team => {
+        return team.TeamName.toLowerCase().includes(searchText.value.toLowerCase())
+            || team.TeamNumber.toString().includes(searchText.value)
+            || team.Location.toLowerCase().includes(searchText.value.toLowerCase());
+      });
+    }
+  },
+  { debounce: 300, maxWait: 1000 },
+);
+
+const search = useTemplateRef('search')
+defineShortcuts({
+  '/': () => {
+    search.value?.inputRef?.focus()
+  }
+})
 
 useSeoMeta({
     title: `Teams | ${useState('program').value} Open Alliance`,

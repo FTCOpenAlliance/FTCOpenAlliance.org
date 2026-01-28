@@ -7,8 +7,8 @@
         </PageTitle>
         <PageTitle v-if="!errorDisplay && teamData">
             <div class="flex flex-col gap-4">
-                <div class="flex flex-col lg:flex-row justify-between items-center w-[70vw] max-w-200">
-                    <div class="flex flex-col mb-5">
+                <div class="flex flex-col lg:flex-row gap-4 justify-between items-center w-[70vw] max-w-200">
+                    <div class="flex flex-col">
                         <h1 class="text-6xl md:text-8xl text-primary-300 font-bold flex justify-center lg:justify-start">
                             {{ teamid }}
                         </h1>
@@ -26,10 +26,11 @@
                         <TeamMiniStat name="Type" :val="kvLists.TeamType[teamData.TeamType]"/>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-2 w-full *:w-full">
-                    <UButton v-if="program == Program.FTC" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
-                    <UButton v-if="program == Program.FTC" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
-                    <UButton v-if="program == Program.FRC" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
+                <div class="flex flex-col md:flex-row gap-2 w-full">
+                    <UButton @click="toggleStarred" size="lg" class="shrink" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
+                    <UButton v-if="program == Program.FTC" class="grow" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
+                    <UButton v-if="program == Program.FTC" class="grow" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
+                    <UButton v-if="program == Program.FRC" class="grow" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
                 </div>
             </div>
         </PageTitle>
@@ -108,6 +109,8 @@ import normalizeUrl from 'normalize-url';
 import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { Program } from '~/assets/scripts/programs';
 const { teamid } = useRoute().params
+import { useStorage } from '@vueuse/core';
+
 let program = useState('program')
 const normalizeOptions = {
     stripWWW: false
@@ -221,6 +224,26 @@ function assembleFRQItems() {
     if (frqItems.value.length < 1) {
         frqItems.value = null
     }
+}
+
+const starredTeams = useStorage('starredTeams', [])
+const starred = computed({
+    get() {
+        return starredTeams.value.includes(teamData.value.TeamID)
+    },
+    set(newValue) {
+        let teamid = teamData.value.TeamID
+
+        if (newValue && !starredTeams.value.includes(teamid)) {
+            starredTeams.value.push(teamid)
+        } else if (!newValue && starredTeams.value.includes(teamid)) {
+            starredTeams.value = starredTeams.value.filter(id => id !== teamid)
+        }
+    }
+})
+
+function toggleStarred() {
+    starred.value = !starred.value
 }
 
 useSeoMeta({

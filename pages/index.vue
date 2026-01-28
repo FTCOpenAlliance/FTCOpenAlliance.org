@@ -42,7 +42,7 @@
                         they build their robots as well as at competitions to reinforce scouting data.
                     </p>
                     <div class="w-full 2xl:w-1/2 relative">
-                        <TeamCell teamnumber=99999 teamname="Your Team Name Here" teamlocation="Your City Here"
+                        <TeamCell program="FTC" teamnumber=99999 teamname="Your Team Name Here" teamlocation="Your City Here"
                         cadlink="https://www.example.com" codelink="https://example.com" buildthread="https://example.com"
                         weblink="https://example.com" photolink="https://example.com" videolink="https://example.com" awardyear="20XX" award="Best Example"/>
                         <div class="absolute top-0 left-0 w-full h-full"></div>
