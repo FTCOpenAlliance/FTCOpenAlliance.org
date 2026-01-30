@@ -14,7 +14,7 @@
                             </template>
                         </UInput>
                     </div>
-                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] md:px-24 pb-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] px-4 md:px-24 pb-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         <TeamCell
                         v-for="team of teamsData"
                         v-bind:program="program"

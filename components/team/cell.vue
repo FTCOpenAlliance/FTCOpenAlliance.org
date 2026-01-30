@@ -1,5 +1,5 @@
 <template>
-    <div :class="starred ? 'border-primary-200 shadow-primary-300' : ''" class="flex flex-col gap-4 justify-between p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out">
+    <div :class="starred ? 'border-primary-200 shadow-primary-300' : ''" class="flex flex-col gap-4 justify-between p-5 border-2 bg-glass bg-glass-hover border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all ease-in-out group">
         <div class="flex flex-row justify-between">
             <div class="flex" :class="award ? ' max-w-[60%]' : ''">
                 <NuxtLink :to="`/${program}/teams/${teamnumber}`">
@@ -10,17 +10,17 @@
                     </div>
                 </NuxtLink>
             </div>
-            <div v-if="award && awardyear" class="-mt-5 items-center min-h-40 w-30 *:text-center hover:*:translate-y-5 bg-no-repeat bg-contain bg-[url('../images/awardBanner.svg')]">
+            <div v-if="award && awardyear" class="-mt-5 items-center h-40 w-30 *:text-center group-hover:*:translate-y-2 bg-no-repeat bg-contain bg-[url('../images/awardBanner.svg')]">
                 <div class="h-full w-full pt-2 px-4 bg-no-repeat bg-contain bg-[url('../images/awardBanner.svg')] transition-transform">
                     <NuxtLink class="flex flex-col gap-2 w-full h-full" :to="`/${program}/teams/${teamnumber}#awards`">
-                        <p class="font-bold text-xl leading-3">{{ awardyear }}</p>
-                        <p class="text-lg leading-5">{{ award }}</p>
+                        <p class="mt-1 font-bold text-xl leading-3">{{ awardyear }}</p>
+                        <p class="text-md px-0.5 leading-4">{{ award }}</p>
                     </NuxtLink>
                 </div>
             </div>
         </div>
         <div class="flex justify-between items-end">
-            <UButton @click="toggleStarred" size="xl" variant="ghost" class="rounded-full" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
+            <UButton @click="toggleStarred" size="xl" variant="ghost" class="rounded-full p-0 hover:text-primary-200" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
             <div class="flex flex-wrap *:grow max-w-64 justify-end gap-1 *:text-lg *:hover:ring-primary-200 *:hover:*:text-primary-200">
                 <UButton label="Build Thread" target="_blank" v-bind:to="normalizeUrl(buildthread, normalizeOptions)" v-if="checkNormalizable(buildthread)"/>
                 <UButton label="CAD" target="_blank" v-bind:to="normalizeUrl(cadlink, normalizeOptions)" v-if="checkNormalizable(cadlink)"/>

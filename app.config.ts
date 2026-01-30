@@ -12,7 +12,7 @@ export default defineAppConfig({
           variant: 'outline',
         },
         slots: {
-          base: 'hover:scale-105 transition-all justify-center'
+          base: 'hover:scale-[102%] transition-all justify-center '
         }
       },
       toast: {

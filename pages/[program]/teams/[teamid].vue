@@ -29,16 +29,15 @@
                 <div class="flex flex-col md:flex-row gap-2 w-full">
                     <UButton @click="toggleStarred" size="lg" class="shrink" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
                     <UButton v-if="program == Program.FTC" class="grow" :to="`https://ftcscout.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on FTCScout"/>
-                    <UButton v-if="program == Program.FTC" class="grow" :to="`https://theorangealliance.org/teams/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on Orange Alliance"/>
                     <UButton v-if="program == Program.FRC" class="grow" :to="`https://thebluealliance.com/team/${teamid}`" target="_blank" icon="i-heroicons-arrow-top-right-on-square-16-solid" color="secondary" label="See Team on The Blue Alliance"/>
                 </div>
             </div>
         </PageTitle>
         <ClientOnly>
-            <div v-if="!errorDisplay && teamData" class="flex flex-col gap-10 px-10 md:px-20 lg:px-48">
+            <div v-if="!errorDisplay && teamData" class="flex flex-col gap-10 p-10 md:px-20 lg:px-48">
                 <div>
                     <div class="flex justify-center mb-5">
-                        <USeparator class="text-xl text-primary md:text-4xl mt-12">Team Links</USeparator>
+                        <USeparator class="text-xl text-primary md:text-4xl">Team Links</USeparator>
                     </div>
                     <div class="flex justify-center">
                         <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
@@ -55,42 +54,55 @@
                     <div class="flex justify-center mb-5">
                         <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
                     </div>
-                    <TeamStat name="Meeting Hours/Week" :val="teamData.MeetingHours"/>
-                    <TeamStat name="Approx. Budget" :val="kvLists.Budget[teamData.Budget]"/>
-                    <TeamStat name="Workspace" :val="kvLists.Workspace[teamData.Workspace]"/>
-                    <TeamStat name="Sponsorship Status" :val="kvLists.Sponsors[teamData.Sponsors]"/>
+                    <div class="flex flex-col gap-4 md:gap-8">
+                        <TeamStat name="Meeting Hours/Week" :val="teamData.MeetingHours"/>
+                        <TeamStat name="Approx. Budget" :val="kvLists.Budget[teamData.Budget]"/>
+                        <TeamStat name="Workspace" :val="kvLists.Workspace[teamData.Workspace]"/>
+                        <TeamStat name="Sponsorship Status" :val="kvLists.Sponsors[teamData.Sponsors]"/>
+                    </div>
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
                         <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
                     </div>
-                    <TeamStat name="Drivetrain" :val="kvLists.Drivetrain[teamData.Drivetrain]"/>
-                    <TeamStat name="Materials" :val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
-                    <TeamStat name="Product Sources" :val="parseKVArray(teamData.Products, kvLists.Products)"/>
-                    <TeamStat name="Odometry" :val="parseKVArray(teamData.Odometry, kvLists.Odometry)"/>
-                    <TeamStat name="Sensors" :val="parseKVArray(teamData.Sensors, kvLists.Sensors)"/>
-                    <TeamStat name="Systems" :val="parseKVArray(teamData.Systems, kvLists.Systems)"/>
+                    <div class="flex flex-col gap-4 md:gap-8">
+                        <TeamStat name="Drivetrain" :val="kvLists.Drivetrain[teamData.Drivetrain]"/>
+                        <TeamStat name="Materials" :val="parseKVArray(teamData.Materials, kvLists.Materials)"/>
+                        <TeamStat name="Product Sources" :val="parseKVArray(teamData.Products, kvLists.Products)"/>
+                        <TeamStat name="Odometry" :val="parseKVArray(teamData.Odometry, kvLists.Odometry)"/>
+                        <TeamStat name="Sensors" :val="parseKVArray(teamData.Sensors, kvLists.Sensors)"/>
+                        <TeamStat name="Systems" :val="parseKVArray(teamData.Systems, kvLists.Systems)"/>
+                    </div>
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
                         <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
                     </div>
-                    <TeamStat name="Programming Language" :val="kvLists.CodeLang[teamData.CodeLang]"/>
-                    <TeamStat name="Development Environment" :val="kvLists.CodeEnv[teamData.CodeEnv]"/>
-                    <TeamStat name="3rd-Party Tools" :val="parseKVArray(teamData.CodeTools, kvLists.CodeTools)"/>
-                    <TeamStat name="Vision" :val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
+                    <div class="flex flex-col gap-4 md:gap-8">
+                        <TeamStat name="Programming Language" :val="kvLists.CodeLang[teamData.CodeLang]"/>
+                        <TeamStat name="Development Environment" :val="kvLists.CodeEnv[teamData.CodeEnv]"/>
+                        <TeamStat name="3rd-Party Tools" :val="parseKVArray(teamData.CodeTools, kvLists.CodeTools)"/>
+                        <TeamStat name="Vision" :val="parseKVArray(teamData.Vision, kvLists.Vision)"/>
+                    </div>
                 </div>
-                <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col py-6 gap-5">
+                <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col gap-5">
                     <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
-                    <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-6 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
-                        <p class="text-xl md:text-5xl font-bold text-primary">{{ award.Year }}</p>
-                        <p class="text-lg md:text-2xl lg:text-3xl">{{ award.Award }}</p>
+                    <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-4 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
+                        <p class="text-xl md:text-3xl font-bold text-primary">{{ award.Year }}</p>
+                        <p class="text-lg md:text-2xl">{{ award.Award }}</p>
                     </div>
                 </div>
                 <div v-if="frqItems">
                     <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
-                    <UCarousel class="flex py-10 *:*:items-center" v-if="frqItems" v-slot="{ item }" :items="frqItems" arrows>
-                        <PageBlock class="flex flex-col mx-10 shadow-black">
+                    <UCarousel class="flex *:*:items-start *:*:py-8 mt-12" v-if="frqItems" v-slot="{ item }" :items="frqItems" dots arrows loop
+                    :ui="{
+                        controls: 'absolute -top-8 inset-x-4 sm:inset-x-20',
+                        dots: 'top-0 gap-1 md:gap-4',
+                        dot: 'flex w-4 md:w-6 data-[state=active]:bg-primary rounded-none h-1 bg-primary-200/25',
+                        prev: 'rounded-none bg-glass',
+                        next: 'rounded-none bg-glass',
+                    }">
+                        <PageBlock class="flex flex-col sm:mx-8 shadow-black">
                             <h2 class="text-xl md:text-2xl font-bold text-primary">{{item.q}}</h2>
                             <PageText>
                                 {{ item.a }}
@@ -155,7 +167,7 @@ function parseKVArray(inputArray, kvList) {
             outputArray.push(kvList[element])
         }
     });
-    return outputArray.join(", ")
+    return outputArray
 }
 
 let errorDisplay = ref(null)

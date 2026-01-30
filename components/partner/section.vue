@@ -8,7 +8,7 @@
         </USeparator>
         <p class="text-lg md:text-xl text-center px-4 md:px-12">
             These organizations have generously funded or otherwise supported the
-            Open Alliance to ensure that FIRST® Robotics teams around the world can keep sharing
+            Open Alliance to ensure that <i>FIRST</i>® Robotics teams around the world can keep sharing
             and collaborating without limits.
         </p>
         <UCarousel loop :autoplay="{ delay: 2000, stopOnInteraction: false }" v-slot="{ item }" :items="sponsorCarouselItems" :ui="{ item: 'basis-full' }" class="bg-glass border-2 border-primary-300 shadow-xl shadow-primary-400/50 *:*:items-center lg:-mx-10">

@@ -1,5 +1,5 @@
 <template>
-    <p class="px-6 md:px-12 text-md md:text-xl">
+    <p class="px-4 md:px-12 text-md md:text-xl">
         <slot />
     </p>
 </template>

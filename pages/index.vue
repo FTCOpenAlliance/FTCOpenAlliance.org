@@ -10,7 +10,7 @@
                         The Open Alliance
                     </h1>
                     <p class="text-xl pb-5">
-                        The home of open and collaborative robotics for <strong>FIRST® Robotics</strong>.
+                        The home of open and collaborative robotics for <strong><i>FIRST</i>® Robotics</strong>.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:mx-1 *:mb-2 sm:*:mb-0">
                         <UButton class="w-full sm:w-1/3 ring-[var(--primary-ftc)] text-[var(--primary-ftc-200)]" label="Explore FTC Teams" to="/ftc/teams"/>
@@ -26,7 +26,7 @@
         <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock title="What is the Open Alliance?">
                 <PageText>
-                    The Open Alliance is an organization created to help FIRST® Robotics teams easily <strong>share their information and statistics to a wider audience</strong>.
+                    The Open Alliance is an organization created to help <i>FIRST</i>® Robotics teams easily <strong>share their information and statistics to a wider audience</strong>.
                     The Alliance is a great resource for newer teams that are looking to get started or veteran teams that are looking to
                     expand their capabilities.
                     Being a member of an Open Alliance team is not required to access the information of Alliance teams.
