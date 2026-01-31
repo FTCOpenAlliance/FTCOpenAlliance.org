@@ -96,7 +96,7 @@
                     <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
                     <UCarousel class="flex *:*:items-start *:*:py-8 mt-12" v-if="frqItems" v-slot="{ item }" :items="frqItems" dots arrows loop
                     :ui="{
-                        controls: 'absolute -top-8 inset-x-4 sm:inset-x-20',
+                        controls: 'absolute -top-8 inset-x-4 sm:inset-x-20 *:mx-12 sm:*:mx-0',
                         dots: 'top-0 gap-1 md:gap-4',
                         dot: 'flex w-4 md:w-6 data-[state=active]:bg-primary rounded-none h-1 bg-primary-200/25',
                         prev: 'rounded-none bg-glass',

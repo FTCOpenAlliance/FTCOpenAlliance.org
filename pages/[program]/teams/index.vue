@@ -8,7 +8,7 @@
             <ClientOnly>
                 <div class="bg-dots">
                     <div class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
-                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass w-full">
+                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent w-full">
                             <template #trailing>
                                 <UKbd value="/" color="primary" variant="soft" size="lg"/>
                             </template>

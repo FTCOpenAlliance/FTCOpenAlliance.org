@@ -13,7 +13,7 @@
                     </NuxtLink>
                     <ClientOnly>
                         <USeparator v-if="logoLink" orientation="vertical" class="h-10" />
-                        <NuxtLink :to="`/${program.toLowerCase()}`">
+                        <NuxtLink v-if="logoLink" :to="`/${program.toLowerCase()}`">
                             <img :src="logoLink" class="max-h-10" />
                         </NuxtLink>
                     </ClientOnly>
