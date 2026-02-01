@@ -197,7 +197,7 @@ export abstract class frcKV{
         ADAFRUIT: 'Adafruit Industries',
         SWYFT: 'Swyft Robotics',
         WCP: 'West Coast Products',
-        THRIFTY: 'Thrifty Bot',
+        THRIFTY: 'ThriftyBot',
         SDS: 'Swerve Drive Specialties',
         OTHER: 'Other',
     }
@@ -254,6 +254,10 @@ export abstract class frcKV{
 
     public static CodeTools = {
         SCOPE: 'AdvantageScope',
+        YAGSL: 'YAGSL',
+        YASS: 'Other YASS Library',
+        DLOG: 'DogLog',
+        MSIM: 'MapleSim',
         CHOREO: 'Choreo',
         PATH: 'Path Planner',
         CUSTOM: 'Custom Tools',

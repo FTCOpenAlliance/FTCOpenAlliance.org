@@ -10,7 +10,7 @@
                     <span class="text-primary-400">{{ program }}</span> Open Alliance
                 </h1>
                 <p class="text-xl pb-5">
-                    The home of open and collaborative robotics for <strong class="text-primary-300">{{ programDetails.full }}</strong>.
+                    The home of open and collaborative robotics for <strong class="text-primary-300"><i>FIRST</i>® {{ programDetails.full }}</strong>.
                 </p>
                 <div class="flex flex-col flex-wrap sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
                     <UButton label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>
@@ -26,7 +26,7 @@
         <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock :title="`What is the ${program} Open Alliance?`">
                 <PageText>
-                    The {{ program }} Open Alliance is an organization created to help {{ programDetails.full }} teams easily <strong>share their information and statistics to a wider audience</strong>.
+                    The {{ program }} Open Alliance is an organization created to help <i>FIRST</i>® {{ programDetails.full }} teams easily <strong>share their information and statistics to a wider audience</strong>.
                     The Alliance is a great resource for newer teams that are looking to get started or veteran teams that are looking to expand their capabilities.
                     Being a member of an {{ program }} Open Alliance team is not required to access the information of Alliance teams.
                     <br><br>
@@ -39,11 +39,11 @@
             </PageBlock>
             <PageBlock v-if="program == Program.FTC" title="History of the FTC Open Alliance">
                 <PageText>
-                    Prior to the 2024-2025 FIRST® Tech Challenge season (INTO THE DEEP), and inspired by the original FRC Open Alliance (then "The Open Alliance"), the FTC Open Alliance was formed to bring collaboration and the values of said program to FIRST® Tech Challenge teams.
+                    Prior to the 2024-2025 <i>FIRST</i>® Tech Challenge season (INTO THE DEEP), and inspired by the original FRC Open Alliance (then "The Open Alliance"), the FTC Open Alliance was formed to bring collaboration and the values of said program to <i>FIRST</i>® Tech Challenge teams.
                     Alongside providing a listing for teams' CAD, Code, Build Thread, and media links, the new platform also gathered further robot/team statistics, and provided enhanced visualization and API capabilities.
                     Started with permission from the original Open Alliance, the FTC Open Alliance received much community interaction and support during its first year.
                     <br><br>
-                    After a successful beta-testing season, the FTC Open Alliance went through a number of monumental changes. Aside from adding support for statistics visualizations and better backend infrastructure, the platform added support for FIRST® Robotics Competition teams, unifying the Open Alliance program.
+                    After a successful beta-testing season, the FTC Open Alliance went through a number of monumental changes. Aside from adding support for statistics visualizations and better backend infrastructure, the platform added support for <i>FIRST</i>® Robotics Competition teams, unifying the Open Alliance program.
                     The Open Alliance also became a fiscally-sponsored nonprofit organization (through Hack Club's HCB), and gained partnerships with multiple robotics providers.
                 </PageText>
             </PageBlock>
@@ -74,13 +74,13 @@ let programDetails = {}
 if (useRoute().params.program.toLowerCase() == "ftc") {
     program.value = Program.FTC;
     programDetails = {
-        full: 'FIRST® Tech Challenge',
+        full: 'Tech Challenge',
         other: 'frc'
     }
 } else if (useRoute().params.program.toLowerCase() == "frc") {
     program.value = Program.FRC;
     programDetails = {
-        full: 'FIRST® Robotics Competition',
+        full: 'Robotics Competition',
         other: 'ftc'
     }
 } else if (import.meta.server) {
