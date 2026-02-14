@@ -12,6 +12,8 @@
         <UButton v-if="program == Program.FTC" label="Statistics" to="/ftc/stats"/>
         <UButton v-if="program == Program.FRC" label="Statistics" to="/frc/stats"/>
 
+        <UButton label="Resources" to="/resources" color="secondary"/>
+
         <UButton label="Archives" to="/archive" color="secondary"/>
         
         <UButton label="Donate" icon="i-heroicons-outline-heart" target="_blank" to="https://hcb.hackclub.com/donations/start/openalliance" color="secondary"/>
