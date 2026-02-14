@@ -18,7 +18,7 @@
                         </NuxtLink>
                     </ClientOnly>
                 </div>
-                <UPopover class="lg:hidden" :popper="{placement: 'bottom-end'}">
+                <UPopover class="xl:hidden" :popper="{placement: 'bottom-end'}">
                     <UButton class="*:size-8" variant="ghost" icon="i-heroicons-bars-3-16-solid" />
             
                     <template #content>
@@ -27,7 +27,7 @@
                         </div>
                     </template>
                 </UPopover>
-                <NavigationButtons :program="program" class="hidden lg:flex" />
+                <NavigationButtons :program="program" class="hidden xl:flex" />
             </div>
         </div>
     </div>
