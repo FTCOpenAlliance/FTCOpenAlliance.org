@@ -25,6 +25,8 @@
 
 <script setup>
 
+useState('title').value = 'Resources'
+
     const items = [
         {
             icon: "i-heroicons-paint-brush",
