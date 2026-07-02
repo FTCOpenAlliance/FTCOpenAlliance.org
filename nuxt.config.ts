@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2024-07-03",
-  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts'],
+  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode'],
   ui: {
     theme: {
       colors: [

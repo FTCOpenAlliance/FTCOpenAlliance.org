@@ -3,11 +3,3 @@
         <slot />
     </p>
 </template>
-
-<script setup>
-
-defineProps({
-    title: String
-})
-
-</script>

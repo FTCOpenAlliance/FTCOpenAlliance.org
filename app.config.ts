@@ -25,6 +25,13 @@ export default defineAppConfig({
         slots: {
           content: 'bg-glass ring-primary'
         }
+      },
+      select: {
+        slots: {
+          base: 'bg-glass ring-primary',
+          indicator: 'text-primary',
+          content: 'bg-glass ring-primary'
+        }
       }
     }
   })
