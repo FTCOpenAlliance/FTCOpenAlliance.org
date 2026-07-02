@@ -137,11 +137,11 @@
                         </div>
                         <div class="mx-6 pt-4">
                             <table class="w-full bg-black/50 backdrop-blur-[1px]">
-                                <tbody class="border-2 border-primary-200/40 **:border-1 **:border-primary-200/50 **:p-1 [&>tr>th]:text-left [&>tr>td]:text-center [&>tr>th]:w-1/2">
+                                <tbody class="border-2 border-primary-200/40 **:border-1 **:border-primary-200/50 **:p-1 [&>tr>th]:text-left [&>tr>td]:text-center [&>tr>th]:w-1/3">
                                     <tr> <th>Location</th> <td>{{ teamData.Location }}</td> </tr>
                                     <tr> <th>Rookie Year</th> <td>{{ teamData.RookieYear }}</td> </tr>
-                                    <tr> <th>Team Members</th> <td>{{ teamData.TeamMembers }}</td> </tr>
-                                    <tr> <th>Robot Drivetrain</th> <td>{{ kv.Drivetrain[teamData.Drivetrain] }}</td> </tr>
+                                    <tr> <th>Members</th> <td>{{ teamData.TeamMembers }}</td> </tr>
+                                    <tr> <th>Drivetrain</th> <td>{{ kv.Drivetrain[teamData.Drivetrain] }}</td> </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -177,6 +177,7 @@ import { Program } from '~/assets/scripts/programs'
 import { domToPng, domToJpeg, domToSvg, domToForeignObjectSvg } from 'modern-screenshot'
 import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 
+useState('title').value = 'Team Graphics'
 const apiURL = useRuntimeConfig().public.API_URL
 let toast = useToast()
 
