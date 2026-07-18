@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -8,12 +9,12 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
-  postcss: {
-    plugins: {
-      "@tailwindcss/postcss": {},
-    },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
-  compatibilityDate: "2024-07-03",
+  compatibilityDate: "2025-07-15",
   modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode'],
   ui: {
     theme: {

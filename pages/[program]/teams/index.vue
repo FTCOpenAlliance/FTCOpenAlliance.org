@@ -1,10 +1,6 @@
 <template lang="">
     <div>
-        <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
-                Teams
-            </h1>
-        </PageTitle>
+        <PageTitle title="Teams"/>
             <ClientOnly>
                 <div class="bg-dots">
                     <div class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
@@ -47,22 +43,15 @@ let teamsData = ref([])
 const searchResults = computed(() => teamsData.value.length > 0)
 const starredTeams = useStorage('starredTeams', [])
 const searchText = ref('')
-const { program } = useRoute().params
 
 if (!Array.isArray(starredTeams.value)) { starredTeams.value = [] }
 
-if (program.toLowerCase() == "ftc") {
-    useState('program').value = Program.FTC;
-} else if (program.toLowerCase() == "frc") {
-    useState('program').value = Program.FRC;
-} else {
-    useState('program').value = Program.Generic;
-}
+const program = useRouteProgram()
 
 useState('title').value = 'Teams'
 
-await useAsyncData(async () => {
-    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program}`, {
+await useAsyncData(`${program.value}_TEAMS_LIST`, async () => {
+    await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program.value}`, {
         onResponse({response}) {
             if (!response.ok) {
                 errorDisplay.value = {

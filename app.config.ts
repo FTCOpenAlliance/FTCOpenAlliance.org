@@ -1,10 +1,9 @@
 export default defineAppConfig({
     ui: {
       colors: {
-      primary: 'primary',
-      secondary: 'secondary',
-      neutral: 'black',
-      error: 'red'
+        primary: 'generic-primary',
+        neutral: 'white',
+        error: 'red'
       },
       button: {
         defaultVariants: {
@@ -13,6 +12,12 @@ export default defineAppConfig({
         },
         slots: {
           base: 'hover:scale-[102%] transition-all justify-center '
+        }
+      },
+      input: {
+        defaultVariants: {
+          color: 'primary',
+          variant: 'outline',
         }
       },
       toast: {

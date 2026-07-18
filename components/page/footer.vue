@@ -3,7 +3,7 @@
         <div class="flex gap-4 items-center">
             <img src="/public/images/OALogos/Icon.svg" class="hidden md:block md:w-24"/>
             <p class="text-center md:text-left">
-                Made with <UIcon class="scale-150 translate-y-1.5 hover:animate-ping m-1 text-primary" name="i-heroicons-heart-solid" /> by the robotics community, for the robotics community.<br>
+                Made with <UIcon class="scale-150 translate-y-1.5 animate-heartbeat m-1 text-primary" name="i-heroicons-heart-solid" /> by the robotics community, for the robotics community.<br>
                 Check out our code on <a class="text-primary font-bold" target="_blank" href="https://github.com/FTCOpenAlliance">GitHub</a><br>
                 Contact Us: <u><a class="text-primary font-bold" href="mailto:contact@theopenalliance.org">contact@theopenalliance.org</a></u>
             </p>
@@ -26,6 +26,20 @@
         </p>
     </div>
 </template>
+
+<style>
+
+.animate-heartbeat:hover {
+    animation: heartbeat infinite 1s;
+}
+
+@keyframes heartbeat {
+    0% {scale: 150%;}
+    10% {scale: 170%;}
+    100% {scale: 150%}
+}
+
+</style>
 
 <script setup>
 import { Program } from '~/assets/scripts/programs';

@@ -1,10 +1,6 @@
 <template>
     <div>
-        <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
-                Statistics
-            </h1>
-        </PageTitle>
+        <PageTitle title="Statistics"/>
         <ClientOnly>
             <div v-if="!errorDisplay && stats" class="flex flex-col bg-radial gap-8 pt-8 px-4 sm:px-12 md:px-24">
                 <USeparator class="text-xl text-primary md:text-4xl"> Alliance Stats </USeparator>
@@ -54,20 +50,8 @@
 <script setup>
 import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { Program } from '~/assets/scripts/programs';
-const program = useState('program', () => Program.Generic)
+const program = useRouteProgram()
 useState('title').value = 'Statistics'
-
-if (useRoute().params.program.toLowerCase() == "ftc") {
-    program.value = Program.FTC;
-} else if (useRoute().params.program.toLowerCase() == "frc") {
-    program.value = Program.FRC;
-} else {
-    errorDisplay.value = {
-        text: "Invalid Program",
-        message: "The specified program is not valid."
-    }
-}
-
 
 let kvLists = computed(() => {
     switch (program.value) {
@@ -85,7 +69,7 @@ let stats = ref(null)
 
 if (program.value == Program.FTC || program.value == Program.FRC) {
 
-    await useAsyncData(async () => {
+    await useAsyncData(`${program}_STATISTICS`, async () => {
         await $fetch(`${useRuntimeConfig().public.API_URL}/internal/getTeamStats/${program.value}`, {
             onResponse({response}) {
                 if (response._data.NumTeams < 1) {
@@ -117,6 +101,11 @@ if (program.value == Program.FTC || program.value == Program.FRC) {
         })
     }, {server: false})
 
+} else {
+    errorDisplay.value = {
+        text: "Invalid Program",
+        message: "The specified program is not valid."
+    }
 }
 
 function applyKVNames(data, kvList) {

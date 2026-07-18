@@ -1,10 +1,6 @@
 <template>
     <div>
-        <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
-                Register
-            </h1>
-        </PageTitle>
+        <PageTitle title="Register"/>
         
         <div class="flex flex-col py-10 items-center bg-dots">
             
@@ -25,7 +21,7 @@
                         Your team data may be used to fetch additional information through external APIs. <br>
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
                     </p>
-                    <div class="flex gap-2 w-full items-end">
+                    <div class="flex gap-2 w-full items-start">
                         <FormKit v-model="program" name="Program" id="Program" label="Program" type="radio" :options="['FTC', 'FRC']" :config="multiCheckboxStyle" validation="required|matches:FTC,FRC"/>
                         <FormKit @blur="numberChangeCallback" :config="{ classes: {
                             outer: 'flex flex-col grow',
@@ -33,6 +29,7 @@
                             input: 'border border-primary bg-black p-2 w-full accent-primary-500',
                             message: 'text-red-400 mb-2',
                         }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
+                        <FormKit name="AuthCode" id="AuthCode" label="Verification Code" type="password" validation="required|matches:/^[A-Za-z0-9_-]{6}$/"/>
                     </div>
                     <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>

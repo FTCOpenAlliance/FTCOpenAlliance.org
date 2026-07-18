@@ -4,8 +4,8 @@
         <UButton v-if="program == Program.FTC" label="Teams" to="/ftc/teams"/>
         <UButton v-if="program == Program.FRC" label="Teams" to="/frc/teams"/>
 
-        <UButton v-if="program == Program.Generic" class="ring-[var(--primary-ftc)] text-[var(--primary-ftc-200)]" label="Explore FTC" to="/ftc"/>
-        <UButton v-if="program == Program.Generic" class="ring-[var(--primary-frc)] text-[var(--primary-frc-200)]" label="Explore FRC" to="/frc"/>
+        <UButton v-if="program == Program.Generic" class="ring-(--color-ftc-primary) text-(--color-ftc-primary-200)" label="Explore FTC" to="/ftc"/>
+        <UButton v-if="program == Program.Generic" class="ring-(--color-frc-primary) text-(--color-frc-primary-200)" label="Explore FRC" to="/frc"/>
 
         <UButton label="Register/Update" to="/join"/>
 
