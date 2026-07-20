@@ -19,7 +19,7 @@
                     </ClientOnly>
                 </div>
                 <UPopover class="xl:hidden" :popper="{placement: 'bottom-end'}">
-                    <UButton size="lg" variant="outline" icon="i-heroicons-bars-3-16-solid" />
+                    <UButton size="lg" variant="ghost" icon="i-heroicons-bars-3-16-solid" />
             
                     <template #content>
                         <div class="p-4 bg-glass">

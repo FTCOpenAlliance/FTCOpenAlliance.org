@@ -4,13 +4,14 @@
             <ClientOnly>
                 <div class="bg-dots">
                     <div class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
-                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent w-full">
+                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent grow">
                             <template #trailing>
                                 <UKbd value="/" color="primary" variant="soft" size="lg"/>
                             </template>
                         </UInput>
+                        <UButton @click="showRows = !showRows" size="xl" variant="subtle" :icon="showRows ? 'i-mdi-grid-large' : 'i-heroicons-bars-3-16-solid'" />
                     </div>
-                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] px-4 md:px-24 pb-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] px-4 md:px-24 pb-8 grid grid-cols-1 gap-4" :class="showRows ? '' : 'lg:grid-cols-2 xl:grid-cols-3'">
                         <TeamCell
                         v-for="team of teamsData"
                         v-bind:program="program"
@@ -24,7 +25,9 @@
                         v-bind:videolink="team.Video"
                         v-bind:teamlocation="team.Location"
                         v-bind:awardyear="team.NewestAwardYear"
-                        v-bind:award="team.NewestAward"/>
+                        v-bind:award="team.NewestAward"
+                        v-bind:row="showRows"
+                        />
                     </div>
                     <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
                     <PageError v-if="!searchResults" :errortext="'No Results Found'" :errormessage="'Please try a different search.'"/>
@@ -43,7 +46,7 @@ let teamsData = ref([])
 const searchResults = computed(() => teamsData.value.length > 0)
 const starredTeams = useStorage('starredTeams', [])
 const searchText = ref('')
-
+const showRows = ref(false)
 if (!Array.isArray(starredTeams.value)) { starredTeams.value = [] }
 
 const program = useRouteProgram()

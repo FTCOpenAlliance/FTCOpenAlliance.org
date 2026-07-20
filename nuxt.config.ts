@@ -13,6 +13,14 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    optimizeDeps: {
+      include: [
+        '@formkit/core',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'vue-qrcode-reader',
+      ]
+    }
   },
   compatibilityDate: "2025-07-15",
   modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode'],
@@ -25,6 +33,11 @@ export default defineNuxtConfig({
         'warning',
         'error'
       ]
+    }
+  },
+  icon: {
+    serverBundle: {
+      collections: ['heroicons', 'mdi']
     }
   },
   echarts: {
