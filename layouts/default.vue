@@ -1,14 +1,13 @@
 <template>
     <UApp>
         <div>
-            <div>
-                <NuxtLoadingIndicator :height="2" :color="(flags && flags.BannerHTML) ? '#000' : '--color-primary'" />
+            <NuxtLoadingIndicator :height="2" :color="(flags && flags.BannerMD && !dismissed) ? '#000' : '--color-primary'" />
+            <div class="static md:sticky top-0 left-0 right-0 z-50 pointer-events-none">
+                <PageBanner />
                 <NavigationHeader />
             </div>
-            <slot/>
-            <div>
+                <slot/>
                 <PageFooter />
-            </div>
         </div>
     </UApp>
 </template>
@@ -21,7 +20,8 @@ import { Program } from '~/assets/scripts/programs';
 
     useColorMode().preference = 'dark'
 
-    const flags = useState('flags', () => ({ BannerHTML: '' }));
+    const flags = useState('flags', () => ({}));
+    const dismissed = useState('bannerDismissed', () => false);
 
     const { data } = await useAsyncData('web-flags', () => 
         $fetch(`${config.public.API_URL}/internal/getWebFlags`), 

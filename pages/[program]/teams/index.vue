@@ -1,39 +1,39 @@
 <template lang="">
     <div>
         <PageTitle title="Teams"/>
-            <ClientOnly>
-                <div class="bg-dots">
-                    <div class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
-                        <UInput v-if="!errorDisplay" icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent grow">
-                            <template #trailing>
-                                <UKbd value="/" color="primary" variant="soft" size="lg"/>
-                            </template>
-                        </UInput>
-                        <UButton @click="showRows = !showRows" size="xl" variant="subtle" :icon="showRows ? 'i-mdi-grid-large' : 'i-heroicons-bars-3-16-solid'" />
-                    </div>
-                    <div v-if="!errorDisplay && teamsData && searchResults" class="backdrop-blur-[1px] px-4 md:px-24 pb-8 grid grid-cols-1 gap-4" :class="showRows ? '' : 'lg:grid-cols-2 xl:grid-cols-3'">
-                        <TeamCell
-                        v-for="team of teamsData"
-                        v-bind:program="program"
-                        v-bind:teamnumber="team.TeamNumber"
-                        v-bind:teamname="team.TeamName"
-                        v-bind:weblink="team.TeamWebsite"
-                        v-bind:buildthread="team.BuildThread"
-                        v-bind:cadlink="team.CAD"
-                        v-bind:codelink="team.Code"
-                        v-bind:photolink="team.Photo"
-                        v-bind:videolink="team.Video"
-                        v-bind:teamlocation="team.Location"
-                        v-bind:awardyear="team.NewestAwardYear"
-                        v-bind:award="team.NewestAward"
-                        v-bind:row="showRows"
-                        />
-                    </div>
-                    <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
-                    <PageError v-if="!searchResults" :errortext="'No Results Found'" :errormessage="'Please try a different search.'"/>
+        <ClientOnly>
+            <div class="flex flex-col items-center bg-dots">
+                <div v-if="!errorDisplay" class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
+                    <UInput icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent grow">
+                        <template #trailing>
+                            <UKbd value="/" color="primary" variant="soft" size="lg"/>
+                        </template>
+                    </UInput>
+                    <UButton @click="showRows = !showRows" size="xl" variant="subtle" :icon="showRows ? 'i-mdi-grid-large' : 'i-heroicons-bars-3-16-solid'" />
                 </div>
-            </ClientOnly>
-        <PageLoading :show="!errorDisplay && !teamsData" message="Loading Teams..."/>
+                <div v-if="!errorDisplay && teamsData.length > 0" class="px-4 md:px-24 pb-8 flex flex-wrap justify-center *:grow *:basis-0 gap-4" :class="showRows ? 'flex-col' : ''">
+                    <TeamCell
+                    v-for="team of teamsData"
+                    v-bind:program="program"
+                    v-bind:teamnumber="team.TeamNumber"
+                    v-bind:teamname="team.TeamName"
+                    v-bind:weblink="team.TeamWebsite"
+                    v-bind:buildthread="team.BuildThread"
+                    v-bind:cadlink="team.CAD"
+                    v-bind:codelink="team.Code"
+                    v-bind:photolink="team.Photo"
+                    v-bind:videolink="team.Video"
+                    v-bind:teamlocation="team.Location"
+                    v-bind:awardyear="team.NewestAwardYear"
+                    v-bind:award="team.NewestAward"
+                    v-bind:row="showRows"
+                    />
+                </div>
+                <PageError v-if="errorDisplay" :errortext="errorDisplay.text" :errormessage="errorDisplay.message"/>
+                <PageError v-if="teamsData.length == 0 && !errorDisplay && allTeamData.length > 0" :errortext="'No Results Found'" :errormessage="'Please try a different search.'"/>
+            </div>
+        </ClientOnly>
+        <PageLoading :show="!errorDisplay && allTeamData.length == 0" message="Loading Teams..."/>
     </div>
 </template>
 <script setup>
@@ -43,10 +43,9 @@ import { useStorage, watchDebounced } from '@vueuse/core'
 let errorDisplay = ref(null)
 let allTeamData = ref([])
 let teamsData = ref([])
-const searchResults = computed(() => teamsData.value.length > 0)
 const starredTeams = useStorage('starredTeams', [])
 const searchText = ref('')
-const showRows = ref(false)
+const showRows = useStorage('rowPreferred', false)
 if (!Array.isArray(starredTeams.value)) { starredTeams.value = [] }
 
 const program = useRouteProgram()
@@ -67,10 +66,7 @@ await useAsyncData(`${program.value}_TEAMS_LIST`, async () => {
                     message: "Please check again later."
                 }
             } else {
-                allTeamData.value = [
-                    ...response._data.filter(team => starredTeams.value.includes(team.TeamID)),
-                    ...response._data.filter(team => !starredTeams.value.includes(team.TeamID))
-                ]
+                allTeamData.value = response._data
                 teamsData.value = allTeamData.value
             }
         },
@@ -90,20 +86,26 @@ await useAsyncData(`${program.value}_TEAMS_LIST`, async () => {
 }, {server: false})
 
 watchDebounced(
-  searchText,
-  () => {
-    if (searchText.value == "") {
-      teamsData.value = allTeamData.value
-    } else {
-      teamsData.value = allTeamData.value.filter(team => {
+    [searchText, starredTeams],
+    sortAndFilterTeams,
+    { debounce: 300, maxWait: 1000 },
+)
+
+function sortAndFilterTeams() {
+    if (allTeamData.value.length > 0) {
+        teamsData.value = [
+            ...allTeamData.value.filter(team => starredTeams.value.includes(team.TeamID)),
+            ...allTeamData.value.filter(team => !starredTeams.value.includes(team.TeamID))
+        ]
+    }
+    if (searchText.value != "") {
+      teamsData.value = teamsData.value.filter(team => {
         return team.TeamName.toLowerCase().includes(searchText.value.toLowerCase())
             || team.TeamNumber.toString().includes(searchText.value)
             || team.Location.toLowerCase().includes(searchText.value.toLowerCase());
       });
     }
-  },
-  { debounce: 300, maxWait: 1000 },
-);
+}
 
 const search = useTemplateRef('search')
 defineShortcuts({

@@ -1,9 +1,9 @@
 <template>
     
     <div>
-        <PageTitle class="min-h-screen px-8">
+        <PageTitle class="py-4 md:py-12 px-4">
             <div class="flex w-full items-center justify-center flex-col lg:flex-row px-4">
-                <img class="lg:mr-10 w-48 md:w-72" :src="`/images/${program}OALogos/Icon.svg`">
+                <img class="lg:mr-10 w-36 md:w-72" :src="`/images/${program}OALogos/Icon.svg`">
                 <div>
                     <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold gradient-overlay">
                         <span class="text-primary-400">{{ program }}</span> Open Alliance
@@ -11,18 +11,15 @@
                     <p class="text-xl pb-5">
                         The home of open and collaborative robotics for <strong class="text-primary-300"><i>FIRST</i>® {{ programDetails.full }}</strong>.
                     </p>
-                    <div class="flex flex-col flex-wrap sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
-                        <UButton label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>
-                        <UButton label="View Statistics" :to="`/${program.toLowerCase()}/stats`"/>
-                        <UButton :label="`Join the ${program}OA`" to="/join"/>
-                        <UButton :class="`hover:bg-transparent ring-(--color-${programDetails.other}-primary) text-(--color-${programDetails.other}-primary-200)`" :label="`Go To ${programDetails.other.toUpperCase()}`" :to="`/${programDetails.other}`"/>
+                    <div class="flex flex-col flex-wrap sm:flex-row gap-1 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
+                        <UButton size="xs" label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>
+                        <UButton size="xs" label="View Statistics" :to="`/${program.toLowerCase()}/stats`"/>
+                        <UButton size="xs" :label="`Join the ${program}OA`" to="/join"/>
+                        <UButton size="xs" :class="`hover:bg-transparent ring-(--color-${programDetails.other}-primary) text-(--color-${programDetails.other}-primary-200)`" :label="`Go To ${programDetails.other.toUpperCase()}`" :to="`/${programDetails.other}`"/>
                     </div>
                 </div>
             </div>
         </PageTitle>
-        <div class="absolute bottom-4 left-0 right-0 hidden md:flex justify-center items-center animate-bounce">
-                <UIcon class="size-12" name="i-heroicons-chevron-double-down"/>
-        </div>
         <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock :title="`What is the ${program} Open Alliance?`">
                 <PageText>

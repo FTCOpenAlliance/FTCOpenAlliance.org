@@ -1,6 +1,6 @@
 <template>
-    <div :class="`${starred ? 'border-primary-200 shadow-primary-300' : ''} ${row ? 'flex-col lg:flex-row' : 'flex-col'}`" class="flex gap-4 justify-between p-5 border-2 bg-glass border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all ease-in-out group">
-        <div class="flex flex-row justify-between">
+    <div :class="`${starred ? 'border-primary-200 shadow-primary-300' : ''} ${row ? 'flex-col lg:flex-row' : 'flex-col max-w-180'}`" class="flex gap-4 min-w-80 md:min-w-120 justify-between p-5 border-2 bg-glass border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all ease-in-out group">
+        <div class="flex justify-between">
             <div class="flex" :class="award && !row ? ' max-w-[60%]' : ''">
                 <NuxtLink :to="`/${program}/teams/${teamnumber}`">
                     <div v-if="!row">
@@ -10,7 +10,7 @@
                     </div>
                 </NuxtLink>
                     <div v-if="row" class="flex items-center gap-4">
-                        <div class="flex flex-row md:flex-col items-center gap-2">
+                        <div class="flex flex-col items-center gap-2">
                             <UIcon v-if="award && awardyear" name="i-heroicons-trophy" class=" size-6 text-primary-200 transition-all"/>
                             <UButton v-if="row" @click="toggleStarred" size="xl" variant="ghost" class="rounded-full p-0 hover:text-primary-200" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
                         </div>
@@ -23,8 +23,8 @@
                         </NuxtLink>
                     </div>
             </div>
-            <div v-if="award && awardyear && !row" class="flex items-center absolute top-0 right-0 h-10 bg-primary-500 hover:bg-primary-400 award-clip transition-all">
-                <NuxtLink class="flex gap-2 pr-5 pl-12 hover:pr-8 hover:pl-14 items-center transition-all" :to="`/${program}/teams/${teamnumber}#awards`">
+            <div v-if="award && awardyear && !row" class="flex items-center absolute top-0 right-0 h-6 md:h-10 bg-primary-500 hover:bg-primary-400 award-clip transition-all">
+                <NuxtLink class="flex gap-2 pr-4 pl-10 md:pr-5 md:pl-12 md:hover:pr-8 md:hover:pl-14 items-center transition-all" :to="`/${program}/teams/${teamnumber}#awards`">
                     <p class="font-bold text-xl">{{ awardyear }}</p>
                     <p class="text-md">{{ award }}</p>
                 </NuxtLink>
@@ -109,7 +109,12 @@ function toggleStarred() {
 
 <style scoped>
 .award-clip {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 2rem 100%);
+    @media (min-width: 48rem) {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 2.5rem 100%);
+    }
+    @media (max-width: 48rem) {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 1.5rem 100%);
+    }
 }
 
 </style>

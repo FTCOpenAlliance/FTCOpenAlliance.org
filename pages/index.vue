@@ -1,25 +1,24 @@
 <template>
     <div>
         <div>
-            <PageTitle class="*:*:flex-col lg:*:*:flex-row min-h-screen *:px-4 *:md:px-auto">
-                <img class="lg:mr-10 w-48 md:w-72" src="/images/OALogos/Icon.svg">
-                <div>
-                    <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold">
-                        The Open Alliance
-                    </h1>
-                    <p class="text-xl pb-5">
-                        The home of open and collaborative robotics for <strong><i>FIRST</i>® Robotics</strong>.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:mx-1 *:mb-2 sm:*:mb-0">
-                        <UButton class="w-full sm:w-1/3 ring-(--color-ftc-primary) text-(--color-ftc-primary-200)" label="Explore FTC Teams" to="/ftc/teams"/>
-                        <UButton class="w-full sm:w-1/3" label="Join the Alliance" to="/join"/>
-                        <UButton class="w-full sm:w-1/3 ring-(--color-frc-primary) text-(--color-frc-primary-200)" label="Explore FRC Teams" to="/frc/teams"/>
+            <PageTitle class="py-4 md:py-12 px-4">
+                <div class="flex w-full items-center justify-center flex-col lg:flex-row px-4">
+                    <img class="lg:mr-10 w-36 md:w-72" src="/images/OALogos/Icon.svg">
+                    <div>
+                        <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold">
+                            The Open Alliance
+                        </h1>
+                        <p class="text-xl pb-5">
+                            The home of open and collaborative robotics for <strong><i>FIRST</i>® Robotics</strong>.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-1 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:mx-1 *:mb-2 sm:*:mb-0">
+                            <UButton size="xs" class="w-full sm:w-1/3 ring-(--color-ftc-primary) text-(--color-ftc-primary-200)" label="Explore FTC Teams" to="/ftc/teams"/>
+                            <UButton size="xs" class="w-full sm:w-1/3" label="Join the Alliance" to="/join"/>
+                            <UButton size="xs" class="w-full sm:w-1/3 ring-(--color-frc-primary) text-(--color-frc-primary-200)" label="Explore FRC Teams" to="/frc/teams"/>
+                        </div>
                     </div>
                 </div>
             </PageTitle>
-            <div class="absolute bottom-4 left-0 right-0 hidden md:flex justify-center items-center animate-bounce">
-                <UIcon class="size-12" name="i-heroicons-chevron-double-down"/>
-            </div>
         </div>
         <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock title="What is the Open Alliance?">
@@ -39,11 +38,10 @@
                         The data that the Alliance collects can be useful in many parts of the season, as it can be used by teams as
                         they build their robots as well as at competitions to reinforce scouting data.
                     </p>
-                    <div class="w-full 2xl:w-1/2 relative">
+                    <div class="hidden md:block grow pointer-events-none">
                         <TeamCell program="FTC" teamnumber=99999 teamname="Your Team Name Here" teamlocation="Your City Here"
-                        cadlink="https://www.example.com" codelink="https://example.com" buildthread="https://example.com"
-                        weblink="https://example.com" photolink="https://example.com" videolink="https://example.com" awardyear="20XX" award="Best Example"/>
-                        <div class="absolute top-0 left-0 w-full h-full"></div>
+                        cadlink="https://example.com" codelink="https://example.com" buildthread="https://example.com"
+                        weblink="https://example.com" photolink="https://example.com" videolink="https://example.com"/>
                     </div>
             </PageDualBlock>
             <PageBlock title="Open Alliance Principles">

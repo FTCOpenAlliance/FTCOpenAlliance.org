@@ -1,10 +1,5 @@
 <template>
-    <div class="flex flex-col absolute pointer-events-none md:fixed top-0 bottom-0 z-50 left-0 right-0">
-        <ClientOnly>
-            <div :class="flags.BannerHTML ? 'bg-primary-600 h-auto p-1' : 'bg-primary-300 h-0 p-0'" class="flex flex-col pointer-events-auto items-center justify-center z-60 transition-all duration-750">
-              <p :class="flags.BannerHTML ? 'text-sm' : 'text-[0px]'" class="text-center transition-all duration-500" v-html="flags.BannerHTML" />
-            </div>
-        </ClientOnly>
+    <div class="flex flex-col pointer-events-none">
         <div class="p-5 bg-linear-to-b from-(--color-primary-950) to-transparent">
             <div class="flex justify-between items-center gap-4 p-5 pointer-events-auto bg-glass shadow-lg shadow-primary-800 border border-primary">
                 <div class="flex gap-2">
@@ -36,7 +31,6 @@
 <script setup>
 import { Program } from '~/assets/scripts/programs';
 
-const flags = useState('flags');
 const program = useState('program', Program.Generic);
 let logoLink = computed(() => {
     switch (program.value) {

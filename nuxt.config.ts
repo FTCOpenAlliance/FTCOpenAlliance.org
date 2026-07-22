@@ -15,15 +15,18 @@ export default defineNuxtConfig({
     ],
     optimizeDeps: {
       include: [
+        '@comark/vue',
         '@formkit/core',
         '@vue/devtools-core',
         '@vue/devtools-kit',
+        '@vueuse/core',
+        'normalize-url',
         'vue-qrcode-reader',
       ]
     }
   },
   compatibilityDate: "2025-07-15",
-  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode'],
+  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode', '@comark/nuxt'],
   ui: {
     theme: {
       colors: [
@@ -48,8 +51,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      // API_URL: process.env.API_DEV_URL || 'https://api.theopenalliance.org',
-      API_URL: 'https://api.theopenalliance.org'
+      API_URL: process.env.API_DEV_URL ?? 'https://api.theopenalliance.org',
+      // API_URL: 'https://api.theopenalliance.org'
     }
   }
 })

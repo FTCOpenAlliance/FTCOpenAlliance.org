@@ -6,7 +6,7 @@
             <div class="flex flex-col grow gap-2">
                 <h1 class="text-6xl lg:text-9xl font-bold text-red-500 h-auto">{{ error?.statusCode }}</h1>
                 <h2 class="text-xl sm:text-3xl">{{ error?.statusMessage || '' }}</h2>
-                <UButton class="mt-10 text-lg" label="Back to Home" to="/"/>
+                <UButton class="mt-10 text-lg" color="error" variant="solid" label="Back to Home" to="/"/>
             </div>
         </div>
         
