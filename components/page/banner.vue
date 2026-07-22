@@ -1,26 +1,27 @@
 <template>
 
     <ClientOnly>
-        <div :class="(flags.BannerMD && !dismissed) ? 'bg-primary-600 h-8 p-1' : 'bg-primary-300 h-0 p-0 *:text-[0px]'" class="flex gap-2 pointer-events-auto overflow-hidden z-60 transition-all duration-750">
-            <div ref="bannerText" class="flex grow justify-center-safe items-center transition-none" :class="bannerOverflow ? 'animate-marquee' : ''">
+        <div ref="bannerContainer" :class="(flags.BannerMD && !dismissed) ? 'bg-primary-600 h-8' : 'bg-primary-300 h-0 *:text-[0px]'" class="flex gap-2 pointer-events-auto overflow-hidden z-60 transition-all duration-750">
+            <UButton @click="dismissed = true" size="md" variant="solid" class="z-1 h-full text-white bg-primary-600 hover:bg-primary-900 hover:text-primary-500" icon="i-heroicons-x-mark"/>
+            <div ref="bannerText" class="flex grow justify-center-safe overflow-none items-center transition-none" :class="bannerOverflow ? 'animate-marquee' : ''">
                 <Comark class="**:my-0 **:text-sm **:text-nowrap" :markdown="flags.BannerMD" />
             </div>
-            <UButton v-if="flags.BannerMD && !dismissed" @click="dismissed = true" size="md" variant="ghost" class="p-0 text-white hover:text-primary-200" icon="i-heroicons-x-mark"/>
         </div>
     </ClientOnly>
 
 </template>
 
 <script setup>
+import { useElementBounding } from '@vueuse/core';
 
 const flags = useState('flags');
 const dismissed = useState('bannerDismissed', () => false);
 
-const bannerText = useTemplateRef('bannerText');
+    const containerWidth = useElementBounding(useTemplateRef('bannerContainer')).width;
+    const textWidth = useElementBounding(useTemplateRef('bannerText')).width;
 
 const bannerOverflow = computed(() => {
-    if (!bannerText.value) return false
-    return bannerText.value?.offsetWidth < bannerText.value?.scrollWidth
+    return textWidth.value > containerWidth.value;
 })
 
 </script>
@@ -33,7 +34,7 @@ const bannerOverflow = computed(() => {
 
 @keyframes marquee {
     0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-150%); }
 }
 
 </style>

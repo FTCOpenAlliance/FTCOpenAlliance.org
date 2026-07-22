@@ -3,7 +3,7 @@
         <PageTitle title="Teams"/>
         <ClientOnly>
             <div class="flex flex-col items-center bg-dots">
-                <div v-if="!errorDisplay" class="flex gap-4 items-center w-full md:px-24 px-12 py-6">
+                <div v-if="!errorDisplay" class="flex gap-4 items-center w-full max-w-450 md:px-24 px-12 py-6">
                     <UInput icon="i-heroicons-magnifying-glass-16-solid" color="primary" highlight size="xl" ref="search" v-model="searchText" placeholder="Search Teams..." class="bg-glass *:bg-transparent grow">
                         <template #trailing>
                             <UKbd value="/" color="primary" variant="soft" size="lg"/>
@@ -11,7 +11,7 @@
                     </UInput>
                     <UButton @click="showRows = !showRows" size="xl" variant="subtle" :icon="showRows ? 'i-mdi-grid-large' : 'i-heroicons-bars-3-16-solid'" />
                 </div>
-                <div v-if="!errorDisplay && teamsData.length > 0" class="px-4 md:px-24 pb-8 flex flex-wrap justify-center *:grow *:basis-0 gap-4" :class="showRows ? 'flex-col' : ''">
+                <div v-if="!errorDisplay && teamsData.length > 0" class="px-4 md:px-24 pb-8 flex flex-wrap justify-center *:grow *:basis-0 gap-4" :class="showRows ? 'flex-col w-full max-w-450' : ' '">
                     <TeamCell
                     v-for="team of teamsData"
                     v-bind:program="program"
@@ -67,7 +67,7 @@ await useAsyncData(`${program.value}_TEAMS_LIST`, async () => {
                 }
             } else {
                 allTeamData.value = response._data
-                teamsData.value = allTeamData.value
+                sortAndFilterTeams()
             }
         },
         onResponseError({error}) {

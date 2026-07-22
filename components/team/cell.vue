@@ -11,7 +11,9 @@
                 </NuxtLink>
                     <div v-if="row" class="flex items-center gap-4">
                         <div class="flex flex-col items-center gap-2">
-                            <UIcon v-if="award && awardyear" name="i-heroicons-trophy" class=" size-6 text-primary-200 transition-all"/>
+                            <NuxtLink :to="`/${program}/teams/${teamnumber}#awards`">
+                                <UIcon v-if="award && awardyear" name="i-heroicons-trophy" class=" size-6 text-primary-200 transition-all"/>
+                            </NuxtLink>
                             <UButton v-if="row" @click="toggleStarred" size="xl" variant="ghost" class="rounded-full p-0 hover:text-primary-200" :icon="starred ? 'i-heroicons-star-solid' : 'i-heroicons-star'" />
                         </div>
                         <NuxtLink :to="`/${program}/teams/${teamnumber}`" class="flex items-center gap-4">
