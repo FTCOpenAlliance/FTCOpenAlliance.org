@@ -15,23 +15,19 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/lucide": "^1.2.118",
     "@iconify-json/mdi": "^1.2.3",
-    "@nuxt/icon": "^2.3.1",
+    "@nuxt/icon": "^1.3.1",
     "@tailwindcss/vite": "^4.3.2",
-    "@vueuse/core": "^14.3.0",
+    "@vueuse/core": "^10.11.1",
     "modern-screenshot": "^4.6.8",
-    "normalize-url": "^9.0.1",
-    "nuxt": "^4.5.0",
+    "normalize-url": "^8.0.1",
+    "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.2",
     "vue": "latest"
   },
   "devDependencies": {
-    "@formkit/nuxt": "^2.1.0",
+    "@formkit/nuxt": "^1.6.9",
     "@nuxt/ui": "^4.10.0",
     "nuxt-echarts": "^1.0.0",
     "nuxt-qrcode": "^0.4.8"
-  },
-  "allowScripts": {
-    "vue-demi": true,
-    "esbuild": true
   }
 }
