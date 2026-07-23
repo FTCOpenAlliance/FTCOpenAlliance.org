@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -8,13 +9,24 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
-  postcss: {
-    plugins: {
-      "@tailwindcss/postcss": {},
-    },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+    optimizeDeps: {
+      include: [
+        '@comark/vue',
+        '@formkit/core',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        '@vueuse/core',
+        'normalize-url',
+        'vue-qrcode-reader',
+      ]
+    }
   },
-  compatibilityDate: "2024-07-03",
-  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode'],
+  compatibilityDate: "2025-07-15",
+  modules: ["@nuxt/ui", "@nuxt/icon", '@formkit/nuxt', 'nuxt-echarts', 'nuxt-qrcode', '@comark/nuxt'],
   ui: {
     theme: {
       colors: [
@@ -26,6 +38,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  icon: {
+    serverBundle: {
+      collections: ['heroicons', 'mdi']
+    }
+  },
   echarts: {
     renderer: ['canvas'],
     charts: ['BarChart', 'PieChart'],
@@ -34,7 +51,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      // API_URL: process.env.API_DEV_URL || 'https://api.theopenalliance.org',
+      // API_URL: process.env.API_DEV_URL ?? 'https://api.theopenalliance.org',
       API_URL: 'https://api.theopenalliance.org'
     }
   }

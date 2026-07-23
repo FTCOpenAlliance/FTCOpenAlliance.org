@@ -1,15 +1,11 @@
 <template lang="">
     <div>
-        <PageTitle v-if="errorDisplay || !teamData">
-            <h1 class="text-6xl lg:text-8xl text-primary-300 font-bold">
-                {{teamid}}
-            </h1>
-        </PageTitle>
+        <PageTitle v-if="errorDisplay || !teamData" :title="teamid"/>
         <PageTitle v-if="!errorDisplay && teamData">
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col lg:flex-row gap-4 justify-between items-center w-[70vw] max-w-200">
                     <div class="flex flex-col">
-                        <h1 class="text-6xl md:text-8xl text-primary-300 font-bold flex justify-center lg:justify-start">
+                        <h1 class="text-5xl md:text-7xl text-primary-300 font-bold flex justify-center lg:justify-start">
                             {{ teamid }}
                         </h1>
                         <p class="text-2xl md:text-4xl flex justify-center lg:justify-start">
@@ -37,7 +33,7 @@
             <div v-if="!errorDisplay && teamData" class="flex flex-col gap-10 p-10 md:px-20 lg:px-48">
                 <div>
                     <div class="flex justify-center mb-5">
-                        <USeparator class="text-xl text-primary md:text-4xl">Team Links</USeparator>
+                        <USeparator class="text-xl text-primary md:text-3xl">Team Links</USeparator>
                     </div>
                     <div class="flex justify-center">
                         <div class="flex flex-col md:flex-row w-full *:w-full gap-2 *:text-2xl *:hover:ring-primary-200 *:hover:*:text-primary-200">
@@ -52,7 +48,7 @@
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
-                        <USeparator class="text-xl text-primary md:text-4xl">Team Statistics</USeparator>
+                        <USeparator class="text-xl text-primary md:text-3xl">Team Statistics</USeparator>
                     </div>
                     <div class="flex flex-col gap-4 md:gap-8">
                         <TeamStat name="Meeting Hours/Week" :val="teamData.MeetingHours"/>
@@ -63,7 +59,7 @@
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
-                        <USeparator class="text-xl text-primary md:text-4xl">Robot Statistics</USeparator>
+                        <USeparator class="text-xl text-primary md:text-3xl">Robot Statistics</USeparator>
                     </div>
                     <div class="flex flex-col gap-4 md:gap-8">
                         <TeamStat name="Drivetrain" :val="kvLists.Drivetrain[teamData.Drivetrain]"/>
@@ -76,7 +72,7 @@
                 </div>
                 <div>
                     <div class="flex justify-center mb-5">
-                        <USeparator class="text-xl text-primary md:text-4xl">Code Statistics</USeparator>
+                        <USeparator class="text-xl text-primary md:text-3xl">Code Statistics</USeparator>
                     </div>
                     <div class="flex flex-col gap-4 md:gap-8">
                         <TeamStat name="Programming Language" :val="kvLists.CodeLang[teamData.CodeLang]"/>
@@ -86,14 +82,14 @@
                     </div>
                 </div>
                 <div v-if="teamData.Awards && teamData.Awards.length > 0" class="flex flex-col gap-5">
-                    <USeparator class="text-xl text-primary md:text-4xl">Award History</USeparator>
+                    <USeparator class="text-xl text-primary md:text-3xl">Award History</USeparator>
                     <div class="flex flex-row justify-between items-center gap-4 p-2 md:p-4 bg-glass border-2 border-primary" v-for="award in teamData.Awards">
                         <p class="text-xl md:text-3xl font-bold text-primary">{{ award.Year }}</p>
                         <p class="text-lg md:text-2xl">{{ award.Award }}</p>
                     </div>
                 </div>
                 <div v-if="frqItems">
-                    <USeparator class="text-xl text-primary md:text-4xl">Free-Response</USeparator>
+                    <USeparator class="text-xl text-primary md:text-3xl">Free-Response</USeparator>
                     <UCarousel class="flex *:*:items-start *:*:py-8 mt-12" v-if="frqItems" v-slot="{ item }" :items="frqItems" dots arrows loop
                     :ui="{
                         controls: 'absolute -top-8 inset-x-4 sm:inset-x-20 *:mx-12 sm:*:mx-0',
@@ -123,19 +119,11 @@ import { Program } from '~/assets/scripts/programs';
 const { teamid } = useRoute().params
 import { useStorage } from '@vueuse/core';
 
-let program = useState('program')
+let program = useRouteProgram()
 const normalizeOptions = {
     stripWWW: false
 }
 useState('title').value = `${teamid}`
-
-if (useRoute().params.program.toLowerCase() == "ftc") {
-    program.value = Program.FTC;
-} else if (useRoute().params.program.toLowerCase() == "frc") {
-    program.value = Program.FRC;
-} else {
-    program.value = Program.Generic;
-}
 
 let kvLists = computed(() => {
     switch (program.value) {
@@ -174,7 +162,7 @@ let errorDisplay = ref(null)
 let teamData = ref(null)
 let frqItems = ref(null)
 
-await useAsyncData(async () => {
+await useAsyncData(`${program.value}_TEAM_${teamid}`, async () => {
     await $fetch(`${useRuntimeConfig().public.API_URL}/teams/${program.value}/${teamid}/all`, {
         onResponse({response}) {
             if (!response.ok) {

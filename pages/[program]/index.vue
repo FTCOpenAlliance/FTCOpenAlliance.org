@@ -1,28 +1,25 @@
 <template>
     
     <div>
-        <PageTitle class="*:*:flex-col lg:*:*:flex-row min-h-screen *:px-4 *:md:px-auto">
-            <div class="flex justify-center items-center lg:mr-10 w-3/5 lg:w-auto">
-                <img :src="`/images/${program}OALogos/Icon.svg`">
-            </div>
-            <div>
-                <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold gradient-overlay">
-                    <span class="text-primary-400">{{ program }}</span> Open Alliance
-                </h1>
-                <p class="text-xl pb-5">
-                    The home of open and collaborative robotics for <strong class="text-primary-300"><i>FIRST</i>® {{ programDetails.full }}</strong>.
-                </p>
-                <div class="flex flex-col flex-wrap sm:flex-row gap-2 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
-                    <UButton label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>
-                    <UButton label="View Statistics" :to="`/${program.toLowerCase()}/stats`"/>
-                    <UButton :label="`Join the ${program}OA`" to="/join"/>
-                    <UButton :class="`ring-[var(--primary-${programDetails.other})] text-[var(--primary-${programDetails.other}-200)]`" :label="`Go To ${programDetails.other.toUpperCase()}`" :to="`/${programDetails.other}`"/>
+        <PageTitle class="py-4 md:py-12 px-4">
+            <div class="flex w-full items-center justify-center flex-col lg:flex-row px-4">
+                <img class="lg:mr-10 w-36 md:w-72" :src="`/images/${program}OALogos/Icon.svg`">
+                <div>
+                    <h1 class="my-5 text-4xl md:text-7xl xl:text-8xl font-bold gradient-overlay">
+                        <span class="text-primary-400">{{ program }}</span> Open Alliance
+                    </h1>
+                    <p class="text-xl pb-5">
+                        The home of open and collaborative robotics for <strong class="text-primary-300"><i>FIRST</i>® {{ programDetails.full }}</strong>.
+                    </p>
+                    <div class="flex flex-col flex-wrap sm:flex-row gap-1 pt-6 sm:pt-0 justify-center *:justify-center *:text-lg *:grow">
+                        <UButton size="xs" label="Explore Teams" :to="`/${program.toLowerCase()}/teams`"/>
+                        <UButton size="xs" label="View Statistics" :to="`/${program.toLowerCase()}/stats`"/>
+                        <UButton size="xs" :label="`Join the ${program}OA`" to="/join"/>
+                        <UButton size="xs" :class="`hover:bg-transparent ring-(--color-${programDetails.other}-primary) text-(--color-${programDetails.other}-primary-200)`" :label="`Go To ${programDetails.other.toUpperCase()}`" :to="`/${programDetails.other}`"/>
+                    </div>
                 </div>
             </div>
         </PageTitle>
-        <div class="justify-center items-center animate-bounce flex">
-            <UIcon class="scale-[3] translate-y-[-3.5em]" name="i-heroicons-chevron-double-down"/>
-        </div>
         <div class="flex flex-col p-6 md:p-12 lg:px-36 xl:px-60 z-10 gap-12 bg-radial">
             <PageBlock :title="`What is the ${program} Open Alliance?`">
                 <PageText>

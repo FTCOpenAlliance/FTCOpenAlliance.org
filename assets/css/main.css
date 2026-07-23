@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap')
 layer(base);
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "@nuxt/ui";
 @import '../css/theme-ftc.css';
 @import '../css/theme-frc.css';
@@ -8,43 +8,37 @@ layer(base);
 
 :root {
   --ui-radius: 0px;
-  --ui-primary: var(--color-primary);
-  --ui-secondary: var(--color-white);
+  --ui-text: white;
+  --ui-secondary: white;
   font-family: 'Chakra Petch', sans-serif;
   transition: background-color 2s, color 2s, border-color 2s;
 }
 
 body {
-  background-color: #040404;
+  background-color: var(--color-primary-950);
   color: white;
 }
 
 .bg-grid {
   animation: grid-move 120s linear infinite;
-  background-image: radial-gradient(transparent 40%, #040404 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px,var(--color-primary-900) 1px);
+  background-image: radial-gradient(transparent 40%, black 90%),linear-gradient(to right, var(--color-primary-800) 1px,transparent 1px),linear-gradient(to bottom,var(--color-primary-800) 1px, var(--color-primary-900) 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
   background-attachment: scroll, fixed, fixed;
 }
 
 .bg-dots {
-  background-image: radial-gradient(var(--color-primary-900) 1px, #040404 3px);
+  background-image: radial-gradient(var(--color-primary-900) 2px, var(--color-primary-950) 3px);
   background-size: 20px 20px;
   animation: parallax linear;
   animation-timeline: scroll(); 
 }
 
 .bg-radial {
-  background: radial-gradient(125% 125% at 50% 10%,#040404 40%,var(--color-primary-700) 100%)
+  background: radial-gradient(125% 125% at 50% 10%, transparent 40%,var(--color-primary-700) 100%)
 }
 
 .bg-glass {
-  background-color: #00000088;
-  backdrop-filter: blur(2px);
-}
-
-:hover.bg-glass-hover {
-  background-color: #00000088;
-  backdrop-filter: blur(4px);
+  @apply bg-primary-950/40 backdrop-blur-[4px]
 }
 
 @keyframes grid-move {

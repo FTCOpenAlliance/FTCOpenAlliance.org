@@ -1,14 +1,14 @@
 :root {
-  --primary-frc-50: #e6f0ff;
-  --primary-frc-100: #cce0ff;
-  --primary-frc-200: #99c2ff;
-  --primary-frc-300: #66a3ff;
-  --primary-frc-400: #3385ff;
-  --primary-frc-500: #0066ff;
-  --primary-frc-600: #0052cc;
-  --primary-frc-700: #003d99;
-  --primary-frc-800: #002966;
-  --primary-frc-900: #001433;
-  --primary-frc-950: #000a19;
-  --primary-frc: #0066ff;
+  --color-frc-primary-50: #e6f0ff;
+  --color-frc-primary-100: #cce0ff;
+  --color-frc-primary-200: #99c2ff;
+  --color-frc-primary-300: #66a3ff;
+  --color-frc-primary-400: #3385ff;
+  --color-frc-primary-500: #0066ff;
+  --color-frc-primary-600: #0052cc;
+  --color-frc-primary-700: #003d99;
+  --color-frc-primary-800: #002966;
+  --color-frc-primary-900: #001433;
+  --color-frc-primary-950: #000a19;
+  --color-frc-primary: #0066ff;
 }

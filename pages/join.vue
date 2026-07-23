@@ -1,14 +1,10 @@
 <template>
     <div>
-        <PageTitle>
-            <h1 class="text-6xl lg:text-8xl text-primary font-bold">
-                Register
-            </h1>
-        </PageTitle>
+        <PageTitle title="Register"/>
         
         <div class="flex flex-col py-10 items-center bg-dots">
             
-            <div class="md:w-[70vw] xl:w-[50vw]">
+            <div class="md:w-[70vw] xl:max-w-220">
                 <FormKit
                 type="form"
                 :config="{ classes: {
@@ -16,6 +12,7 @@
                     message: 'text-red-400 mb-2',
                 } }"
                 id="joinForm"
+                v-model="formData"
                 submit-label="Register/Update"
                 @submit="formCallback"
                 >
@@ -25,16 +22,17 @@
                         Your team data may be used to fetch additional information through external APIs. <br>
                         Groups of teams (or "sister" teams) should register each team individually, although links and information may be shared/duplicated.
                     </p>
-                    <div class="flex gap-2 w-full items-end">
+                    <div class="flex gap-2 w-full items-start">
                         <FormKit v-model="program" name="Program" id="Program" label="Program" type="radio" :options="['FTC', 'FRC']" :config="multiCheckboxStyle" validation="required|matches:FTC,FRC"/>
-                        <FormKit @blur="numberChangeCallback" :config="{ classes: {
+                        <FormKit :config="{ classes: {
                             outer: 'flex flex-col grow',
                             wrapper: 'flex flex-col grow',
                             input: 'border border-primary bg-black p-2 w-full accent-primary-500',
                             message: 'text-red-400 mb-2',
                         }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
+                        <FormKit name="AuthCode" id="AuthCode" label="Verification Code" type="password" validation="required|matches:/^[A-Za-z0-9_-]{8}$/"/>
                     </div>
-                    <UButton id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
+                    <UButton v-if="formData.TeamNumber" id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>
                     
                     <div id="PIIInput" class="relative">
@@ -45,8 +43,8 @@
                             After submission, they may not be changed. If you must update this information,
                             please send an email to <u><a href="mailto:contact@theopenalliance.org">contact@theopenalliance.org</a></u>.
                         </p>
-                        <FormKit type="email" name="ContactEmail" id="ContactEmail" label="Contact Email Address" :validation="piiExists ? '' : 'required|email'"/>
-                        <FormKit type="text" name="ShipAddress" id="ShipAddress" label="Shipping Address" :validation="piiExists ? '' : 'required'"/>
+                        <FormKit type="email" name="ContactEmail" id="ContactEmail" label="Contact Email Address" :validation="piiExists ? '' : 'email'"/>
+                        <FormKit type="text" name="ShipAddress" id="ShipAddress" label="Shipping Address"/>
                         <div id="PIINotice" :class="piiExists ? 'visible' : 'invisible'" class="absolute items-center top-0 left-0 w-full h-full bg-glass bg-[#000000b8] border-primary border-2 scale-105">
                             <div class="flex items-center w-full h-full text-center p-4 md:p-12 sm:text-lg md:text-xl">
                                 <p class="text-primary-300">
@@ -136,9 +134,11 @@
 import { ftcKV, frcKV } from '~/assets/scripts/formKV'
 import { getNode } from '@formkit/core'
 import { Program } from '~/assets/scripts/programs'
+import { watchDebounced } from '@vueuse/core'
 
 useState('title').value = 'Register'
 let toast = useToast()
+const formData = ref({})
 const program = useState('program', () => Program.Generic)
 let kvLists = computed(() => {
     switch (program.value) {
@@ -150,6 +150,14 @@ let kvLists = computed(() => {
             return {}
     }
 })
+
+watch(program, (newProgram) => {
+        formData.value = newProgram == Program.Generic ? {} : {"Program": newProgram}
+})
+
+watchDebounced(() => formData.value.TeamNumber ?? '', (newTeamNumber) => {
+    updatePIIInputs(newTeamNumber)
+}, { debounce: 1000 })
 
 const apiURL = useRuntimeConfig().public.API_URL
 
@@ -271,11 +279,6 @@ async function autofillTeamData() {
     })
 }
 
-function numberChangeCallback(event) {
-    const teamNumber = event.target.value
-    updatePIIInputs(teamNumber)
-}
-
 let piiExists = ref(false)
 
 async function updatePIIInputs(teamNumber) {
@@ -292,20 +295,20 @@ async function updatePIIInputs(teamNumber) {
             }
         },
         onResponseError({response}) {
-            toast.add({
-                title: "There was an issue while checking your team's registration status.",
-                description: response._data ?? "API Error",
-                icon: "i-heroicons-outline-exclamation-circle",
-                color: 'error'
-            })
+            // toast.add({
+            //     title: "There was an issue while checking your team's registration status.",
+            //     description: response._data ?? "API Error",
+            //     icon: "i-heroicons-outline-exclamation-circle",
+            //     color: 'error'
+            // })
         },
         onRequestError() {
-            toast.add({
-                title: "There was an issue while checking your team's registration status.",
-                description: "API Request Failed",
-                icon: "i-heroicons-outline-exclamation-circle",
-                color: 'error'
-            })
+            // toast.add({
+            //     title: "There was an issue while checking your team's registration status.",
+            //     description: "API Request Failed",
+            //     icon: "i-heroicons-outline-exclamation-circle",
+            //     color: 'error'
+            // })
         }
     })
 }

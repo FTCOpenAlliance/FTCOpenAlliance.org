@@ -11,21 +11,23 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@comark/nuxt": "^0.5.1",
+    "@iconify-json/heroicons": "^1.2.3",
+    "@iconify-json/lucide": "^1.2.118",
+    "@iconify-json/mdi": "^1.2.3",
     "@nuxt/icon": "^1.3.1",
-    "@nuxt/ui": "^3.3.4",
-    "@tailwindcss/postcss": "^4.1.13",
-    "@vueuse/core": "^10.11.0",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vueuse/core": "^10.11.1",
     "modern-screenshot": "^4.6.8",
     "normalize-url": "^8.0.1",
-    "nuxt": "^4.1.2",
-    "tailwindcss": "^4.1.13",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.2",
     "vue": "latest"
   },
   "devDependencies": {
     "@formkit/nuxt": "^1.6.9",
-    "autoprefixer": "^10.4.19",
+    "@nuxt/ui": "^4.10.0",
     "nuxt-echarts": "^1.0.0",
-    "nuxt-qrcode": "^0.4.8",
-    "postcss": "^8.4.39"
+    "nuxt-qrcode": "^0.4.8"
   }
 }
