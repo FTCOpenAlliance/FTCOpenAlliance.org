@@ -30,7 +30,7 @@
                             input: 'border border-primary bg-black p-2 w-full accent-primary-500',
                             message: 'text-red-400 mb-2',
                         }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
-                        <FormKit name="AuthCode" id="AuthCode" label="Verification Code" type="password" validation="required|matches:/^[A-Za-z0-9_-]{6}$/"/>
+                        <FormKit name="AuthCode" id="AuthCode" label="Verification Code" type="password" validation="required|matches:/^[A-Za-z0-9_-]{8}$/"/>
                     </div>
                     <UButton v-if="formData.TeamNumber" id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>
