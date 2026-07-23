@@ -17,6 +17,10 @@
         title: String
     })
 
+    defineProps({
+        title: String
+    })
+
     const bannerHTML = useState('flags').value ? useState('flags').value.BannerHTML : ''
 
 </script>
