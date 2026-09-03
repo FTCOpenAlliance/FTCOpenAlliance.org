@@ -30,9 +30,14 @@
                 </p>
             </div>
             <div class="flex flex-col gap-2 justify-center items-center w-full 2xl:w-1/2 *:w-full">
-                <UCarousel loop :autoplay="{ delay: 4000, stopOnInteraction: true }" v-slot="{ item }" :items="OAShowCarouselItems" :ui="{ item: 'basis-full'}" class="*:*:items-center">
+                <UCarousel loop v-slot="{ item }" :items="OAShowCarouselItems" class="*:*:items-center" arrows
+                    :ui="{
+                        controls: 'absolute top-4 -inset-x-4 sm:inset-x-12 *:mx-12 sm:*:mx-0',
+                        prev: 'rounded-none size-8 ring-0 bg-primary-700/50',
+                        next: 'rounded-none size-8 ring-0 bg-primary-700/50',
+                    }">
                     <div class="flex flex-col *:w-full">
-                        <p :class="`text-[${item.color}] font-bold text-xl text-center`">{{ item.name }}</p>
+                        <p :class="`text-[${item.color}] font-bold text-xl text-center bg-black/75`">{{ item.name }}</p>
                         <iframe class="aspect-video" :src="item.link" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
                 </UCarousel>
@@ -51,19 +56,6 @@
                 for updates!
             </PageText>
             <PartnerLinks class="w-full 2xl:w-1/4" website="https://studica.com/" instagram="https://instagram.com/studicacom" facebook="https://www.facebook.com/StudicaRobotics" youtube="https://www.youtube.com/StudicaRobotics"/>
-        </PageDualBlock>
-        <PageDualBlock title="Ferra Components">
-            <PageText class="2xl:w-3/4">
-                Ferra Components is an FTC-oriented company with the mission to provide teams with cheap, high-quality wiring and electrical components.
-                Their unique cable kits give teams a head-start on wiring their robots elegantly, with multiple sizes of all cables needed for the FTC control system.
-                They also provide DIY cable kits for teams inclined to create custom-length cables.
-                Their catalog includes all sort of signal, power, and motor cables, including XT30, JST, and Anderson Powerpole. They also have free 3D printed case files
-                for Driver Hubs, Control/Expansion Hubs, and Servo Hubs.
-                Check out their
-                <a href="https://ferracomponents.com/" target="_blank" class="text-primary hover:text-primary-300 font-bold">online store</a>
-                today, and take your robot wiring game to the next level.
-            </PageText>
-            <PartnerLinks class="w-full 2xl:w-1/4" website="https://ferracomponents.com/" facebook="https://www.facebook.com/profile.php?id=61577231486964" instagram="http://instagram.com/ferracomponents" />
         </PageDualBlock>
     </div>
 </template>
@@ -97,12 +89,6 @@ import { Program } from '~/assets/scripts/programs';
         link: "https://www.studica.com/",
         status: "Sponsor"
     },
-    {
-        name: "Ferra Components",
-        image: '/images/partnerLogos/Ferra.svg',
-        link: "https://ferracomponents.com/",
-        status: "Awards Sponsor"
-    }
     ]
 
     const OAShowCarouselItems = []

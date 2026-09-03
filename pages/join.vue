@@ -29,8 +29,32 @@
                             wrapper: 'flex flex-col grow',
                             input: 'border border-primary bg-black p-2 w-full accent-primary-500',
                             message: 'text-red-400 mb-2',
-                        }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team Number" validation="required"/>
+                        }}" type="number" number="integer" :min="1" :max="99999" :step="1" name="TeamNumber" id="TeamNumber" label="Team #" validation="required"/>
                         <FormKit name="AuthCode" id="AuthCode" label="Verification Code" type="password" validation="required|matches:/^[A-Za-z0-9_-]{8}$/"/>
+                        <UModal :ui="{'content': 'max-w-full w-3xl ring-0 overflow-visible', 'overlay': 'bg-primary-900/50'}" v-model:open="authCodeModalOpen">
+                            <UButton icon="heroicons:question-mark-circle" variant="ghost" class="mt-7" />
+
+                            <template #content>
+                                <PageBlock title="Verification Codes" class="max-h-120 md:max-h-full overflow-y-auto">
+                                    <p class="text-lg text-center">
+                                        The Open Alliance verification code system improves the security of team data on the platform by preventing unauthorized
+                                        editing of team profiles. To verify that you are editing the profile of a team who you are affiliated with, you must provide your
+                                        team's verification code for this season. The codes can be accessed by a team mentor through the <i>FIRST</i>® Dashboard / Virtual
+                                        Kit of Parts. The codes will be formatted similar to the examples below.<br><br>
+
+                                        <span class="mx-auto font-bold text-xl md:text-3xl text-primary-300">{{ authCodeExample }}</span><br><br>
+
+                                        This code is unique to your team for a given season, and it <strong>cannot be changed or reset</strong> during the season. Your team's
+                                        mentor is responsible for distributing this code to authorized users only. Anyone with the code will be able to edit your team's profile
+                                        for the season.<br><br>
+
+                                        <span class="mx-auto"> If you encounter any issues with the system, or have questions about accessing your verification code please
+                                            contact the Open Alliance team at <u><a href="mailto:contact@theopenalliance.org">contact@theopenalliance.org</a></u>.
+                                        </span>
+                                    </p>
+                                </PageBlock>
+                            </template>
+                        </UModal>
                     </div>
                     <UButton v-if="formData.TeamNumber" id="autofillBtn" @click="autofillTeamData" icon="i-mdi-database-refresh" class="-mt-4 transition-all">Autofill Previous Data</UButton>
                     <FormKit type="text" name="TeamName" id="TeamName" label="Team Name" validation="required"/>
@@ -151,6 +175,8 @@ let kvLists = computed(() => {
     }
 })
 
+const authCodeModalOpen = ref(false)
+
 watch(program, (newProgram) => {
         formData.value = newProgram == Program.Generic ? {} : {"Program": newProgram}
 })
@@ -158,6 +184,21 @@ watch(program, (newProgram) => {
 watchDebounced(() => formData.value.TeamNumber ?? '', (newTeamNumber) => {
     updatePIIInputs(newTeamNumber)
 }, { debounce: 1000 })
+
+const authCodeExample = ref("")
+if (import.meta.client) setInterval(() => {
+    if (authCodeModalOpen.value) {
+        const randomString = () => {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+            let result = '';
+            for (let i = 0; i < 8; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+        authCodeExample.value =  randomString()
+    }
+}, 2000)
 
 const apiURL = useRuntimeConfig().public.API_URL
 
