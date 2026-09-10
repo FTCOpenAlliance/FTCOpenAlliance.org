@@ -40,7 +40,16 @@
                                         The Open Alliance verification code system improves the security of team data on the platform by preventing unauthorized
                                         editing of team profiles. To verify that you are editing the profile of a team who you are affiliated with, you must provide your
                                         team's verification code for this season. The codes can be accessed by a team mentor through the <i>FIRST</i>® Dashboard / Virtual
-                                        Kit of Parts. The codes will be formatted similar to the examples below.<br><br>
+                                        Kit of Parts, as shown below.<br><br>
+                                        
+                                        <img src="/images/join/tutorial1.png">
+                                        <span class="text-sm italic">Navigate to <u><a href="https://firstinspires.org" target="_blank">firstinspires.org</a></u> and click My Dashboard</span><br><br>
+                                        <img src="/images/join/tutorial2.png">
+                                        <span class="text-sm italic">Select your team, then click Team Events and Awards</span><br><br>
+                                        <img src="/images/join/tutorial3.png">
+                                        <span class="text-sm italic">Find the Open Alliance under vendors, and copy the password.</span><br><br>
+
+                                        Your code will be formatted similar to the following examples:<br><br>
 
                                         <span class="mx-auto font-bold text-xl md:text-3xl text-primary-300">{{ authCodeExample }}</span><br><br>
 
