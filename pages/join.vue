@@ -214,7 +214,7 @@ const apiURL = useRuntimeConfig().public.API_URL
 const multiCheckboxStyle = {
     classes: {
         options: 'flex flex-col md:flex-row md:flex-wrap gap-2',
-        option: 'border border-primary has-checked:bg-primary-900 hover:scale-[1.02] has-checked:scale-[1.02] has-checked:border-primary-200 transition-all shadow-xs has-checked:shadow-primary-400',
+        option: 'border border-primary/50 has-checked:bg-primary-900 hover:scale-[1.02] has-checked:scale-[1.02] has-checked:border-primary-200 transition-all shadow-md has-checked:shadow-primary-400',
         label: 'inline-block w-full p-2',
         input: 'hidden',
     }   

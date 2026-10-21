@@ -1,5 +1,5 @@
 <template>
-    <div :class="`${starred ? 'border-primary-200 shadow-primary-300' : ''} ${row ? 'flex-col lg:flex-row' : 'flex-col max-w-180'}`" class="flex gap-4 min-w-80 md:min-w-120 justify-between p-5 border-2 bg-glass border-primary hover:border-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all ease-in-out group">
+    <div :class="`${starred ? 'ring-primary-200 shadow-primary-300' : ''} ${row ? 'flex-col lg:flex-row' : 'flex-col max-w-180'}`" class="flex gap-4 min-w-80 md:min-w-120 justify-between p-5 ring bg-glass ring-primary hover:ring-2 hover:ring-primary-300 shadow-primary-800 hover:shadow-primary-600 shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all ease-in-out group">
         <div class="flex justify-between">
             <div class="flex" :class="award && !row ? ' max-w-[60%]' : ''">
                 <NuxtLink :to="`/${program}/teams/${teamnumber}`">
