@@ -102,7 +102,7 @@ function sortAndFilterTeams() {
       teamsData.value = teamsData.value.filter(team => {
         return team.TeamName.toLowerCase().includes(searchText.value.toLowerCase())
             || team.TeamNumber.toString().includes(searchText.value)
-            || team.Location.toLowerCase().includes(searchText.value.toLowerCase());
+            || (team.Location && team.Location.toLowerCase().includes(searchText.value.toLowerCase()))
       });
     }
 }
